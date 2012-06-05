@@ -1,0 +1,1 @@
+make MOTES=/dev/ttyUSB0 UIP_CONF_IPV6=1 adcTest.upload login
