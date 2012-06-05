@@ -1,0 +1,4 @@
+contiki-inga.a
+contiki-inga.map
+obj_inga/**
+adcTest.inga
