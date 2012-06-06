@@ -31,15 +31,10 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 		case 0:
 			break;
 		case 1:
-			getT
-			data.time_local=time_local;
-			data.time_master=time_master;
-			data.type=2;
 			break;
 		case 2:
 			data.type=0;
-			printf("pong antwort vom master. Lokale Zeit: %lu Entfernte Zeit: %lu \n",time_local,data.time_master);
-			getTime
+			printf("pong antwort vom master. Lokale Zeit: %lu Master Zeit: %lu \n",time_local,data.time_master);
 			time_local=data.time_master;
 			time_master=data.time_master;
 			break;
@@ -47,11 +42,11 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 		//	bla;
 		//	break
 	}
-	printf("unicast message received from %d.%d: %u,%lu,%lu \n", from->u8[0], from->u8[1], data.type,data.time_local,data.time_master);
+//	printf("unicast message received from %d.%d: %u,%lu,%lu \n", from->u8[0], from->u8[1], data.type,data.time_local,data.time_master);
 	if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
     	{
-    		printf("Answermessage sent\n"); // debug message
-        	unicast_send(&uc, from);
+    		//printf("Answermessage sent\n"); // debug message
+        	unicast_send(c, from);
     	}
 }
 
@@ -69,16 +64,17 @@ PROCESS_THREAD(time_unicast_sender, ev, data)
   PROCESS_BEGIN();
 //  SENSORS_ACTIVATE(button_sensor);//activate button
   unicast_open(&uc, 290, &unicast_callbacks); // channel = 122
-  static long bigTime = 99999999;
-  static long timeIterator=0;
-  static rtimer_clock_t tmp;
+  bigTime = 99999;
+  //static long timeIterator=0;
+ // static rtimer_clock_t tmp;
  // printf("BigTime: %lu \n", bigTime);
   struct datagram data;
   data.end=0;
   data.type=1;
   while(1){
-	  getTime(&bigTime,timeIterator,time_local,time_master); 
-	  setDataTime(&data,&bigTime);
+	  //bigTime = getTime(timeIterator,time_local,time_master); 
+	  data.time_local=time_local;
+	  data.time_master=time_master;
 	  static struct etimer et;
 	  rimeaddr_t addr;
 	  packetbuf_copyfrom(&data,sizeof(data)); // String + Length to be send
@@ -92,7 +88,7 @@ PROCESS_THREAD(time_unicast_sender, ev, data)
 	  if(!rimeaddr_cmp(&addr, &rimeaddr_node_addr)){
 		  //printf("unicast message sent  %u,%lu,%lu \n",  data.type,data.time_local,data.time_master);
 		  //printf("Message sent\n"); // debug message
-		  //unicast_send(&uc, &addr);
+		  unicast_send(&uc, &addr);
 	  }
   }
 

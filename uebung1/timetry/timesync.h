@@ -6,7 +6,10 @@
 //rtimer_clock_t offset;
 unsigned long time_local;
 unsigned long time_master;
-struct datagram {
+long timeIterator;
+static long bigTime;
+long getTime(long *);
+struct datagram{
 	int type; //switch (type){
 		  //case 0 bestätigung
 		  //case 1 ping paket vom slave
