@@ -35,7 +35,8 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			break;
 		case 2:
 			data.type=0;
-			printf("pong antwort vom master. Lokale Zeit: %lu Master Zeit: %lu \n",time_local,data.time_master);
+	//		printf("pong antwort vom master. Lokale Zeit: %lu Master Zeit: %lu \n",time_local,data.time_master);
+		        printf("lokale (slave) zeit: %lu entfernte zeit: %lu \n",time_local,data.time_master);
 			time_local=data.time_master;
 			time_master=data.time_master;
 			break;
@@ -80,17 +81,18 @@ PROCESS_THREAD(time_unicast_sender, ev, data)
 	  packetbuf_copyfrom(&data,sizeof(data)); // String + Length to be send
 	  // PROCESS_WAIT_EVENT_UNTIL(ev == sensors_event && data == &button_sensor);
 	
-	  etimer_set(&et, CLOCK_SECOND);
-	//  while(!etimer_expired(&et))
-	    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
+	  etimer_set(&et, 20*CLOCK_SECOND);
+	  PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
 		
 	  addr.u8[0] = 0x2c; // Address of receiving Node
 	  addr.u8[1] = 0x1;
 	  if(!rimeaddr_cmp(&addr, &rimeaddr_node_addr)){
 		  printf("unicast message sent  %u,%lu,%lu \n",  data.type,data.time_local,data.time_master);
 		  printf("Message sent from %d.%d\n", rimeaddr_node_addr.u8[0], rimeaddr_node_addr.u8[1]); // debug message
+		  printf("lokale (slave) zeit: %lu entfernte zeit: %lu \n",time_local,data.time_master);
 		  unicast_send(&uc, &addr);
 	  }
+	  break;
   }
 
   PROCESS_END();
