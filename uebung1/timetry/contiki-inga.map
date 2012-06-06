@@ -1,0 +1,1721 @@
+Archive member included because of file (symbol)
+
+contiki-inga.a(rimeaddr.o)    time28.co (rimeaddr_cmp)
+contiki-inga.a(unicast.o)     time28.co (unicast_open)
+contiki-inga.a(channel.o)     contiki-inga.a(unicast.o) (channel_set_attributes)
+contiki-inga.a(list.o)        contiki-inga.a(channel.o) (list_init)
+contiki-inga.a(etimer.o)      time28.co (etimer_set)
+contiki-inga.a(packetbuf.o)   time28.co (packetbuf_dataptr)
+contiki-inga.a(contiki-inga-ma)
+                              /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o (main)
+contiki-inga.a(button-sensor.o)
+                              contiki-inga.a(contiki-inga-ma) (button_sensor)
+contiki-inga.a(sensors.o)     contiki-inga.a(button-sensor.o) (sensors_changed)
+contiki-inga.a(flash-at45db.o)
+                              contiki-inga.a(contiki-inga-ma) (at45db_init)
+contiki-inga.a(clock.o)       contiki-inga.a(contiki-inga-ma) (radioontime)
+contiki-inga.a(rs232.o)       contiki-inga.a(contiki-inga-ma) (rs232_init)
+contiki-inga.a(watchdog.o)    contiki-inga.a(contiki-inga-ma) (watchdog_init)
+contiki-inga.a(settings.o)    contiki-inga.a(contiki-inga-ma) (settings_get)
+contiki-inga.a(rf230bb.o)     contiki-inga.a(clock.o) (RF230_receive_on)
+contiki-inga.a(halbb.o)       contiki-inga.a(rf230bb.o) (hal_init)
+contiki-inga.a(rime.o)        contiki-inga.a(contiki-inga-ma) (rime_driver)
+contiki-inga.a(rimestats.o)   contiki-inga.a(rf230bb.o) (rimestats)
+contiki-inga.a(announcement.o)
+                              contiki-inga.a(rime.o) (announcement_init)
+contiki-inga.a(broadcast-annou)
+                              contiki-inga.a(rime.o) (broadcast_announcement_init)
+contiki-inga.a(broadcast.o)   contiki-inga.a(unicast.o) (broadcast_open)
+contiki-inga.a(abc.o)         contiki-inga.a(broadcast.o) (abc_open)
+contiki-inga.a(chameleon.o)   contiki-inga.a(rime.o) (chameleon_init)
+contiki-inga.a(chameleon-bitop)
+                              contiki-inga.a(chameleon.o) (chameleon_bitopt)
+contiki-inga.a(nullmac.o)     contiki-inga.a(contiki-inga-ma) (nullmac_driver)
+contiki-inga.a(nullrdc.o)     contiki-inga.a(contiki-inga-ma) (nullrdc_driver)
+contiki-inga.a(mac.o)         contiki-inga.a(nullrdc.o) (mac_call_sent_callback)
+contiki-inga.a(framer-802154.o)
+                              contiki-inga.a(nullrdc.o) (framer_802154)
+contiki-inga.a(process.o)     contiki-inga.a(etimer.o) (process_current)
+contiki-inga.a(autostart.o)   contiki-inga.a(contiki-inga-ma) (autostart_start)
+contiki-inga.a(timer.o)       contiki-inga.a(etimer.o) (timer_set)
+contiki-inga.a(ctimer.o)      contiki-inga.a(contiki-inga-ma) (ctimer_init)
+contiki-inga.a(rtimer.o)      contiki-inga.a(contiki-inga-ma) (rtimer_init)
+contiki-inga.a(random.o)      contiki-inga.a(contiki-inga-ma) (random_init)
+contiki-inga.a(queuebuf.o)    contiki-inga.a(contiki-inga-ma) (queuebuf_init)
+contiki-inga.a(tcpip.o)       contiki-inga.a(contiki-inga-ma) (tcpip_process)
+contiki-inga.a(uip-split.o)   contiki-inga.a(tcpip.o) (uip_split_output)
+contiki-inga.a(mspi-drv.o)    contiki-inga.a(flash-at45db.o) (mspi_init)
+contiki-inga.a(eeprom.o)      contiki-inga.a(settings.o) (eeprom_write)
+contiki-inga.a(rtimer-arch.o)
+                              contiki-inga.a(rtimer.o) (rtimer_arch_init)
+contiki-inga.a(frame802154.o)
+                              contiki-inga.a(framer-802154.o) (frame802154_hdrlen)
+contiki-inga.a(memb.o)        contiki-inga.a(queuebuf.o) (memb_init)
+contiki-inga.a(uip.o)         contiki-inga.a(tcpip.o) (uip_aligned_buf)
+/usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_udivmodhi4.o)
+                              contiki-inga.a(contiki-inga-ma) (__udivmodhi4)
+/usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_udivmodsi4.o)
+                              contiki-inga.a(contiki-inga-ma) (__udivmodsi4)
+/usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_exit.o)
+                              /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o (exit)
+/usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_copy_data.o)
+                              time28.co (__do_copy_data)
+/usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_clear_bss.o)
+                              time28.co (__do_clear_bss)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(rand.o)
+                              contiki-inga.a(random.o) (rand)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memcpy.o)
+                              contiki-inga.a(packetbuf.o) (memcpy)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memset.o)
+                              contiki-inga.a(chameleon-bitop) (memset)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strncmp.o)
+                              contiki-inga.a(sensors.o) (strncmp)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(iob.o)
+                              contiki-inga.a(rs232.o) (__iob)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf.o)
+                              time28.co (printf)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf_p.o)
+                              contiki-inga.a(contiki-inga-ma) (printf_P)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vsnprintf.o)
+                              contiki-inga.a(rs232.o) (vsnprintf)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vfprintf_std.o)
+                              /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf.o) (vfprintf)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eerd_block_atmega1284p.o)
+                              contiki-inga.a(eeprom.o) (__eerd_block_m1284p)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_block_atmega1284p.o)
+                              contiki-inga.a(eeprom.o) (__eewr_block_m1284p)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_byte_atmega1284p.o)
+                              contiki-inga.a(settings.o) (__eewr_byte_m1284p)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen_P.o)
+                              /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vfprintf_std.o) (strnlen_P)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen.o)
+                              /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vfprintf_std.o) (strnlen)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(fputc.o)
+                              /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vfprintf_std.o) (fputc)
+/usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(ultoa_invert.o)
+                              /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vfprintf_std.o) (__ultoa_invert)
+/usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_mulsi3.o)
+                              /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(rand.o) (__mulsi3)
+/usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_divmodsi4.o)
+                              /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(rand.o) (__divmodsi4)
+
+Allocating common symbols
+Common symbol       size              file
+
+rf230_last_correlation
+                    0x1               contiki-inga.a(rf230bb.o)
+rf230_last_rssi     0x1               contiki-inga.a(rf230bb.o)
+rf230_time_of_departure
+                    0x2               contiki-inga.a(rf230bb.o)
+uip_len             0x2               contiki-inga.a(uip.o)
+RF230_receivefail   0x2               contiki-inga.a(rf230bb.o)
+rimestats           0x48              contiki-inga.a(rimestats.o)
+uip_sappdata        0x2               contiki-inga.a(uip.o)
+packetbuf_addrs     0x8               contiki-inga.a(packetbuf.o)
+uip_acc32           0x4               contiki-inga.a(uip.o)
+rimeaddr_node_addr  0x2               contiki-inga.a(rimeaddr.o)
+rf230_calibrate     0x1               contiki-inga.a(rf230bb.o)
+time_master         0x4               time28.co
+uip_aligned_buf     0x500             contiki-inga.a(uip.o)
+uip_flags           0x1               contiki-inga.a(uip.o)
+node_id             0x2               contiki-inga.a(contiki-inga-ma)
+rf230_smallest_rssi
+                    0x1               contiki-inga.a(rf230bb.o)
+rf230_pending       0x1               contiki-inga.a(rf230bb.o)
+uip_udp_conn        0x2               contiki-inga.a(uip.o)
+RF230_receivepackets
+                    0x2               contiki-inga.a(rf230bb.o)
+rf230_calibrated    0x1               contiki-inga.a(rf230bb.o)
+packetbuf_attrs     0x30              contiki-inga.a(packetbuf.o)
+time_local          0x4               time28.co
+rf230_authority_level_of_sender
+                    0x2               contiki-inga.a(rf230bb.o)
+radioontime         0x4               contiki-inga.a(clock.o)
+uip_appdata         0x2               contiki-inga.a(uip.o)
+rf230_time_of_arrival
+                    0x2               contiki-inga.a(rf230bb.o)
+uip_conn            0x2               contiki-inga.a(uip.o)
+rxframe_tail        0x1               contiki-inga.a(rf230bb.o)
+tcpip_event         0x1               contiki-inga.a(tcpip.o)
+uip_conns           0x20              contiki-inga.a(uip.o)
+rxframe_head        0x1               contiki-inga.a(rf230bb.o)
+rxframe             0x82              contiki-inga.a(rf230bb.o)
+sleepseconds        0x4               contiki-inga.a(clock.o)
+seconds             0x4               contiki-inga.a(clock.o)
+RF230_sendpackets   0x2               contiki-inga.a(rf230bb.o)
+osccal_original     0x1               contiki-inga.a(rf230bb.o)
+rime_mac            0x2               contiki-inga.a(rime.o)
+uip_listenports     0x2               contiki-inga.a(uip.o)
+uip_draddr          0x4               contiki-inga.a(uip.o)
+RF230_sendfail      0x2               contiki-inga.a(rf230bb.o)
+sensors_flags       0x2               contiki-inga.a(contiki-inga-ma)
+clocktime           0x4               contiki-inga.a(contiki-inga-ma)
+RF230_receive_on    0x1               contiki-inga.a(rf230bb.o)
+osccal_calibrated   0x1               contiki-inga.a(rf230bb.o)
+__iob               0x6               /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(iob.o)
+uip_netmask         0x4               contiki-inga.a(uip.o)
+sensors_event       0x1               contiki-inga.a(sensors.o)
+uip_hostaddr        0x4               contiki-inga.a(uip.o)
+uip_slen            0x2               contiki-inga.a(uip.o)
+uip_udp_conns       0x82              contiki-inga.a(uip.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x0000000000000000 0x0000000000020000 xr
+data             0x0000000000800100 0x000000000000ff00 rw !x
+eeprom           0x0000000000810000 0x0000000000010000 rw !x
+fuse             0x0000000000820000 0x0000000000000400 rw !x
+lock             0x0000000000830000 0x0000000000000400 rw !x
+signature        0x0000000000840000 0x0000000000000400 rw !x
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o
+Address of section .bootloader set to 0x1f800
+LOAD time28.co
+LOAD contiki-inga.a
+LOAD /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a
+LOAD /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a
+LOAD /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x0000000000000000     0x774a
+ *(.vectors)
+ .vectors       0x0000000000000000       0x8c /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o
+                0x0000000000000000                __vectors
+                0x0000000000000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x000000000000008c      0x15d contiki-inga.a(contiki-inga-ma)
+                0x000000000000008c                default_mac_address
+                0x0000000000000094                default_server_name
+                0x00000000000000a4                default_domain_name
+                0x00000000000000c2                default_nodeid
+                0x00000000000000c4                default_channel
+                0x00000000000000c5                default_panid
+                0x00000000000000c7                default_panaddr
+                0x00000000000000c9                default_txpower
+ .progmem.data  0x00000000000001e9       0x2f contiki-inga.a(rf230bb.o)
+                0x0000000000000218                . = ALIGN (0x2)
+                0x0000000000000218                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000000000000218        0x0 linker stubs
+ *(.trampolines*)
+                0x0000000000000218                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x0000000000000218                __ctors_start = .
+ *(.ctors)
+                0x0000000000000218                __ctors_end = .
+                0x0000000000000218                __dtors_start = .
+ *(.dtors)
+                0x0000000000000218                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x0000000000000218        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o
+                0x0000000000000218                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000000000000218        0xc /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x0000000000000224       0x1a /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_copy_data.o)
+                0x0000000000000224                __do_copy_data
+ .init4         0x000000000000023e       0x10 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_clear_bss.o)
+                0x000000000000023e                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x000000000000024e        0x8 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o
+ *(.init9)
+ *(.text)
+ .text          0x0000000000000256        0x4 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o
+                0x0000000000000256                __vector_1
+                0x0000000000000256                __vector_34
+                0x0000000000000256                __vector_24
+                0x0000000000000256                __bad_interrupt
+                0x0000000000000256                __vector_6
+                0x0000000000000256                __vector_31
+                0x0000000000000256                __vector_23
+                0x0000000000000256                __vector_25
+                0x0000000000000256                __vector_11
+                0x0000000000000256                __vector_13
+                0x0000000000000256                __vector_17
+                0x0000000000000256                __vector_19
+                0x0000000000000256                __vector_7
+                0x0000000000000256                __vector_27
+                0x0000000000000256                __vector_5
+                0x0000000000000256                __vector_33
+                0x0000000000000256                __vector_4
+                0x0000000000000256                __vector_2
+                0x0000000000000256                __vector_21
+                0x0000000000000256                __vector_29
+                0x0000000000000256                __vector_26
+                0x0000000000000256                __vector_14
+                0x0000000000000256                __vector_10
+                0x0000000000000256                __vector_16
+                0x0000000000000256                __vector_18
+ .text          0x000000000000025a      0x36a time28.co
+ .text          0x00000000000005c4       0x46 contiki-inga.a(rimeaddr.o)
+                0x00000000000005c4                rimeaddr_copy
+                0x00000000000005d6                rimeaddr_cmp
+                0x00000000000005fa                rimeaddr_set_node_addr
+ .text          0x000000000000060a       0xaa contiki-inga.a(unicast.o)
+                0x0000000000000660                unicast_open
+                0x0000000000000696                unicast_close
+                0x000000000000069c                unicast_send
+ .text          0x00000000000006b4       0x82 contiki-inga.a(channel.o)
+                0x00000000000006b4                channel_init
+                0x00000000000006be                channel_open
+                0x00000000000006d0                channel_close
+                0x00000000000006dc                channel_lookup
+                0x000000000000070c                channel_set_attributes
+ .text          0x0000000000000736      0x1a8 contiki-inga.a(list.o)
+                0x0000000000000736                list_init
+                0x000000000000073e                list_head
+                0x0000000000000746                list_copy
+                0x0000000000000754                list_tail
+                0x0000000000000778                list_chop
+                0x00000000000007c0                list_pop
+                0x00000000000007da                list_remove
+                0x0000000000000824                list_push
+                0x000000000000084c                list_add
+                0x000000000000088a                list_length
+                0x00000000000008aa                list_insert
+                0x00000000000008ca                list_item_next
+ .text          0x00000000000008de      0x36c contiki-inga.a(etimer.o)
+                0x00000000000009a0                etimer_request_poll
+                0x0000000000000b0c                etimer_set
+                0x0000000000000b22                etimer_reset
+                0x0000000000000b38                etimer_restart
+                0x0000000000000b4e                etimer_adjust
+                0x0000000000000b76                etimer_expired
+                0x0000000000000b8c                etimer_expiration_time
+                0x0000000000000bac                etimer_start_time
+                0x0000000000000bb8                etimer_pending
+                0x0000000000000bd0                etimer_next_expiration_time
+                0x0000000000000bfa                etimer_stop
+ .text          0x0000000000000c4a      0x398 contiki-inga.a(packetbuf.o)
+                0x0000000000000c4a                packetbuf_clear_hdr
+                0x0000000000000c52                packetbuf_copyto_hdr
+                0x0000000000000c78                packetbuf_copyto
+                0x0000000000000cf8                packetbuf_hdr_remove
+                0x0000000000000d04                packetbuf_hdrreduce
+                0x0000000000000d42                packetbuf_set_datalen
+                0x0000000000000d4c                packetbuf_dataptr
+                0x0000000000000d5c                packetbuf_hdrptr
+                0x0000000000000d6a                packetbuf_is_reference
+                0x0000000000000d86                packetbuf_compact
+                0x0000000000000de6                packetbuf_reference_ptr
+                0x0000000000000df0                packetbuf_datalen
+                0x0000000000000dfa                packetbuf_hdrlen
+                0x0000000000000e04                packetbuf_totlen
+                0x0000000000000e1c                packetbuf_hdralloc
+                0x0000000000000e5a                packetbuf_attr_clear
+                0x0000000000000e92                packetbuf_clear
+                0x0000000000000eba                packetbuf_reference
+                0x0000000000000ee4                packetbuf_copyfrom
+                0x0000000000000f42                packetbuf_attr_copyto
+                0x0000000000000f6c                packetbuf_attr_copyfrom
+                0x0000000000000f96                packetbuf_set_attr
+                0x0000000000000fac                packetbuf_attr
+                0x0000000000000fbe                packetbuf_set_addr
+                0x0000000000000fd2                packetbuf_addr
+ .text          0x0000000000000fe2      0x6a0 contiki-inga.a(contiki-inga-ma)
+                0x0000000000000fe2                initialize
+                0x00000000000014e2                main
+                0x0000000000001648                log_message
+ .text          0x0000000000001682      0x100 contiki-inga.a(button-sensor.o)
+                0x0000000000001712                __vector_3
+ .text          0x0000000000001782      0x212 contiki-inga.a(sensors.o)
+                0x00000000000018e4                sensors_first
+                0x00000000000018ee                sensors_next
+                0x0000000000001902                sensors_changed
+                0x000000000000191c                sensors_find
+ .text          0x0000000000001994      0x4cc contiki-inga.a(flash-at45db.o)
+                0x0000000000001994                at45db_init
+                0x0000000000001a0e                at45db_write_cmd
+                0x0000000000001a30                at45db_write_page
+                0x0000000000001ac6                at45db_write_buffer
+                0x0000000000001b3c                at45db_busy_wait
+                0x0000000000001b5a                at45db_read_buffer
+                0x0000000000001bd2                at45db_page_to_buf
+                0x0000000000001c18                at45db_read_page_bypassed
+                0x0000000000001cc4                at45db_read_page_buffered
+                0x0000000000001d0c                at45db_buffer_to_page
+                0x0000000000001d72                at45db_erase_page
+                0x0000000000001dc4                at45db_erase_block
+                0x0000000000001e18                at45db_erase_chip
+ .text          0x0000000000001e60      0x27c contiki-inga.a(clock.o)
+                0x0000000000001e60                clock_adjust_ticks
+                0x0000000000001f2e                __vector_9
+                0x0000000000002040                clock_init
+                0x0000000000002068                clock_time
+                0x0000000000002098                clock_delay
+                0x00000000000020ac                clock_seconds
+ .text          0x00000000000020dc      0x260 contiki-inga.a(rs232.o)
+                0x00000000000020dc                __vector_22
+                0x00000000000020f4                __vector_20
+                0x0000000000002158                __vector_30
+                0x0000000000002170                __vector_28
+                0x00000000000021d4                rs232_init
+                0x000000000000220c                rs232_send
+                0x000000000000224c                rs232_stdout_putchar
+                0x0000000000002276                rs232_print
+                0x00000000000022aa                rs232_printf
+                0x00000000000022e0                rs232_print_p
+                0x0000000000002304                rs232_set_input
+                0x0000000000002320                slip_arch_writeb
+                0x000000000000232a                rs232_redirect_stdout
+ .text          0x000000000000233c       0xce contiki-inga.a(watchdog.o)
+                0x000000000000233c                watchdog_init
+                0x000000000000235c                watchdog_start
+                0x000000000000237e                watchdog_periodic
+                0x0000000000002382                watchdog_stop
+                0x000000000000239e                watchdog_reboot
+                0x00000000000023b8                __vector_8
+ .text          0x000000000000240a      0x384 contiki-inga.a(settings.o)
+                0x000000000000250e                settings_check
+                0x000000000000255a                settings_get
+                0x00000000000025f8                settings_add
+                0x00000000000026cc                settings_set
+                0x0000000000002766                settings_delete
+                0x000000000000276c                settings_wipe
+ .text          0x000000000000278e      0xa1a contiki-inga.a(rf230bb.o)
+                0x000000000000286e                rf230_off
+                0x0000000000002974                rf230_on
+                0x0000000000002b18                rf230_set_promiscuous_mode
+                0x0000000000002b1e                rf230_is_ready_to_send
+                0x0000000000002b38                calibrate_rc_osc_32k
+                0x0000000000002b3a                rf230_warm_reset
+                0x0000000000002b8a                rf230_init
+                0x0000000000002bf0                rf230_get_channel
+                0x0000000000002bf6                rf230_set_channel
+                0x0000000000002c1e                rf230_listen_channel
+                0x0000000000002c2a                rf230_set_pan_addr
+                0x0000000000002d0e                rf230_interrupt
+                0x0000000000002f9c                rf230_set_txpower
+                0x0000000000002fac                rf230_get_txpower
+                0x000000000000315c                rf230_get_raw_rssi
+ .text          0x00000000000031a8      0x30e contiki-inga.a(halbb.o)
+                0x00000000000031a8                hal_init
+                0x00000000000031e2                hal_register_read
+                0x0000000000003218                hal_register_write
+                0x000000000000324e                hal_subregister_read
+                0x000000000000327c                hal_subregister_write
+                0x00000000000032d0                hal_frame_read
+                0x000000000000333a                hal_frame_write
+                0x000000000000338e                __vector_12
+                0x0000000000003488                __vector_15
+ .text          0x00000000000034b6      0x19e contiki-inga.a(rime.o)
+                0x00000000000035e0                rime_sniffer_add
+                0x00000000000035ec                rime_sniffer_remove
+                0x00000000000035f8                rime_output
+ .text          0x0000000000003654        0x0 contiki-inga.a(rimestats.o)
+ .text          0x0000000000003654      0x17e contiki-inga.a(announcement.o)
+                0x0000000000003654                announcement_init
+                0x000000000000365e                announcement_register
+                0x00000000000036a0                announcement_remove
+                0x00000000000036ac                announcement_remove_value
+                0x00000000000036dc                announcement_set_value
+                0x0000000000003718                announcement_bump
+                0x0000000000003746                announcement_listen
+                0x0000000000003756                announcement_register_listen_callback
+                0x0000000000003760                announcement_register_observer_callback
+                0x000000000000376a                announcement_list
+                0x0000000000003774                announcement_heard
+ .text          0x00000000000037d2      0x2e8 contiki-inga.a(broadcast-annou)
+                0x00000000000039fa                broadcast_announcement_init
+                0x0000000000003a84                broadcast_announcement_stop
+                0x0000000000003aa8                broadcast_announcement_beacon_interval
+ .text          0x0000000000003aba       0xc2 contiki-inga.a(broadcast.o)
+                0x0000000000003b24                broadcast_open
+                0x0000000000003b5a                broadcast_close
+                0x0000000000003b60                broadcast_send
+ .text          0x0000000000003b7c       0x66 contiki-inga.a(abc.o)
+                0x0000000000003b7c                abc_open
+                0x0000000000003bae                abc_close
+                0x0000000000003bb4                abc_send
+                0x0000000000003bba                abc_input
+                0x0000000000003bca                abc_sent
+ .text          0x0000000000003be2       0x72 contiki-inga.a(chameleon.o)
+                0x0000000000003be2                chameleon_init
+                0x0000000000003be8                chameleon_parse
+                0x0000000000003c0e                chameleon_create
+                0x0000000000003c48                chameleon_hdrsize
+ .text          0x0000000000003c54      0x4c0 contiki-inga.a(chameleon-bitop)
+                0x0000000000003c6e                get_bits_in_byte
+                0x0000000000003cac                get_bits
+                0x0000000000003ebc                set_bits_in_byte
+                0x0000000000003ee4                set_bits
+ .text          0x0000000000004114       0x38 contiki-inga.a(nullmac.o)
+ .text          0x000000000000414c      0x102 contiki-inga.a(nullrdc.o)
+ .text          0x000000000000424e       0x10 contiki-inga.a(mac.o)
+                0x000000000000424e                mac_call_sent_callback
+ .text          0x000000000000425e      0x222 contiki-inga.a(framer-802154.o)
+ .text          0x0000000000004480      0x35e contiki-inga.a(process.o)
+                0x00000000000045e8                process_alloc_event
+                0x00000000000045f6                process_exit
+                0x0000000000004604                process_init
+                0x0000000000004624                process_run
+                0x00000000000046f6                process_nevents
+                0x0000000000004708                process_post
+                0x000000000000474e                process_post_synch
+                0x000000000000476c                process_start
+                0x00000000000047b2                process_poll
+                0x00000000000047ca                process_is_running
+ .text          0x00000000000047de       0x3c contiki-inga.a(autostart.o)
+                0x00000000000047de                autostart_start
+                0x00000000000047fe                autostart_exit
+ .text          0x000000000000481a       0xdc contiki-inga.a(timer.o)
+                0x000000000000481a                timer_set
+                0x000000000000483a                timer_reset
+                0x000000000000485e                timer_restart
+                0x0000000000004876                timer_expired
+                0x00000000000048ba                timer_remaining
+ .text          0x00000000000048f6      0x284 contiki-inga.a(ctimer.o)
+                0x00000000000049cc                ctimer_init
+                0x00000000000049e6                ctimer_set
+                0x0000000000004a58                ctimer_reset
+                0x0000000000004aac                ctimer_restart
+                0x0000000000004b00                ctimer_stop
+                0x0000000000004b30                ctimer_expired
+ .text          0x0000000000004b7a       0x7c contiki-inga.a(rtimer.o)
+                0x0000000000004b7a                rtimer_init
+                0x0000000000004b80                rtimer_set
+                0x0000000000004bb8                rtimer_run_next
+ .text          0x0000000000004bf6        0xc contiki-inga.a(random.o)
+                0x0000000000004bf6                random_init
+                0x0000000000004bfc                random_rand
+ .text          0x0000000000004c02      0x19e contiki-inga.a(queuebuf.o)
+                0x0000000000004c02                queuebuf_init
+                0x0000000000004c14                queuebuf_new_from_packetbuf
+                0x0000000000004c7e                queuebuf_update_attr_from_packetbuf
+                0x0000000000004c8e                queuebuf_free
+                0x0000000000004cc6                queuebuf_to_packetbuf
+                0x0000000000004d34                queuebuf_dataptr
+                0x0000000000004d6e                queuebuf_datalen
+                0x0000000000004d76                queuebuf_addr
+                0x0000000000004d88                queuebuf_attr
+                0x0000000000004d9e                queuebuf_debug_print
+ .text          0x0000000000004da0      0x446 contiki-inga.a(tcpip.o)
+                0x0000000000004db6                tcpip_output
+                0x0000000000004fea                tcpip_set_outputfunc
+                0x0000000000004ff4                tcp_unlisten
+                0x0000000000005034                tcp_listen
+                0x000000000000506c                tcp_attach
+                0x0000000000005080                udp_attach
+                0x0000000000005094                udp_new
+                0x00000000000050bc                udp_broadcast_new
+                0x0000000000005102                tcpip_input
+                0x000000000000511a                tcpip_poll_udp
+                0x0000000000005128                tcpip_poll_tcp
+                0x0000000000005136                tcp_connect
+                0x000000000000516e                tcpip_uipcall
+ .text          0x00000000000051e6      0x108 contiki-inga.a(uip-split.o)
+                0x00000000000051e6                uip_split_output
+ .text          0x00000000000052ee      0x262 contiki-inga.a(mspi-drv.o)
+                0x00000000000052ee                mspi_init
+                0x000000000000531c                mspi_chip_release
+                0x0000000000005324                mspi_transceive
+                0x00000000000053ae                mspi_deinit
+                0x000000000000541a                add_to_spi_mgr
+                0x000000000000543c                change_spi_mode
+                0x000000000000550a                mspi_chip_select
+ .text          0x0000000000005550       0x20 contiki-inga.a(eeprom.o)
+                0x0000000000005550                eeprom_write
+                0x0000000000005560                eeprom_read
+ .text          0x0000000000005570       0xae contiki-inga.a(rtimer-arch.o)
+                0x0000000000005570                __vector_32
+                0x00000000000055ca                rtimer_arch_init
+                0x00000000000055fe                rtimer_arch_schedule
+ .text          0x000000000000561e      0x448 contiki-inga.a(frame802154.o)
+                0x00000000000056c6                frame802154_hdrlen
+                0x0000000000005702                frame802154_create
+                0x00000000000058d8                frame802154_parse
+ .text          0x0000000000005a66      0x110 contiki-inga.a(memb.o)
+                0x0000000000005a66                memb_init
+                0x0000000000005aa6                memb_alloc
+                0x0000000000005af2                memb_free
+                0x0000000000005b3c                memb_inmemb
+ .text          0x0000000000005b76     0x1374 contiki-inga.a(uip.o)
+                0x0000000000005c10                uip_setipid
+                0x0000000000005c1a                uip_add32
+                0x0000000000005cbc                uip_chksum
+                0x0000000000005cd2                uip_ipchksum
+                0x0000000000005cf4                uip_tcpchksum
+                0x0000000000005cfc                uip_udpchksum
+                0x0000000000005d04                uip_init
+                0x0000000000005d4a                uip_connect
+                0x0000000000005e1a                uip_udp_new
+                0x0000000000005f22                uip_unlisten
+                0x0000000000005f46                uip_listen
+                0x0000000000005f6a                uip_process
+                0x0000000000006e7e                uip_htons
+                0x0000000000006e86                uip_htonl
+                0x0000000000006eac                uip_send
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_udivmodhi4.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_udivmodsi4.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_exit.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_copy_data.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_clear_bss.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(rand.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memcpy.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memset.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strncmp.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(iob.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf_p.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vsnprintf.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vfprintf_std.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eerd_block_atmega1284p.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_block_atmega1284p.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_byte_atmega1284p.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen_P.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(fputc.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(ultoa_invert.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_mulsi3.o)
+ .text          0x0000000000006eea        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_divmodsi4.o)
+                0x0000000000006eea                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x0000000000006eea       0x28 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_udivmodhi4.o)
+                0x0000000000006eea                __udivmodhi4
+ .text.libgcc   0x0000000000006f12       0x44 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_udivmodsi4.o)
+                0x0000000000006f12                __udivmodsi4
+ .text.libgcc   0x0000000000006f56        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_exit.o)
+ .text.libgcc   0x0000000000006f56        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000000000006f56        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x0000000000006f56       0xbc /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(rand.o)
+                0x0000000000006fec                rand_r
+                0x0000000000006ff2                rand
+                0x0000000000006ffc                srand
+ .text.avr-libc
+                0x0000000000007012       0x12 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memcpy.o)
+                0x0000000000007012                memcpy
+ .text.avr-libc
+                0x0000000000007024        0xe /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memset.o)
+                0x0000000000007024                memset
+ .text.avr-libc
+                0x0000000000007032       0x1c /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strncmp.o)
+                0x0000000000007032                strncmp
+ .text.avr-libc
+                0x000000000000704e       0x24 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf.o)
+                0x000000000000704e                printf
+ .text.avr-libc
+                0x0000000000007072       0x40 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf_p.o)
+                0x0000000000007072                printf_P
+ .text.avr-libc
+                0x00000000000070b2       0x70 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vsnprintf.o)
+                0x00000000000070b2                vsnprintf
+ .text.avr-libc
+                0x0000000000007122      0x420 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vfprintf_std.o)
+                0x0000000000007122                vfprintf
+ .text.avr-libc
+                0x0000000000007542       0x20 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eerd_block_atmega1284p.o)
+                0x0000000000007542                __eerd_block_m1284p
+                0x0000000000007546                __eerd_blraw_m1284p
+ .text.avr-libc
+                0x0000000000007562       0x14 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_block_atmega1284p.o)
+                0x0000000000007562                __eewr_block_m1284p
+ .text.avr-libc
+                0x0000000000007576       0x1c /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_byte_atmega1284p.o)
+                0x0000000000007576                __eewr_byte_m1284p
+                0x0000000000007578                __eewr_r18_m1284p
+ .text.avr-libc
+                0x0000000000007592       0x16 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen_P.o)
+                0x0000000000007592                strnlen_P
+ .text.avr-libc
+                0x00000000000075a8       0x16 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen.o)
+                0x00000000000075a8                strnlen
+ .text.avr-libc
+                0x00000000000075be       0x58 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(fputc.o)
+                0x00000000000075be                fputc
+ .text.avr-libc
+                0x0000000000007616       0xbc /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(ultoa_invert.o)
+                0x0000000000007616                __ultoa_invert
+ .text.libgcc   0x00000000000076d2       0x3e /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_mulsi3.o)
+                0x00000000000076d2                __mulsi3
+ .text.libgcc   0x0000000000007710       0x36 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_divmodsi4.o)
+                0x0000000000007710                __divmodsi4
+                0x0000000000007746                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000000000007746        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_exit.o)
+                0x0000000000007746                exit
+                0x0000000000007746                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000000000007746        0x4 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_exit.o)
+ *(.fini0)
+                0x000000000000774a                _etext = .
+
+.data           0x0000000000800100      0x25e load address 0x000000000000774a
+                0x0000000000800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x0000000000800100        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o
+ .data          0x0000000000800100       0xbb time28.co
+                0x00000000008001a9                time_unicast_sender
+                0x00000000008001b3                autostart_processes
+ .data          0x00000000008001bb        0x2 contiki-inga.a(rimeaddr.o)
+                0x00000000008001bb                rimeaddr_null
+ .data          0x00000000008001bd        0xa contiki-inga.a(unicast.o)
+ .data          0x00000000008001c7        0x0 contiki-inga.a(channel.o)
+ .data          0x00000000008001c7        0x0 contiki-inga.a(list.o)
+ .data          0x00000000008001c7       0x16 contiki-inga.a(etimer.o)
+                0x00000000008001d3                etimer_process
+ .data          0x00000000008001dd        0x0 contiki-inga.a(packetbuf.o)
+ .data          0x00000000008001dd       0x10 contiki-inga.a(contiki-inga-ma)
+                0x00000000008001e9                sensors
+ .data          0x00000000008001ed        0xf contiki-inga.a(button-sensor.o)
+                0x00000000008001f4                button_sensor
+ .data          0x00000000008001fc       0x12 contiki-inga.a(sensors.o)
+                0x0000000000800204                sensors_process
+ .data          0x000000000080020e        0x0 contiki-inga.a(flash-at45db.o)
+ .data          0x000000000080020e        0x0 contiki-inga.a(clock.o)
+ .data          0x000000000080020e       0x2c contiki-inga.a(rs232.o)
+ .data          0x000000000080023a        0x0 contiki-inga.a(watchdog.o)
+ .data          0x000000000080023a        0x0 contiki-inga.a(settings.o)
+ .data          0x000000000080023a       0x3c contiki-inga.a(rf230bb.o)
+                0x0000000000800247                rf230_process
+                0x0000000000800251                rf230_driver
+ .data          0x0000000000800276        0x0 contiki-inga.a(halbb.o)
+ .data          0x0000000000800276        0xb contiki-inga.a(rime.o)
+                0x000000000080027b                rime_driver
+ .data          0x0000000000800281        0x0 contiki-inga.a(rimestats.o)
+ .data          0x0000000000800281        0x0 contiki-inga.a(announcement.o)
+ .data          0x0000000000800281       0x21 contiki-inga.a(broadcast-annou)
+ .data          0x00000000008002a2        0x8 contiki-inga.a(broadcast.o)
+ .data          0x00000000008002aa        0x2 contiki-inga.a(abc.o)
+ .data          0x00000000008002ac        0x0 contiki-inga.a(chameleon.o)
+ .data          0x00000000008002ac        0xf contiki-inga.a(chameleon-bitop)
+                0x00000000008002ac                chameleon_bitopt
+ .data          0x00000000008002bb       0x16 contiki-inga.a(nullmac.o)
+                0x00000000008002c3                nullmac_driver
+ .data          0x00000000008002d1       0x16 contiki-inga.a(nullrdc.o)
+                0x00000000008002d9                nullrdc_driver
+ .data          0x00000000008002e7        0x0 contiki-inga.a(mac.o)
+ .data          0x00000000008002e7        0x4 contiki-inga.a(framer-802154.o)
+                0x00000000008002e7                framer_802154
+ .data          0x00000000008002eb        0x0 contiki-inga.a(process.o)
+ .data          0x00000000008002eb        0x0 contiki-inga.a(autostart.o)
+ .data          0x00000000008002eb        0x0 contiki-inga.a(timer.o)
+ .data          0x00000000008002eb       0x19 contiki-inga.a(ctimer.o)
+                0x00000000008002fa                ctimer_process
+ .data          0x0000000000800304        0x0 contiki-inga.a(rtimer.o)
+ .data          0x0000000000800304        0x0 contiki-inga.a(random.o)
+ .data          0x0000000000800304       0x10 contiki-inga.a(queuebuf.o)
+ .data          0x0000000000800314       0x17 contiki-inga.a(tcpip.o)
+                0x0000000000800321                tcpip_process
+ .data          0x000000000080032b        0x0 contiki-inga.a(uip-split.o)
+ .data          0x000000000080032b       0x24 contiki-inga.a(mspi-drv.o)
+                0x000000000080032b                mspi_uart_port
+ .data          0x000000000080034f        0x0 contiki-inga.a(eeprom.o)
+ .data          0x000000000080034f        0x0 contiki-inga.a(rtimer-arch.o)
+ .data          0x000000000080034f        0x2 contiki-inga.a(frame802154.o)
+ .data          0x0000000000800351        0x0 contiki-inga.a(memb.o)
+ .data          0x0000000000800351        0x8 contiki-inga.a(uip.o)
+                0x0000000000800351                uip_broadcast_addr
+                0x0000000000800355                uip_all_zeroes_addr
+ .data          0x0000000000800359        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_udivmodhi4.o)
+ .data          0x0000000000800359        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_udivmodsi4.o)
+ .data          0x0000000000800359        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_exit.o)
+ .data          0x0000000000800359        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_copy_data.o)
+ .data          0x0000000000800359        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_clear_bss.o)
+ .data          0x0000000000800359        0x4 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(rand.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memcpy.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memset.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strncmp.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(iob.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf_p.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vsnprintf.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vfprintf_std.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eerd_block_atmega1284p.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_block_atmega1284p.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_byte_atmega1284p.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen_P.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(fputc.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(ultoa_invert.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_mulsi3.o)
+ .data          0x000000000080035d        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_divmodsi4.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x000000000080035e                . = ALIGN (0x2)
+ *fill*         0x000000000080035d        0x1 00
+                0x000000000080035e                _edata = .
+                0x000000000080035e                PROVIDE (__data_end, .)
+
+.bss            0x000000000080035e     0x105d
+                0x000000000080035e                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x000000000080035e        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o
+ .bss           0x000000000080035e       0x23 time28.co
+ .bss           0x0000000000800381        0x0 contiki-inga.a(rimeaddr.o)
+ .bss           0x0000000000800381        0x0 contiki-inga.a(unicast.o)
+ .bss           0x0000000000800381        0x2 contiki-inga.a(channel.o)
+ .bss           0x0000000000800383        0x0 contiki-inga.a(list.o)
+ .bss           0x0000000000800383        0x6 contiki-inga.a(etimer.o)
+ .bss           0x0000000000800389       0xb9 contiki-inga.a(packetbuf.o)
+ .bss           0x0000000000800442        0x0 contiki-inga.a(contiki-inga-ma)
+ .bss           0x0000000000800442        0x8 contiki-inga.a(button-sensor.o)
+ .bss           0x000000000080044a        0x5 contiki-inga.a(sensors.o)
+ .bss           0x000000000080044f        0x7 contiki-inga.a(flash-at45db.o)
+ .bss           0x0000000000800456        0x7 contiki-inga.a(clock.o)
+ .bss           0x000000000080045d       0x41 contiki-inga.a(rs232.o)
+ .bss           0x000000000080049e        0x0 contiki-inga.a(watchdog.o)
+ .bss           0x000000000080049e        0x0 contiki-inga.a(settings.o)
+ .bss           0x000000000080049e       0x88 contiki-inga.a(rf230bb.o)
+                0x000000000080049e                ack_pending
+                0x000000000080049f                ack_seqnum
+ .bss           0x0000000000800526        0x2 contiki-inga.a(halbb.o)
+ .bss           0x0000000000800528        0x2 contiki-inga.a(rime.o)
+ .bss           0x000000000080052a        0x0 contiki-inga.a(rimestats.o)
+ .bss           0x000000000080052a        0x6 contiki-inga.a(announcement.o)
+ .bss           0x0000000000800530       0x45 contiki-inga.a(broadcast-annou)
+ .bss           0x0000000000800575        0x0 contiki-inga.a(broadcast.o)
+ .bss           0x0000000000800575        0x0 contiki-inga.a(abc.o)
+ .bss           0x0000000000800575        0x0 contiki-inga.a(chameleon.o)
+ .bss           0x0000000000800575        0x0 contiki-inga.a(chameleon-bitop)
+ .bss           0x0000000000800575        0x0 contiki-inga.a(nullmac.o)
+ .bss           0x0000000000800575        0x0 contiki-inga.a(nullrdc.o)
+ .bss           0x0000000000800575        0x0 contiki-inga.a(mac.o)
+ .bss           0x0000000000800575        0x2 contiki-inga.a(framer-802154.o)
+ .bss           0x0000000000800577       0xb0 contiki-inga.a(process.o)
+                0x0000000000800577                process_list
+                0x0000000000800579                process_current
+ .bss           0x0000000000800627        0x0 contiki-inga.a(autostart.o)
+ .bss           0x0000000000800627        0x0 contiki-inga.a(timer.o)
+ .bss           0x0000000000800627        0x3 contiki-inga.a(ctimer.o)
+ .bss           0x000000000080062a        0x2 contiki-inga.a(rtimer.o)
+ .bss           0x000000000080062c        0x0 contiki-inga.a(random.o)
+ .bss           0x000000000080062c      0x644 contiki-inga.a(queuebuf.o)
+ .bss           0x0000000000800c70       0x19 contiki-inga.a(tcpip.o)
+ .bss           0x0000000000800c89        0x0 contiki-inga.a(uip-split.o)
+ .bss           0x0000000000800c89       0x1c contiki-inga.a(mspi-drv.o)
+ .bss           0x0000000000800ca5        0x0 contiki-inga.a(eeprom.o)
+ .bss           0x0000000000800ca5        0x0 contiki-inga.a(rtimer-arch.o)
+ .bss           0x0000000000800ca5        0x0 contiki-inga.a(frame802154.o)
+ .bss           0x0000000000800ca5        0x0 contiki-inga.a(memb.o)
+ .bss           0x0000000000800ca5       0x12 contiki-inga.a(uip.o)
+                0x0000000000800ca5                uip_ethaddr
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_udivmodhi4.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_udivmodsi4.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_exit.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_copy_data.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_clear_bss.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(rand.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memcpy.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memset.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strncmp.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(iob.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf_p.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vsnprintf.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vfprintf_std.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eerd_block_atmega1284p.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_block_atmega1284p.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_byte_atmega1284p.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen_P.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(fputc.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(ultoa_invert.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_mulsi3.o)
+ .bss           0x0000000000800cb7        0x0 /usr/lib/gcc/avr/4.5.3/avr51/libgcc.a(_divmodsi4.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x0000000000800cb7        0x8 time28.co
+                0x0000000000800cb7                time_master
+                0x0000000000800cbb                time_local
+ COMMON         0x0000000000800cbf        0x2 contiki-inga.a(rimeaddr.o)
+                0x0000000000800cbf                rimeaddr_node_addr
+ COMMON         0x0000000000800cc1       0x38 contiki-inga.a(packetbuf.o)
+                0x0000000000800cc1                packetbuf_addrs
+                0x0000000000800cc9                packetbuf_attrs
+ COMMON         0x0000000000800cf9        0x8 contiki-inga.a(contiki-inga-ma)
+                0x0000000000800cf9                node_id
+                0x0000000000800cfb                sensors_flags
+                0x0000000000800cfd                clocktime
+ COMMON         0x0000000000800d01        0x1 contiki-inga.a(sensors.o)
+                0x0000000000800d01                sensors_event
+ COMMON         0x0000000000800d02        0xc contiki-inga.a(clock.o)
+                0x0000000000800d02                radioontime
+                0x0000000000800d06                sleepseconds
+                0x0000000000800d0a                seconds
+ COMMON         0x0000000000800d0e       0x9b contiki-inga.a(rf230bb.o)
+                0x0000000000800d0e                rf230_last_correlation
+                0x0000000000800d0f                rf230_last_rssi
+                0x0000000000800d10                rf230_time_of_departure
+                0x0000000000800d12                RF230_receivefail
+                0x0000000000800d14                rf230_calibrate
+                0x0000000000800d15                rf230_smallest_rssi
+                0x0000000000800d16                rf230_pending
+                0x0000000000800d17                RF230_receivepackets
+                0x0000000000800d19                rf230_calibrated
+                0x0000000000800d1a                rf230_authority_level_of_sender
+                0x0000000000800d1c                rf230_time_of_arrival
+                0x0000000000800d1e                rxframe_tail
+                0x0000000000800d1f                rxframe_head
+                0x0000000000800d20                rxframe
+                0x0000000000800da2                RF230_sendpackets
+                0x0000000000800da4                osccal_original
+                0x0000000000800da5                RF230_sendfail
+                0x0000000000800da7                RF230_receive_on
+                0x0000000000800da8                osccal_calibrated
+ COMMON         0x0000000000800da9        0x2 contiki-inga.a(rime.o)
+                0x0000000000800da9                rime_mac
+ COMMON         0x0000000000800dab       0x48 contiki-inga.a(rimestats.o)
+                0x0000000000800dab                rimestats
+ COMMON         0x0000000000800df3        0x1 contiki-inga.a(tcpip.o)
+                0x0000000000800df3                tcpip_event
+ COMMON         0x0000000000800df4      0x5c1 contiki-inga.a(uip.o)
+                0x0000000000800df4                uip_len
+                0x0000000000800df6                uip_sappdata
+                0x0000000000800df8                uip_acc32
+                0x0000000000800dfc                uip_aligned_buf
+                0x00000000008012fc                uip_flags
+                0x00000000008012fd                uip_udp_conn
+                0x00000000008012ff                uip_appdata
+                0x0000000000801301                uip_conn
+                0x0000000000801303                uip_conns
+                0x0000000000801323                uip_listenports
+                0x0000000000801325                uip_draddr
+                0x0000000000801329                uip_netmask
+                0x000000000080132d                uip_hostaddr
+                0x0000000000801331                uip_slen
+                0x0000000000801333                uip_udp_conns
+ COMMON         0x00000000008013b5        0x6 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(iob.o)
+                0x00000000008013b5                __iob
+                0x00000000008013bb                PROVIDE (__bss_end, .)
+                0x000000000000774a                __data_load_start = LOADADDR (.data)
+                0x00000000000079a8                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00000000008013bb        0x2
+                0x00000000008013bb                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+ .noinit        0x00000000008013bb        0x2 contiki-inga.a(watchdog.o)
+                0x00000000008013bb                watchdog_return_addr
+                0x00000000008013bd                PROVIDE (__noinit_end, .)
+                0x00000000008013bd                _end = .
+                0x00000000008013bd                PROVIDE (__heap_start, .)
+
+.eeprom         0x0000000000810000        0x0
+ *(.eeprom*)
+                0x0000000000810000                __eeprom_end = .
+
+.fuse           0x0000000000820000        0x3
+ *(.fuse)
+ .fuse          0x0000000000820000        0x3 contiki-inga.a(contiki-inga-ma)
+                0x0000000000820000                __fuse
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature      0x0000000000840000        0x3
+ *(.signature*)
+ .signature     0x0000000000840000        0x3 contiki-inga.a(contiki-inga-ma)
+                0x0000000000840000                __signature
+
+.stab           0x0000000000000000     0x28d4
+ *(.stab)
+ .stab          0x0000000000000000      0x6cc /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o
+ .stab          0x00000000000006cc      0x324 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(rand.o)
+                                        0x330 (size before relaxing)
+ .stab          0x00000000000009f0       0x84 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memcpy.o)
+                                         0x90 (size before relaxing)
+ .stab          0x0000000000000a74       0x6c /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(memset.o)
+                                         0x78 (size before relaxing)
+ .stab          0x0000000000000ae0       0xc0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strncmp.o)
+                                         0xcc (size before relaxing)
+ .stab          0x0000000000000ba0      0x300 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(iob.o)
+                                        0x30c (size before relaxing)
+ .stab          0x0000000000000ea0      0x18c /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf.o)
+                                        0x36c (size before relaxing)
+ .stab          0x000000000000102c      0x1a4 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(printf_p.o)
+                                        0x384 (size before relaxing)
+ .stab          0x00000000000011d0      0x21c /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vsnprintf.o)
+                                        0x3fc (size before relaxing)
+ .stab          0x00000000000013ec      0xac8 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(vfprintf_std.o)
+                                        0xcd8 (size before relaxing)
+ .stab          0x0000000000001eb4      0x108 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eerd_block_atmega1284p.o)
+                                        0x114 (size before relaxing)
+ .stab          0x0000000000001fbc       0x9c /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_block_atmega1284p.o)
+                                         0xa8 (size before relaxing)
+ .stab          0x0000000000002058       0xe4 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(eewr_byte_atmega1284p.o)
+                                         0xf0 (size before relaxing)
+ .stab          0x000000000000213c       0x9c /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen_P.o)
+                                         0xa8 (size before relaxing)
+ .stab          0x00000000000021d8       0x9c /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(strnlen.o)
+                                         0xa8 (size before relaxing)
+ .stab          0x0000000000002274      0x1e0 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(fputc.o)
+                                        0x3c0 (size before relaxing)
+ .stab          0x0000000000002454      0x480 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/libc.a(ultoa_invert.o)
+                                        0x48c (size before relaxing)
+
+.stabstr        0x0000000000000000      0xf35
+ *(.stabstr)
+ .stabstr       0x0000000000000000      0xf35 /usr/lib/gcc/avr/4.5.3/../../../avr/lib/avr51/crtm1284p.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x560
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x20 time28.co
+ .debug_aranges
+                0x0000000000000020       0x20 contiki-inga.a(rimeaddr.o)
+ .debug_aranges
+                0x0000000000000040       0x20 contiki-inga.a(unicast.o)
+ .debug_aranges
+                0x0000000000000060       0x20 contiki-inga.a(channel.o)
+ .debug_aranges
+                0x0000000000000080       0x20 contiki-inga.a(list.o)
+ .debug_aranges
+                0x00000000000000a0       0x20 contiki-inga.a(etimer.o)
+ .debug_aranges
+                0x00000000000000c0       0x20 contiki-inga.a(packetbuf.o)
+ .debug_aranges
+                0x00000000000000e0       0x20 contiki-inga.a(contiki-inga-ma)
+ .debug_aranges
+                0x0000000000000100       0x20 contiki-inga.a(button-sensor.o)
+ .debug_aranges
+                0x0000000000000120       0x20 contiki-inga.a(sensors.o)
+ .debug_aranges
+                0x0000000000000140       0x20 contiki-inga.a(flash-at45db.o)
+ .debug_aranges
+                0x0000000000000160       0x20 contiki-inga.a(clock.o)
+ .debug_aranges
+                0x0000000000000180       0x20 contiki-inga.a(rs232.o)
+ .debug_aranges
+                0x00000000000001a0       0x20 contiki-inga.a(watchdog.o)
+ .debug_aranges
+                0x00000000000001c0       0x20 contiki-inga.a(settings.o)
+ .debug_aranges
+                0x00000000000001e0       0x20 contiki-inga.a(rf230bb.o)
+ .debug_aranges
+                0x0000000000000200       0x20 contiki-inga.a(halbb.o)
+ .debug_aranges
+                0x0000000000000220       0x20 contiki-inga.a(rime.o)
+ .debug_aranges
+                0x0000000000000240       0x20 contiki-inga.a(announcement.o)
+ .debug_aranges
+                0x0000000000000260       0x20 contiki-inga.a(broadcast-annou)
+ .debug_aranges
+                0x0000000000000280       0x20 contiki-inga.a(broadcast.o)
+ .debug_aranges
+                0x00000000000002a0       0x20 contiki-inga.a(abc.o)
+ .debug_aranges
+                0x00000000000002c0       0x20 contiki-inga.a(chameleon.o)
+ .debug_aranges
+                0x00000000000002e0       0x20 contiki-inga.a(chameleon-bitop)
+ .debug_aranges
+                0x0000000000000300       0x20 contiki-inga.a(nullmac.o)
+ .debug_aranges
+                0x0000000000000320       0x20 contiki-inga.a(nullrdc.o)
+ .debug_aranges
+                0x0000000000000340       0x20 contiki-inga.a(mac.o)
+ .debug_aranges
+                0x0000000000000360       0x20 contiki-inga.a(framer-802154.o)
+ .debug_aranges
+                0x0000000000000380       0x20 contiki-inga.a(process.o)
+ .debug_aranges
+                0x00000000000003a0       0x20 contiki-inga.a(autostart.o)
+ .debug_aranges
+                0x00000000000003c0       0x20 contiki-inga.a(timer.o)
+ .debug_aranges
+                0x00000000000003e0       0x20 contiki-inga.a(ctimer.o)
+ .debug_aranges
+                0x0000000000000400       0x20 contiki-inga.a(rtimer.o)
+ .debug_aranges
+                0x0000000000000420       0x20 contiki-inga.a(random.o)
+ .debug_aranges
+                0x0000000000000440       0x20 contiki-inga.a(queuebuf.o)
+ .debug_aranges
+                0x0000000000000460       0x20 contiki-inga.a(tcpip.o)
+ .debug_aranges
+                0x0000000000000480       0x20 contiki-inga.a(uip-split.o)
+ .debug_aranges
+                0x00000000000004a0       0x20 contiki-inga.a(mspi-drv.o)
+ .debug_aranges
+                0x00000000000004c0       0x20 contiki-inga.a(eeprom.o)
+ .debug_aranges
+                0x00000000000004e0       0x20 contiki-inga.a(rtimer-arch.o)
+ .debug_aranges
+                0x0000000000000500       0x20 contiki-inga.a(frame802154.o)
+ .debug_aranges
+                0x0000000000000520       0x20 contiki-inga.a(memb.o)
+ .debug_aranges
+                0x0000000000000540       0x20 contiki-inga.a(uip.o)
+
+.debug_pubnames
+                0x0000000000000000     0x1cfa
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x0000000000000000       0x61 time28.co
+ .debug_pubnames
+                0x0000000000000061       0x79 contiki-inga.a(rimeaddr.o)
+ .debug_pubnames
+                0x00000000000000da       0x46 contiki-inga.a(unicast.o)
+ .debug_pubnames
+                0x0000000000000120       0x74 contiki-inga.a(channel.o)
+ .debug_pubnames
+                0x0000000000000194       0xc3 contiki-inga.a(list.o)
+ .debug_pubnames
+                0x0000000000000257      0x109 contiki-inga.a(etimer.o)
+ .debug_pubnames
+                0x0000000000000360      0x280 contiki-inga.a(packetbuf.o)
+ .debug_pubnames
+                0x00000000000005e0      0x147 contiki-inga.a(contiki-inga-ma)
+ .debug_pubnames
+                0x0000000000000727       0x33 contiki-inga.a(button-sensor.o)
+ .debug_pubnames
+                0x000000000000075a       0x80 contiki-inga.a(sensors.o)
+ .debug_pubnames
+                0x00000000000007da      0x141 contiki-inga.a(flash-at45db.o)
+ .debug_pubnames
+                0x000000000000091b       0xa5 contiki-inga.a(clock.o)
+ .debug_pubnames
+                0x00000000000009c0       0xff contiki-inga.a(rs232.o)
+ .debug_pubnames
+                0x0000000000000abf       0x9b contiki-inga.a(watchdog.o)
+ .debug_pubnames
+                0x0000000000000b5a       0x7e contiki-inga.a(settings.o)
+ .debug_pubnames
+                0x0000000000000bd8      0x33a contiki-inga.a(rf230bb.o)
+ .debug_pubnames
+                0x0000000000000f12       0xc6 contiki-inga.a(halbb.o)
+ .debug_pubnames
+                0x0000000000000fd8       0x6c contiki-inga.a(rime.o)
+ .debug_pubnames
+                0x0000000000001044       0x20 contiki-inga.a(rimestats.o)
+ .debug_pubnames
+                0x0000000000001064      0x144 contiki-inga.a(announcement.o)
+ .debug_pubnames
+                0x00000000000011a8       0x7d contiki-inga.a(broadcast-annou)
+ .debug_pubnames
+                0x0000000000001225       0x4c contiki-inga.a(broadcast.o)
+ .debug_pubnames
+                0x0000000000001271       0x55 contiki-inga.a(abc.o)
+ .debug_pubnames
+                0x00000000000012c6       0x64 contiki-inga.a(chameleon.o)
+ .debug_pubnames
+                0x000000000000132a       0x6b contiki-inga.a(chameleon-bitop)
+ .debug_pubnames
+                0x0000000000001395       0x25 contiki-inga.a(nullmac.o)
+ .debug_pubnames
+                0x00000000000013ba       0x25 contiki-inga.a(nullrdc.o)
+ .debug_pubnames
+                0x00000000000013df       0x2d contiki-inga.a(mac.o)
+ .debug_pubnames
+                0x000000000000140c       0x24 contiki-inga.a(framer-802154.o)
+ .debug_pubnames
+                0x0000000000001430       0xf7 contiki-inga.a(process.o)
+ .debug_pubnames
+                0x0000000000001527       0x39 contiki-inga.a(autostart.o)
+ .debug_pubnames
+                0x0000000000001560       0x68 contiki-inga.a(timer.o)
+ .debug_pubnames
+                0x00000000000015c8       0x8b contiki-inga.a(ctimer.o)
+ .debug_pubnames
+                0x0000000000001653       0x45 contiki-inga.a(rtimer.o)
+ .debug_pubnames
+                0x0000000000001698       0x32 contiki-inga.a(random.o)
+ .debug_pubnames
+                0x00000000000016ca       0xff contiki-inga.a(queuebuf.o)
+ .debug_pubnames
+                0x00000000000017c9      0x116 contiki-inga.a(tcpip.o)
+ .debug_pubnames
+                0x00000000000018df       0x27 contiki-inga.a(uip-split.o)
+ .debug_pubnames
+                0x0000000000001906       0xa9 contiki-inga.a(mspi-drv.o)
+ .debug_pubnames
+                0x00000000000019af       0x33 contiki-inga.a(eeprom.o)
+ .debug_pubnames
+                0x00000000000019e2       0x50 contiki-inga.a(rtimer-arch.o)
+ .debug_pubnames
+                0x0000000000001a32       0x56 contiki-inga.a(frame802154.o)
+ .debug_pubnames
+                0x0000000000001a88       0x4d contiki-inga.a(memb.o)
+ .debug_pubnames
+                0x0000000000001ad5      0x225 contiki-inga.a(uip.o)
+
+.debug_info     0x0000000000000000     0xd135
+ *(.debug_info)
+ .debug_info    0x0000000000000000      0x67c time28.co
+ .debug_info    0x000000000000067c      0x1ed contiki-inga.a(rimeaddr.o)
+ .debug_info    0x0000000000000869      0x533 contiki-inga.a(unicast.o)
+ .debug_info    0x0000000000000d9c      0x230 contiki-inga.a(channel.o)
+ .debug_info    0x0000000000000fcc      0x349 contiki-inga.a(list.o)
+ .debug_info    0x0000000000001315      0x4e9 contiki-inga.a(etimer.o)
+ .debug_info    0x00000000000017fe      0x711 contiki-inga.a(packetbuf.o)
+ .debug_info    0x0000000000001f0f      0xe87 contiki-inga.a(contiki-inga-ma)
+ .debug_info    0x0000000000002d96      0x202 contiki-inga.a(button-sensor.o)
+ .debug_info    0x0000000000002f98      0x3d9 contiki-inga.a(sensors.o)
+ .debug_info    0x0000000000003371      0x65b contiki-inga.a(flash-at45db.o)
+ .debug_info    0x00000000000039cc      0x26e contiki-inga.a(clock.o)
+ .debug_info    0x0000000000003c3a      0x55b contiki-inga.a(rs232.o)
+ .debug_info    0x0000000000004195      0x113 contiki-inga.a(watchdog.o)
+ .debug_info    0x00000000000042a8      0x501 contiki-inga.a(settings.o)
+ .debug_info    0x00000000000047a9     0x122a contiki-inga.a(rf230bb.o)
+ .debug_info    0x00000000000059d3      0x47c contiki-inga.a(halbb.o)
+ .debug_info    0x0000000000005e4f      0x572 contiki-inga.a(rime.o)
+ .debug_info    0x00000000000063c1      0x146 contiki-inga.a(rimestats.o)
+ .debug_info    0x0000000000006507      0x3ed contiki-inga.a(announcement.o)
+ .debug_info    0x00000000000068f4      0x7d3 contiki-inga.a(broadcast-annou)
+ .debug_info    0x00000000000070c7      0x490 contiki-inga.a(broadcast.o)
+ .debug_info    0x0000000000007557      0x392 contiki-inga.a(abc.o)
+ .debug_info    0x00000000000078e9      0x2f1 contiki-inga.a(chameleon.o)
+ .debug_info    0x0000000000007bda      0x643 contiki-inga.a(chameleon-bitop)
+ .debug_info    0x000000000000821d      0x30a contiki-inga.a(nullmac.o)
+ .debug_info    0x0000000000008527      0x587 contiki-inga.a(nullrdc.o)
+ .debug_info    0x0000000000008aae      0x114 contiki-inga.a(mac.o)
+ .debug_info    0x0000000000008bc2      0x4c2 contiki-inga.a(framer-802154.o)
+ .debug_info    0x0000000000009084      0x564 contiki-inga.a(process.o)
+ .debug_info    0x00000000000095e8      0x1b9 contiki-inga.a(autostart.o)
+ .debug_info    0x00000000000097a1      0x187 contiki-inga.a(timer.o)
+ .debug_info    0x0000000000009928      0x486 contiki-inga.a(ctimer.o)
+ .debug_info    0x0000000000009dae      0x1be contiki-inga.a(rtimer.o)
+ .debug_info    0x0000000000009f6c       0xa7 contiki-inga.a(random.o)
+ .debug_info    0x000000000000a013      0x546 contiki-inga.a(queuebuf.o)
+ .debug_info    0x000000000000a559      0xd02 contiki-inga.a(tcpip.o)
+ .debug_info    0x000000000000b25b      0x343 contiki-inga.a(uip-split.o)
+ .debug_info    0x000000000000b59e      0x37b contiki-inga.a(mspi-drv.o)
+ .debug_info    0x000000000000b919      0x11d contiki-inga.a(eeprom.o)
+ .debug_info    0x000000000000ba36       0xf9 contiki-inga.a(rtimer-arch.o)
+ .debug_info    0x000000000000bb2f      0x4a8 contiki-inga.a(frame802154.o)
+ .debug_info    0x000000000000bfd7      0x1ad contiki-inga.a(memb.o)
+ .debug_info    0x000000000000c184      0xfb1 contiki-inga.a(uip.o)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x0000000000000000     0x43b6
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x1a7 time28.co
+ .debug_abbrev  0x00000000000001a7      0x17d contiki-inga.a(rimeaddr.o)
+ .debug_abbrev  0x0000000000000324      0x194 contiki-inga.a(unicast.o)
+ .debug_abbrev  0x00000000000004b8      0x11a contiki-inga.a(channel.o)
+ .debug_abbrev  0x00000000000005d2      0x13a contiki-inga.a(list.o)
+ .debug_abbrev  0x000000000000070c      0x203 contiki-inga.a(etimer.o)
+ .debug_abbrev  0x000000000000090f      0x242 contiki-inga.a(packetbuf.o)
+ .debug_abbrev  0x0000000000000b51      0x307 contiki-inga.a(contiki-inga-ma)
+ .debug_abbrev  0x0000000000000e58       0xf2 contiki-inga.a(button-sensor.o)
+ .debug_abbrev  0x0000000000000f4a      0x1ba contiki-inga.a(sensors.o)
+ .debug_abbrev  0x0000000000001104      0x191 contiki-inga.a(flash-at45db.o)
+ .debug_abbrev  0x0000000000001295       0xf9 contiki-inga.a(clock.o)
+ .debug_abbrev  0x000000000000138e      0x21b contiki-inga.a(rs232.o)
+ .debug_abbrev  0x00000000000015a9       0x75 contiki-inga.a(watchdog.o)
+ .debug_abbrev  0x000000000000161e      0x1a3 contiki-inga.a(settings.o)
+ .debug_abbrev  0x00000000000017c1      0x33f contiki-inga.a(rf230bb.o)
+ .debug_abbrev  0x0000000000001b00      0x1bc contiki-inga.a(halbb.o)
+ .debug_abbrev  0x0000000000001cbc      0x1ac contiki-inga.a(rime.o)
+ .debug_abbrev  0x0000000000001e68       0x5d contiki-inga.a(rimestats.o)
+ .debug_abbrev  0x0000000000001ec5      0x16a contiki-inga.a(announcement.o)
+ .debug_abbrev  0x000000000000202f      0x214 contiki-inga.a(broadcast-annou)
+ .debug_abbrev  0x0000000000002243      0x185 contiki-inga.a(broadcast.o)
+ .debug_abbrev  0x00000000000023c8      0x145 contiki-inga.a(abc.o)
+ .debug_abbrev  0x000000000000250d      0x12f contiki-inga.a(chameleon.o)
+ .debug_abbrev  0x000000000000263c      0x202 contiki-inga.a(chameleon-bitop)
+ .debug_abbrev  0x000000000000283e      0x14f contiki-inga.a(nullmac.o)
+ .debug_abbrev  0x000000000000298d      0x1d4 contiki-inga.a(nullrdc.o)
+ .debug_abbrev  0x0000000000002b61       0xa0 contiki-inga.a(mac.o)
+ .debug_abbrev  0x0000000000002c01      0x190 contiki-inga.a(framer-802154.o)
+ .debug_abbrev  0x0000000000002d91      0x2ce contiki-inga.a(process.o)
+ .debug_abbrev  0x000000000000305f       0xf5 contiki-inga.a(autostart.o)
+ .debug_abbrev  0x0000000000003154       0xe1 contiki-inga.a(timer.o)
+ .debug_abbrev  0x0000000000003235      0x1b5 contiki-inga.a(ctimer.o)
+ .debug_abbrev  0x00000000000033ea      0x12a contiki-inga.a(rtimer.o)
+ .debug_abbrev  0x0000000000003514       0x67 contiki-inga.a(random.o)
+ .debug_abbrev  0x000000000000357b      0x18f contiki-inga.a(queuebuf.o)
+ .debug_abbrev  0x000000000000370a      0x386 contiki-inga.a(tcpip.o)
+ .debug_abbrev  0x0000000000003a90      0x100 contiki-inga.a(uip-split.o)
+ .debug_abbrev  0x0000000000003b90      0x17c contiki-inga.a(mspi-drv.o)
+ .debug_abbrev  0x0000000000003d0c       0x8a contiki-inga.a(eeprom.o)
+ .debug_abbrev  0x0000000000003d96       0x96 contiki-inga.a(rtimer-arch.o)
+ .debug_abbrev  0x0000000000003e2c      0x19c contiki-inga.a(frame802154.o)
+ .debug_abbrev  0x0000000000003fc8       0xea contiki-inga.a(memb.o)
+ .debug_abbrev  0x00000000000040b2      0x304 contiki-inga.a(uip.o)
+
+.debug_line     0x0000000000000000     0x8eaa
+ *(.debug_line)
+ .debug_line    0x0000000000000000      0x317 time28.co
+ .debug_line    0x0000000000000317      0x106 contiki-inga.a(rimeaddr.o)
+ .debug_line    0x000000000000041d      0x1dd contiki-inga.a(unicast.o)
+ .debug_line    0x00000000000005fa      0x1bf contiki-inga.a(channel.o)
+ .debug_line    0x00000000000007b9      0x2c8 contiki-inga.a(list.o)
+ .debug_line    0x0000000000000a81      0x410 contiki-inga.a(etimer.o)
+ .debug_line    0x0000000000000e91      0x456 contiki-inga.a(packetbuf.o)
+ .debug_line    0x00000000000012e7      0x7af contiki-inga.a(contiki-inga-ma)
+ .debug_line    0x0000000000001a96      0x26e contiki-inga.a(button-sensor.o)
+ .debug_line    0x0000000000001d04      0x235 contiki-inga.a(sensors.o)
+ .debug_line    0x0000000000001f39      0x5a6 contiki-inga.a(flash-at45db.o)
+ .debug_line    0x00000000000024df      0x23a contiki-inga.a(clock.o)
+ .debug_line    0x0000000000002719      0x327 contiki-inga.a(rs232.o)
+ .debug_line    0x0000000000002a40      0x154 contiki-inga.a(watchdog.o)
+ .debug_line    0x0000000000002b94      0x403 contiki-inga.a(settings.o)
+ .debug_line    0x0000000000002f97      0xdd6 contiki-inga.a(rf230bb.o)
+ .debug_line    0x0000000000003d6d      0x431 contiki-inga.a(halbb.o)
+ .debug_line    0x000000000000419e      0x2a9 contiki-inga.a(rime.o)
+ .debug_line    0x0000000000004447       0x80 contiki-inga.a(rimestats.o)
+ .debug_line    0x00000000000044c7      0x27d contiki-inga.a(announcement.o)
+ .debug_line    0x0000000000004744      0x3b3 contiki-inga.a(broadcast-annou)
+ .debug_line    0x0000000000004af7      0x1cd contiki-inga.a(broadcast.o)
+ .debug_line    0x0000000000004cc4      0x18e contiki-inga.a(abc.o)
+ .debug_line    0x0000000000004e52      0x182 contiki-inga.a(chameleon.o)
+ .debug_line    0x0000000000004fd4      0x466 contiki-inga.a(chameleon-bitop)
+ .debug_line    0x000000000000543a      0x139 contiki-inga.a(nullmac.o)
+ .debug_line    0x0000000000005573      0x245 contiki-inga.a(nullrdc.o)
+ .debug_line    0x00000000000057b8       0x8b contiki-inga.a(mac.o)
+ .debug_line    0x0000000000005843      0x305 contiki-inga.a(framer-802154.o)
+ .debug_line    0x0000000000005b48      0x446 contiki-inga.a(process.o)
+ .debug_line    0x0000000000005f8e       0xf0 contiki-inga.a(autostart.o)
+ .debug_line    0x000000000000607e      0x132 contiki-inga.a(timer.o)
+ .debug_line    0x00000000000061b0      0x352 contiki-inga.a(ctimer.o)
+ .debug_line    0x0000000000006502      0x105 contiki-inga.a(rtimer.o)
+ .debug_line    0x0000000000006607       0x99 contiki-inga.a(random.o)
+ .debug_line    0x00000000000066a0      0x2ba contiki-inga.a(queuebuf.o)
+ .debug_line    0x000000000000695a      0x5b0 contiki-inga.a(tcpip.o)
+ .debug_line    0x0000000000006f0a      0x1b3 contiki-inga.a(uip-split.o)
+ .debug_line    0x00000000000070bd      0x214 contiki-inga.a(mspi-drv.o)
+ .debug_line    0x00000000000072d1      0x10f contiki-inga.a(eeprom.o)
+ .debug_line    0x00000000000073e0      0x192 contiki-inga.a(rtimer-arch.o)
+ .debug_line    0x0000000000007572      0x48b contiki-inga.a(frame802154.o)
+ .debug_line    0x00000000000079fd      0x16b contiki-inga.a(memb.o)
+ .debug_line    0x0000000000007b68     0x1342 contiki-inga.a(uip.o)
+
+.debug_frame    0x0000000000000000     0x1730
+ *(.debug_frame)
+ .debug_frame   0x0000000000000000       0x30 time28.co
+ .debug_frame   0x0000000000000030       0x40 contiki-inga.a(rimeaddr.o)
+ .debug_frame   0x0000000000000070       0x60 contiki-inga.a(unicast.o)
+ .debug_frame   0x00000000000000d0       0x60 contiki-inga.a(channel.o)
+ .debug_frame   0x0000000000000130       0xd0 contiki-inga.a(list.o)
+ .debug_frame   0x0000000000000200       0xf0 contiki-inga.a(etimer.o)
+ .debug_frame   0x00000000000002f0      0x1a0 contiki-inga.a(packetbuf.o)
+ .debug_frame   0x0000000000000490       0x40 contiki-inga.a(contiki-inga-ma)
+ .debug_frame   0x00000000000004d0       0x50 contiki-inga.a(button-sensor.o)
+ .debug_frame   0x0000000000000520       0x70 contiki-inga.a(sensors.o)
+ .debug_frame   0x0000000000000590       0xe0 contiki-inga.a(flash-at45db.o)
+ .debug_frame   0x0000000000000670       0x70 contiki-inga.a(clock.o)
+ .debug_frame   0x00000000000006e0       0xe0 contiki-inga.a(rs232.o)
+ .debug_frame   0x00000000000007c0       0x70 contiki-inga.a(watchdog.o)
+ .debug_frame   0x0000000000000830       0xb0 contiki-inga.a(settings.o)
+ .debug_frame   0x00000000000008e0      0x230 contiki-inga.a(rf230bb.o)
+ .debug_frame   0x0000000000000b10       0xa0 contiki-inga.a(halbb.o)
+ .debug_frame   0x0000000000000bb0       0x70 contiki-inga.a(rime.o)
+ .debug_frame   0x0000000000000c20       0xc0 contiki-inga.a(announcement.o)
+ .debug_frame   0x0000000000000ce0       0xa0 contiki-inga.a(broadcast-annou)
+ .debug_frame   0x0000000000000d80       0x60 contiki-inga.a(broadcast.o)
+ .debug_frame   0x0000000000000de0       0x60 contiki-inga.a(abc.o)
+ .debug_frame   0x0000000000000e40       0x50 contiki-inga.a(chameleon.o)
+ .debug_frame   0x0000000000000e90       0x80 contiki-inga.a(chameleon-bitop)
+ .debug_frame   0x0000000000000f10       0x70 contiki-inga.a(nullmac.o)
+ .debug_frame   0x0000000000000f80       0x70 contiki-inga.a(nullrdc.o)
+ .debug_frame   0x0000000000000ff0       0x20 contiki-inga.a(mac.o)
+ .debug_frame   0x0000000000001010       0x30 contiki-inga.a(framer-802154.o)
+ .debug_frame   0x0000000000001040       0xe0 contiki-inga.a(process.o)
+ .debug_frame   0x0000000000001120       0x30 contiki-inga.a(autostart.o)
+ .debug_frame   0x0000000000001150       0x60 contiki-inga.a(timer.o)
+ .debug_frame   0x00000000000011b0       0x80 contiki-inga.a(ctimer.o)
+ .debug_frame   0x0000000000001230       0x40 contiki-inga.a(rtimer.o)
+ .debug_frame   0x0000000000001270       0x30 contiki-inga.a(random.o)
+ .debug_frame   0x00000000000012a0       0xb0 contiki-inga.a(queuebuf.o)
+ .debug_frame   0x0000000000001350      0x100 contiki-inga.a(tcpip.o)
+ .debug_frame   0x0000000000001450       0x20 contiki-inga.a(uip-split.o)
+ .debug_frame   0x0000000000001470       0x80 contiki-inga.a(mspi-drv.o)
+ .debug_frame   0x00000000000014f0       0x30 contiki-inga.a(eeprom.o)
+ .debug_frame   0x0000000000001520       0x40 contiki-inga.a(rtimer-arch.o)
+ .debug_frame   0x0000000000001560       0x50 contiki-inga.a(frame802154.o)
+ .debug_frame   0x00000000000015b0       0x50 contiki-inga.a(memb.o)
+ .debug_frame   0x0000000000001600      0x130 contiki-inga.a(uip.o)
+
+.debug_str      0x0000000000000000     0x35cc
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x236 time28.co
+                                        0x2e9 (size before relaxing)
+ .debug_str     0x0000000000000236       0x85 contiki-inga.a(rimeaddr.o)
+                                        0x16c (size before relaxing)
+ .debug_str     0x00000000000002bb      0x358 contiki-inga.a(unicast.o)
+                                        0x519 (size before relaxing)
+ .debug_str     0x0000000000000613       0xa2 contiki-inga.a(channel.o)
+                                        0x1c1 (size before relaxing)
+ .debug_str     0x00000000000006b5       0xb8 contiki-inga.a(list.o)
+                                        0x122 (size before relaxing)
+ .debug_str     0x000000000000076d      0x153 contiki-inga.a(etimer.o)
+                                        0x2c4 (size before relaxing)
+ .debug_str     0x00000000000008c0      0x264 contiki-inga.a(packetbuf.o)
+                                        0x660 (size before relaxing)
+ .debug_str     0x0000000000000b24      0x496 contiki-inga.a(contiki-inga-ma)
+                                        0x696 (size before relaxing)
+ .debug_str     0x0000000000000fba       0x4f contiki-inga.a(button-sensor.o)
+                                        0x180 (size before relaxing)
+ .debug_str     0x0000000000001009       0xb2 contiki-inga.a(sensors.o)
+                                        0x243 (size before relaxing)
+ .debug_str     0x00000000000010bb      0x197 contiki-inga.a(flash-at45db.o)
+                                        0x359 (size before relaxing)
+ .debug_str     0x0000000000001252       0xcf contiki-inga.a(clock.o)
+                                        0x1d5 (size before relaxing)
+ .debug_str     0x0000000000001321      0x199 contiki-inga.a(rs232.o)
+                                        0x2ae (size before relaxing)
+ .debug_str     0x00000000000014ba       0x83 contiki-inga.a(watchdog.o)
+                                        0x15f (size before relaxing)
+ .debug_str     0x000000000000153d      0x153 contiki-inga.a(settings.o)
+                                        0x320 (size before relaxing)
+ .debug_str     0x0000000000001690      0x776 contiki-inga.a(rf230bb.o)
+                                        0xce1 (size before relaxing)
+ .debug_str     0x0000000000001e06      0x128 contiki-inga.a(halbb.o)
+                                        0x269 (size before relaxing)
+ .debug_str     0x0000000000001f2e       0xfc contiki-inga.a(rime.o)
+                                        0x33f (size before relaxing)
+ .debug_str     0x000000000000202a       0x30 contiki-inga.a(rimestats.o)
+                                        0x124 (size before relaxing)
+ .debug_str     0x000000000000205a      0x1af contiki-inga.a(announcement.o)
+                                        0x2fa (size before relaxing)
+ .debug_str     0x0000000000002209      0x19e contiki-inga.a(broadcast-annou)
+                                        0x3fe (size before relaxing)
+ .debug_str     0x00000000000023a7       0x78 contiki-inga.a(broadcast.o)
+                                        0x4ef (size before relaxing)
+ .debug_str     0x000000000000241f       0x59 contiki-inga.a(abc.o)
+                                        0x488 (size before relaxing)
+ .debug_str     0x0000000000002478       0x94 contiki-inga.a(chameleon.o)
+                                        0x48c (size before relaxing)
+ .debug_str     0x000000000000250c       0xd4 contiki-inga.a(chameleon-bitop)
+                                        0x531 (size before relaxing)
+ .debug_str     0x00000000000025e0       0x54 contiki-inga.a(nullmac.o)
+                                        0x1b1 (size before relaxing)
+ .debug_str     0x0000000000002634       0x42 contiki-inga.a(nullrdc.o)
+                                        0x59d (size before relaxing)
+ .debug_str     0x0000000000002676       0x40 contiki-inga.a(mac.o)
+                                        0x184 (size before relaxing)
+ .debug_str     0x00000000000026b6      0x1a9 contiki-inga.a(framer-802154.o)
+                                        0x5ca (size before relaxing)
+ .debug_str     0x000000000000285f      0x15d contiki-inga.a(process.o)
+                                        0x2a5 (size before relaxing)
+ .debug_str     0x00000000000029bc       0x4a contiki-inga.a(autostart.o)
+                                        0x16f (size before relaxing)
+ .debug_str     0x0000000000002a06       0x37 contiki-inga.a(timer.o)
+                                        0x159 (size before relaxing)
+ .debug_str     0x0000000000002a3d       0xbd contiki-inga.a(ctimer.o)
+                                        0x258 (size before relaxing)
+ .debug_str     0x0000000000002afa       0xbd contiki-inga.a(rtimer.o)
+                                        0x1b1 (size before relaxing)
+ .debug_str     0x0000000000002bb7       0x45 contiki-inga.a(random.o)
+                                        0x10e (size before relaxing)
+ .debug_str     0x0000000000002bfc      0x13c contiki-inga.a(queuebuf.o)
+                                        0x57c (size before relaxing)
+ .debug_str     0x0000000000002d38      0x2cb contiki-inga.a(tcpip.o)
+                                        0x4d0 (size before relaxing)
+ .debug_str     0x0000000000003003       0x63 contiki-inga.a(uip-split.o)
+                                        0x20e (size before relaxing)
+ .debug_str     0x0000000000003066       0xc2 contiki-inga.a(mspi-drv.o)
+                                        0x226 (size before relaxing)
+ .debug_str     0x0000000000003128       0x44 contiki-inga.a(eeprom.o)
+                                        0x13b (size before relaxing)
+ .debug_str     0x000000000000316c       0x60 contiki-inga.a(rtimer-arch.o)
+                                        0x153 (size before relaxing)
+ .debug_str     0x00000000000031cc       0xda contiki-inga.a(frame802154.o)
+                                        0x32d (size before relaxing)
+ .debug_str     0x00000000000032a6       0x56 contiki-inga.a(memb.o)
+                                        0x134 (size before relaxing)
+ .debug_str     0x00000000000032fc      0x2d0 contiki-inga.a(uip.o)
+                                        0x5ed (size before relaxing)
+
+.debug_loc      0x0000000000000000     0x5956
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000      0x10b time28.co
+ .debug_loc     0x000000000000010b      0x118 contiki-inga.a(rimeaddr.o)
+ .debug_loc     0x0000000000000223      0x198 contiki-inga.a(unicast.o)
+ .debug_loc     0x00000000000003bb      0x12c contiki-inga.a(channel.o)
+ .debug_loc     0x00000000000004e7      0x41c contiki-inga.a(list.o)
+ .debug_loc     0x0000000000000903      0x44e contiki-inga.a(etimer.o)
+ .debug_loc     0x0000000000000d51      0x27b contiki-inga.a(packetbuf.o)
+ .debug_loc     0x0000000000000fcc      0x25f contiki-inga.a(contiki-inga-ma)
+ .debug_loc     0x000000000000122b       0x90 contiki-inga.a(button-sensor.o)
+ .debug_loc     0x00000000000012bb      0x1c9 contiki-inga.a(sensors.o)
+ .debug_loc     0x0000000000001484      0x4c2 contiki-inga.a(flash-at45db.o)
+ .debug_loc     0x0000000000001946       0xa0 contiki-inga.a(clock.o)
+ .debug_loc     0x00000000000019e6      0x1c1 contiki-inga.a(rs232.o)
+ .debug_loc     0x0000000000001ba7      0x573 contiki-inga.a(settings.o)
+ .debug_loc     0x000000000000211a      0x7d2 contiki-inga.a(rf230bb.o)
+ .debug_loc     0x00000000000028ec      0x399 contiki-inga.a(halbb.o)
+ .debug_loc     0x0000000000002c85      0x168 contiki-inga.a(rime.o)
+ .debug_loc     0x0000000000002ded      0x224 contiki-inga.a(announcement.o)
+ .debug_loc     0x0000000000003011      0x247 contiki-inga.a(broadcast-annou)
+ .debug_loc     0x0000000000003258      0x168 contiki-inga.a(broadcast.o)
+ .debug_loc     0x00000000000033c0      0x138 contiki-inga.a(abc.o)
+ .debug_loc     0x00000000000034f8       0xac contiki-inga.a(chameleon.o)
+ .debug_loc     0x00000000000035a4      0x64b contiki-inga.a(chameleon-bitop)
+ .debug_loc     0x0000000000003bef       0x48 contiki-inga.a(nullmac.o)
+ .debug_loc     0x0000000000003c37       0xa8 contiki-inga.a(nullrdc.o)
+ .debug_loc     0x0000000000003cdf       0x90 contiki-inga.a(mac.o)
+ .debug_loc     0x0000000000003d6f       0x7f contiki-inga.a(framer-802154.o)
+ .debug_loc     0x0000000000003dee      0x367 contiki-inga.a(process.o)
+ .debug_loc     0x0000000000004155       0x58 contiki-inga.a(autostart.o)
+ .debug_loc     0x00000000000041ad       0xd9 contiki-inga.a(timer.o)
+ .debug_loc     0x0000000000004286      0x2ed contiki-inga.a(ctimer.o)
+ .debug_loc     0x0000000000004573       0xc7 contiki-inga.a(rtimer.o)
+ .debug_loc     0x000000000000463a       0x18 contiki-inga.a(random.o)
+ .debug_loc     0x0000000000004652      0x1b3 contiki-inga.a(queuebuf.o)
+ .debug_loc     0x0000000000004805      0x492 contiki-inga.a(tcpip.o)
+ .debug_loc     0x0000000000004c97       0x42 contiki-inga.a(uip-split.o)
+ .debug_loc     0x0000000000004cd9       0xfc contiki-inga.a(mspi-drv.o)
+ .debug_loc     0x0000000000004dd5       0xd0 contiki-inga.a(eeprom.o)
+ .debug_loc     0x0000000000004ea5       0x24 contiki-inga.a(rtimer-arch.o)
+ .debug_loc     0x0000000000004ec9      0x313 contiki-inga.a(frame802154.o)
+ .debug_loc     0x00000000000051dc      0x1b0 contiki-inga.a(memb.o)
+ .debug_loc     0x000000000000538c      0x5ca contiki-inga.a(uip.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(time28.inga elf32-avr)
+LOAD linker stubs
+
+.bootloader     0x000000000001f800        0x0
+
+.debug_pubtypes
+                0x0000000000000000     0x16e1
+ .debug_pubtypes
+                0x0000000000000000      0x157 time28.co
+ .debug_pubtypes
+                0x0000000000000157       0x2a contiki-inga.a(rimeaddr.o)
+ .debug_pubtypes
+                0x0000000000000181       0xce contiki-inga.a(unicast.o)
+ .debug_pubtypes
+                0x000000000000024f       0x59 contiki-inga.a(channel.o)
+ .debug_pubtypes
+                0x00000000000002a8       0x26 contiki-inga.a(list.o)
+ .debug_pubtypes
+                0x00000000000002ce       0x7b contiki-inga.a(etimer.o)
+ .debug_pubtypes
+                0x0000000000000349       0x75 contiki-inga.a(packetbuf.o)
+ .debug_pubtypes
+                0x00000000000003be      0x158 contiki-inga.a(contiki-inga-ma)
+ .debug_pubtypes
+                0x0000000000000516       0x4c contiki-inga.a(button-sensor.o)
+ .debug_pubtypes
+                0x0000000000000562       0x68 contiki-inga.a(sensors.o)
+ .debug_pubtypes
+                0x00000000000005ca       0x68 contiki-inga.a(flash-at45db.o)
+ .debug_pubtypes
+                0x0000000000000632       0x3c contiki-inga.a(clock.o)
+ .debug_pubtypes
+                0x000000000000066e       0x6f contiki-inga.a(rs232.o)
+ .debug_pubtypes
+                0x00000000000006dd       0x2b contiki-inga.a(watchdog.o)
+ .debug_pubtypes
+                0x0000000000000708       0x83 contiki-inga.a(settings.o)
+ .debug_pubtypes
+                0x000000000000078b       0xe8 contiki-inga.a(rf230bb.o)
+ .debug_pubtypes
+                0x0000000000000873       0x3e contiki-inga.a(halbb.o)
+ .debug_pubtypes
+                0x00000000000008b1       0xad contiki-inga.a(rime.o)
+ .debug_pubtypes
+                0x000000000000095e       0x20 contiki-inga.a(rimestats.o)
+ .debug_pubtypes
+                0x000000000000097e       0x8c contiki-inga.a(announcement.o)
+ .debug_pubtypes
+                0x0000000000000a0a      0x194 contiki-inga.a(broadcast-annou)
+ .debug_pubtypes
+                0x0000000000000b9e       0xa7 contiki-inga.a(broadcast.o)
+ .debug_pubtypes
+                0x0000000000000c45       0x6d contiki-inga.a(abc.o)
+ .debug_pubtypes
+                0x0000000000000cb2       0x63 contiki-inga.a(chameleon.o)
+ .debug_pubtypes
+                0x0000000000000d15       0x96 contiki-inga.a(chameleon-bitop)
+ .debug_pubtypes
+                0x0000000000000dab       0x56 contiki-inga.a(nullmac.o)
+ .debug_pubtypes
+                0x0000000000000e01       0x6e contiki-inga.a(nullrdc.o)
+ .debug_pubtypes
+                0x0000000000000e6f       0x25 contiki-inga.a(mac.o)
+ .debug_pubtypes
+                0x0000000000000e94       0xaa contiki-inga.a(framer-802154.o)
+ .debug_pubtypes
+                0x0000000000000f3e       0x7d contiki-inga.a(process.o)
+ .debug_pubtypes
+                0x0000000000000fbb       0x55 contiki-inga.a(autostart.o)
+ .debug_pubtypes
+                0x0000000000001010       0x2d contiki-inga.a(timer.o)
+ .debug_pubtypes
+                0x000000000000103d       0x91 contiki-inga.a(ctimer.o)
+ .debug_pubtypes
+                0x00000000000010ce       0x46 contiki-inga.a(rtimer.o)
+ .debug_pubtypes
+                0x0000000000001114       0x12 contiki-inga.a(random.o)
+ .debug_pubtypes
+                0x0000000000001126       0x9c contiki-inga.a(queuebuf.o)
+ .debug_pubtypes
+                0x00000000000011c2      0x18c contiki-inga.a(tcpip.o)
+ .debug_pubtypes
+                0x000000000000134e       0x93 contiki-inga.a(uip-split.o)
+ .debug_pubtypes
+                0x00000000000013e1       0x43 contiki-inga.a(mspi-drv.o)
+ .debug_pubtypes
+                0x0000000000001424       0x3d contiki-inga.a(eeprom.o)
+ .debug_pubtypes
+                0x0000000000001461       0x3e contiki-inga.a(rtimer-arch.o)
+ .debug_pubtypes
+                0x000000000000149f       0xb2 contiki-inga.a(frame802154.o)
+ .debug_pubtypes
+                0x0000000000001551       0x1b contiki-inga.a(memb.o)
+ .debug_pubtypes
+                0x000000000000156c      0x175 contiki-inga.a(uip.o)
+
+.debug_ranges   0x0000000000000000       0xa8
+ .debug_ranges  0x0000000000000000       0x30 time28.co
+ .debug_ranges  0x0000000000000030       0x30 contiki-inga.a(contiki-inga-ma)
+ .debug_ranges  0x0000000000000060       0x48 contiki-inga.a(chameleon-bitop)
