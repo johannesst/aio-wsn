@@ -23,7 +23,7 @@
 
 % Titelseite
 \title{AIO - Akustische Indoor-Ortung}
-\subtitle{Praktikum Wireless Sensor Networks - Team 4}
+\subtitle{Praktikum Wireless Sensor Networks - Team 4 - Zwischenpräsentation}
 \author{Johannes Starosta, Lena Schimmel}
 % Titelgrafik, automatisch beschnitten, Weitere Optionen: <scaled/cropx/cropy>
 % \titlegraphic[cropped]{\includegraphics{infozentrum.jpg}}
@@ -40,72 +40,27 @@
 \titlepage
 \end{frame}
 
+\begin{frame}{Kurze Wiederholung: Idee}
+	\includegraphics[width=0.48\textwidth]{room-2.pdf}
+	\includegraphics[width=0.48\textwidth]{room-3.pdf}
 
-\begin{frame}{Motivation und Ausgangssituation}
-Location Based Services sind im Trend. Übliche Technologien:
-\begin{itemize}
-  \item GPS
-  	\begin{itemize}
-	  \item Nur unter freiem Himmel
-	  \item Genauigkeit ca. 6m
-	  \item In den meisten Smartphones, sonst selten
+	\begin{itemize}
+		\item Stationäre Knoten bestimmen ihre relative Lage zueinander
+		\item Anschließend werden mobile Knoten geortet
+		\item Beides geschieht über Laufzeitmessung akustischer Signale
 	\end{itemize}
-  \item Funkzellenortung / WiFi
-  	\begin{itemize}
-	  \item Auch in Innenräumen
-	  \item Genauigkeit ca. 200m
+\end{frame}
+
+\begin{frame}{Aktueller Status}
+Was geht:
+	\begin{itemize}
+		\item Test
 	\end{itemize}
-\end{itemize}
-Dabei wäre gerade in Innenräumen eine mindestens Meter-genaue Ortung wünschenswert.
-\end{frame}
 
-\begin{frame}{Idee}
-	\includegraphics[width=1.0\textwidth]{room-1.pdf}
-	
-	Knoten werden stationär im Raum verteilt.
-\end{frame}
-
-
-\begin{frame}{Idee}
-	\includegraphics[width=1.0\textwidth]{room-2.pdf}
-
-	Diese vermessen automatisch ihre Abstände und relative Lage.
-\end{frame}
-
-
-\begin{frame}{Idee}
-	\includegraphics[width=1.0\textwidth]{room-3.pdf}
-
-	Mobile Knoten können ihre Lage im Raum bestimmen.
-\end{frame}
-
-
-\begin{frame}{Idee}
-	\includegraphics[width=1.0\textwidth]{room-4.pdf}
-
-	Dies kann auch mit Standard-Hardware geschehen.
-\end{frame}
-
-\begin{frame}{Idee - zusammengefasst}
-\begin{itemize}
-  \item Kommunikation und Synchronisation über Funk
-  \item Distanzmessung über Schall
-  \item Frequenz: 22kHz
-  \item Genauigkeit: wenige Zentimeter (theoretisch)
-  \item Ortungsintervall: mehrmals pro Sekunde
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Anforderungen / Arbeitspakete}
-\begin{itemize}
-  \item Hardware zur Audio-Ein- und -Ausgabe
-  \item Zeitsynchronisation über Funk
-  \item Koordination der Sendezeitpunkte
-  \item Laufzeitbestimmung
-  \item Relative Lage aus Abständen errechnen
-  \item Visualisierung der Lage(n)
-  \item Fallback über Audio-Fingerprints
-\end{itemize}
+Was noch nicht geht:
+	\begin{itemize}
+		\item Test
+	\end{itemize}
 \end{frame}
 
 \end{document}
