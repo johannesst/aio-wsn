@@ -28,6 +28,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 	memcpy(&data,datapntr,sizeof(datapntr));
 	//static long bigTime;
 	//antwortpaket basteln
+	printf("unicast message received from %d.%d: Type %u, local %lu, master %lu \n", from->u8[0], from->u8[1], data.type,data.time_local,data.time_master);
 	switch(data.type){
 		case 0:
 			break;
@@ -47,7 +48,6 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 		//	bla;
 		//	break
 	}
-	printf("unicast message received from %d.%d: %u,%lu,%lu \n", from->u8[0], from->u8[1], data.type,data.time_local,data.time_master);
 	if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
     	{
     		printf("Answermessage sent\n"); // debug message

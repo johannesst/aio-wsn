@@ -1,0 +1,65 @@
+Was alles noch getan werden könnte:
+
+* INGAs direkt elektrisch verbinden 
+* Klinkenstecker dran basteln und mit Handy / PC Frequenzen generieren
+* Plan machen, wie/ob man mehere Ein/Ausgänge auf eine INGA bekommt
+
+###
+
+Hardware müsste so:
+
+Eingabe Mindestens:
+* Mikro
+* Mikrobeschaltung
+* Bandpassfilter mit Verstärker (einzige Frequenzabhängige Komponente)
+* Spitzenwertgleichrichter
+* AD-Wandler
+
+Ausagabe:
+* DA-Wandler
+* Glättung Rechteck -> Sinus?
+* Verstärker
+* Piezo
+
+Wir haben: 4 Ausgänge, 2 Eingänge. Damit machbar: 
+ * Ein oder Zwei Kanäle direkt, gleichzeitig nutzbar
+ * Beliebig viele Kanäle mit einem einfachen Zählerinterface, davon nur eins nutzbar
+ * Beliebig viele Kanäle mit einem komplexeren Zählerinterface, davon zwei zeitgleich nutzbar
+
+Idee: Signale durchschleifen, somit zwei Platinen auf eine INGA einsetzbar
+
+Mikro und Piezo steckbar machen, dreipoliger Stecker (Wie Akku)
+
+###
+
+Audio-Eingabe:
+
+Verschiedene Mikrofone wurden gestestet, jeweils beschaltet mit 
+* Widerständen und Kondensatoren 
+* einem Laptop als Signalverstärker. 
+
+Als Audiogenerator kam ein Android-Handy zum Einsatz.
+
+Probleme:
+* Sehr niedrige Signalpegel
+* Sehr hohe Rauschpegel in Messinstrumenten
+* Unkenntnis über die Art der verbauten Mikrofonkapseln (Kondensator oder Elekret, ggf. mit integriertem Verstärkerglied?)
+* Noch keine Spitzenwertgleichrichter eingebaut
+* Noch keine Frequenzfilter versucht
+
+Erkennnisse:
+* Mikrofon und/oder Verstärker haben bei 10 kHz einen deutlichen Abfall in der Empfindlichkeit
+* Handy gibt bis 19.9 kHz etwas aus, was manche Menschen hören
+* Töne kommen auch über mehr als 5m noch laut genug im Mikro an, dass sie nach dem Verstärken prinzipiell detektiebar wären
+* Eine simple Überwachung des Gesamtpegels bringt unter diesen Umständen nur was, wenn die Schallquelle max. 5cm (!) vom Mikro entfernt ist
+* Mit INGA Signale zu samplen, die Elektrisch brauchbar sind, ist kein Problem
+
+Ansonsten:
+* Mikrofonverstärker-Bausatz von Conrad braucht mindestens 9 Volt
+* Mirkofonkapsel von Conrad nur bis 10 kHz, höchste Empfindlichkeit bei 5 kHz
+
+###
+
+Timesync:
+
+

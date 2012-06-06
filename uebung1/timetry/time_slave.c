@@ -27,6 +27,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 	struct datagram data;
 	memcpy(&data,datapntr,sizeof(datapntr));
 	//antwortpaket basteln
+	printf("unicast message received from %d.%d: %u,%lu,%lu \n", from->u8[0], from->u8[1], data.type,data.time_local,data.time_master);
 	switch(data.type){
 		case 0:
 			break;
@@ -42,7 +43,6 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 		//	bla;
 		//	break
 	}
-//	printf("unicast message received from %d.%d: %u,%lu,%lu \n", from->u8[0], from->u8[1], data.type,data.time_local,data.time_master);
 	if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
     	{
     		//printf("Answermessage sent\n"); // debug message
@@ -81,13 +81,14 @@ PROCESS_THREAD(time_unicast_sender, ev, data)
 	  // PROCESS_WAIT_EVENT_UNTIL(ev == sensors_event && data == &button_sensor);
 	
 	  etimer_set(&et, CLOCK_SECOND);
-	  PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
+	//  while(!etimer_expired(&et))
+	    PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
 		
-	  addr.u8[0] = 0x28; // Address of receiving Node
+	  addr.u8[0] = 0x2c; // Address of receiving Node
 	  addr.u8[1] = 0x1;
 	  if(!rimeaddr_cmp(&addr, &rimeaddr_node_addr)){
-		  //printf("unicast message sent  %u,%lu,%lu \n",  data.type,data.time_local,data.time_master);
-		  //printf("Message sent\n"); // debug message
+		  printf("unicast message sent  %u,%lu,%lu \n",  data.type,data.time_local,data.time_master);
+		  printf("Message sent from %d.%d\n", rimeaddr_node_addr.u8[0], rimeaddr_node_addr.u8[1]); // debug message
 		  unicast_send(&uc, &addr);
 	  }
   }
