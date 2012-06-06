@@ -1,9 +1,16 @@
+
+ifeq ($(CONTIKI),)
 CONTIKI = ../../../contiki-inga
+endif
 #WITH_UIP6=1
 #UIP_CONF_IPV6=1
 #CFLAGS+= -DUIP_CONF_IPV6_RP
 
 #all: trans122 trans128
-all: timetry time22 time28
+all: time_master time_slave 
+
+CONTIKI_SOURCEFILES += getTime.c
+
+
 
 include $(CONTIKI)/Makefile.include
