@@ -4,7 +4,8 @@
 \usepackage[ngerman]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{graphicx}
-\usepackage{eurosym}
+\usepackage{eurosym} % Für die Hardwarepreise
+\usepackage{textpos}  % Für Grafikpositionierung
 \usetheme[%
   %cmyk,%<rgbprint>,          Auswahl des Farbmodells
   blue,%<orange/green/violet> Auswahl des Sekundärfarbklangs
@@ -84,6 +85,13 @@
 \end{frame}
 
 \begin{frame}{Hardware - Der Plan\textsuperscript{\small{TM}}}
+%	\begin{floatingfigure}[l]{4cm}
+ %   		\includegraphics[width=0.5\textwidth]{amdemod.png}
+%	\end{floatingigure}
+\begin{textblock}{7}(7,0.3)
+\includegraphics[width=1.0\textwidth]{amdemod.png}
+\end{textblock}
+\vspace*{1.2cm}
 	\textbf{Hardware-Erweiterung}
 	\begin{itemize}
 		\item Zwei Audio-Kanäle
@@ -92,7 +100,7 @@
 		\begin{itemize}
 			\item Elekret-Mikrofon mit Spannungseinspeisung
 			\item Aktiver Bandpassfilter mit Verstärker in Multiple-Feedback-Topology \\(Frequenz über Potentiometer einstellbar) 
-			\item Spitzenwertgleichrichter
+			\item Hüllkurvendemodulator (a.k.a. Spitzenwertgleichrichter)
 			\item DA-Converter im ATmega1284P
 		\end{itemize}
 	\end{itemize}
@@ -103,14 +111,31 @@
 \begin{frame}{Hardware - Erster Entwurf}
 	\includegraphics[width=1.0\textwidth]{AudioBoardSchema.pdf}
 	
-	Vorläufiger Schaltplan des Audio-Boards
+	Vorläufiger Schaltplan des Audio-Boards. Es fehlt die Verstärkung des Ausgabesignals und die Fingerprint-Funktionalität.
 \end{frame}
 
 \begin{frame}{Hardware - Erster Entwurf}
 	\includegraphics[width=0.55\textwidth]{ibr_node.pdf}
 	\includegraphics[width=0.55\textwidth]{AudioBoard.pdf}
 	
-	INGA und AudioBoard im gleichen Maßstab
+	INGA und AudioBoard im gleichen Maßstab. Schalter und LEDs der INGA werden nicht verdeckt. Oben: gewinkelte Anschlüsse für Mikro und Lautsprecher.
+\end{frame}
+
+
+\begin{frame}{Was zu tun bleibt}
+	\includegraphics[width=1.0\textwidth]{AudioBoardSchema.pdf}
+	
+	Vorläufiger Schaltplan des Audio-Boards
+\end{frame}
+
+\begin{frame}{Hardware - Erster Entwurf}
+	\begin{itemize}
+		\item Programmieren
+		\item 1-2 Prototypen der Hardware bauen
+		\item Testen einer einzelnen Laufzeitmessung
+		\item Kleinstserie der Hardware bauen
+		\item Testen des Gesamtsystems
+	\end{itemize}
 \end{frame}
 
 \end{document}
