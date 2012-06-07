@@ -1,0 +1,92 @@
+Partlist
+
+Exported from ibr_node.sch at 06.06.12 22:44
+
+EAGLE Version 6.2.0 Copyright (c) 1988-2012 CadSoft
+
+Assembly variant: 
+
+Part     Value                Device                Package               Library           Sheet
+
+C1       10nF                 C-EUC0402K            C0402K                ibr_node          1
+C2       1µF                  C-EUC0402K            C0402K                rcl               1
+C3       4.7µF                C-EUC0402K            C0402K                rcl               1
+C4       100nF                C-EUC0402K            C0402K                ibr_node          1
+C5       1.2pF                C-EUC0402K            C0402K                ibr_node          2
+C6       12pF                 C-EUC0402K            C0402K                ibr_node          2
+C7       12pF                 C-EUC0402K            C0402K                ibr_node          2
+C8       1µF                  C-EUC0402K            C0402K                ibr_node          2
+C9       1.2pF                C-EUC0402K            C0402K                ibr_node          2
+C10      1.2pF                C-EUC0402K            C0402K                ibr_node          2
+C11      1.2pF                C-EUC0402K            C0402K                ibr_node          2
+C12      1.2pF                C-EUC0402K            C0402K                ibr_node          2
+C13      100nF                C-EUC0402K            C0402K                ibr_node          2
+C14      100nF                C-EUC0402K            C0402K                ibr_node          2
+C15      1µF                  C-EUC0402K            C0402K                ibr_node          2
+C16      1µF                  C-EUC0402K            C0402K                ibr_node          2
+C17      100nF                C-EUC0402K            C0402K                ibr_node          3
+C18      100nF                C-EUC0402K            C0402K                ibr_node          3
+C19      1µF                  C-EUC0402K            C0402K                ibr_node          3
+C20      100nF                C-EUC0402K            C0402K                ibr_node          3
+C21      100nF                C-EUC0402K            C0402K                ibr_node          3
+C22      1µF                  C-EUC0402K            C0402K                ibr_node          3
+C23      10nF                 C-EUC0402K            C0402K                ibr_node          3
+C24      470nF                C-EUC0402K            C0402K                ibr_node          3
+C25      1µF                  C-EUC0402K            C0402K                ibr_node          2
+D1       1N4148               DIODESOD              SOD-323               SparkFun          1
+IC11     FT232RQ              FT232RQ               QFN32                 ibr_node          1
+IC12     MAX1555              MAX1555               SOT23-5               ibr_node          1
+IC13     SMD_SWITCH           SMD_SWITCH            SMD_SWITCH            ibr_node          1
+IC14     MAX4372F             MAX4372F              SOT23-5               ibr_node          1
+IC15     MAX8881              MAX8881               SOT23-6_DBV_R-PDSO-G6 ibr_node          1
+IC16     2N7002               2N7002                SC75_INFINEON         ibr_node          1
+IC21     2.4GHZ_ANTENNA_RAVEN 2.4GHZ_ANTENNA_RAVEN  2.4GHZ_PCB_ANTENNA_2  ibr_node          2
+IC22     XC_16MHZ             XC_16MHZ              CX2520SB_2.0X2.5      ibr_node          2
+IC23     AT86RF231            AT86RF231             MLF32-TH              ibr_node          2
+IC24     ATMEGA1284P_MLF      ATMEGA1284P_MLF       MLF44-TH              ibr_node          2
+IC25     XC_32.768KHZ         XC_32.768KHZ          85SMX                 ibr_node          2
+IC31     BMP085               BMP085                QFN127P500X500X120-8N ibr_node          3
+IC32     L3G4200D             L3G4200D              LGA16-4X4             ibr_node          3
+IC33     74LCX138             74LCX138              DQFN16_2.5X3.5        ibr_node          3
+IC34     AT45DB161            AT86DB161             DFN-S                 ibr_node          3
+IC35     ADXL345              ADXL345               LGA14_3X5X1           ibr_node          3
+IC36     74LCX126             74LCX126              DQFN14_2.5X3          ibr_node          3
+IC37     FSA1156              FSA1156               SC70-6L               ibr_node          3
+JP1                           M05PTH                1X05                  SparkFun          3
+JP2                           M05PTH                1X05                  SparkFun          3
+JP3      CON_1.27             CON_1.27              1X10                  ibr_node          2
+JP4      Batt                 BATT                  BATT                  ibr_node          1
+JP5      Li-Ion               BATT                  BATT                  ibr_node          1
+L1       0,68µH               WE-KIHQ_0805          WE-KI_0805_B          wuerth-elektronik 1
+L2       10µH                 WE-KIHQ_0805          WE-KI_0805_B          wuerth-elektronik 2
+L3       2.7nH                WE-KIHQ_0402          0402                  wuerth-elektronik 2
+L4       2.7nH                WE-KIHQ_0402          0402                  wuerth-elektronik 2
+L5       10µH                 WE-KIHQ_0805          WE-KI_0805_B          wuerth-elektronik 2
+LED1     charge               LEDCHIPLED_0805       CHIPLED_0805          led               1
+LED2     TX (blue)            LEDCHIPLED_0805       CHIPLED_0805          led               1
+LED3     RX (red)             LEDCHIPLED_0805       CHIPLED_0805          led               1
+LED4     green                LEDCHIPLED_0805       CHIPLED_0805          led               1
+LED5     orange               LEDCHIPLED_0805       CHIPLED_0805          led               1
+R1       200R                 R-EU_R0402            R0402                 rcl               1
+R2       0.4R                 R-EU_R0402            R0402                 rcl               1
+R3       100R                 R-EU_R0402            R0402                 rcl               1
+R4       150R                 R-EU_R0402            R0402                 rcl               1
+R5       1M                   R-EU_R0402            R0402                 rcl               1
+R6       1.5M                 R-EU_R0402            R0402                 rcl               1
+R7       470R                 R-EU_R0402            R0402                 rcl               2
+R8       10k                  R-EU_R0402            R0402                 rcl               2
+R9       10k                  R-EU_R0402            R0402                 rcl               2
+R10      10k                  R-EU_R0402            R0402                 rcl               2
+R11      0R                   R-EU_R0402            R0402                 rcl               2
+R12      0R                   R-EU_R0402            R0402                 rcl               2
+R13      N.M.0R               R-EU_R0402            R0402                 rcl               2
+R14      10k                  R-EU_R0402            R0402                 rcl               3
+R15      200R                 R-EU_R0402            R0402                 rcl               1
+R16      200R                 R-EU_R0402            R0402                 rcl               1
+R17      10k                  R-EU_R0402            R0402                 rcl               1
+S1       SWITCH               SWITCH-MOMENTARY-2SMD TACTILE_SWITCH_SMD    ibr_node          1
+TP1      PTR1TP06R            PTR1TP06R             TP06R                 testpad           2
+TP2      PTR1TP06R            PTR1TP06R             TP06R                 testpad           2
+TP3      PTR1TP06R            PTR1TP06R             TP06R                 testpad           2
+X1       MINI-USB-            MINI-USB-             UX60-MB-5ST           ibr_node          1
+X2       MICRO-SD_MOLEX       MICRO-SD_MOLEX        MICRO_SD_MOLEX        ibr_node          3

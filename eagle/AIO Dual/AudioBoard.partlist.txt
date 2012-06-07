@@ -1,0 +1,15 @@
+Partlist
+
+Exported from AudioBoard.sch at 06.06.12 22:43
+
+EAGLE Version 6.2.0 Copyright (c) 1988-2012 CadSoft
+
+Assembly variant: 
+
+Part     Value          Device          Package      Library  Sheet
+
+IC1      LM4558D        LM4558D         SO08         linear   1
+LED1                    LEDCHIPLED_0805 CHIPLED_0805 led      1
+LED2                    LEDCHIPLED_0805 CHIPLED_0805 led      1
+TO_JP1                  MA06-1          MA06-1       con-lstb 1
+TO_JP3                  MA10-1          MA10-1       con-lstb 1
