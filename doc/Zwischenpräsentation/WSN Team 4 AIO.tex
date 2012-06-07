@@ -69,8 +69,25 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Programmierung (Joke)}
-	\textit{(Joke...)}
+\begin{frame}{Programmierung - Zeitsynchronisation}
+
+	\begin{itemize}
+		\item Knoten müssen Zeit synchron halten
+		\item Problem: Interne Uhr startet bei 0 und läuft regelmäßig über \\( < 2 min, da nur 16 Bit verwendet)
+		\item Idee: Eigenen Zähler definieren, der bei Überlauf hoch zählt, daraus 32-Bit-Zeit ableiten
+		\item Ein Knoten ist Master (seine Zeit ist maßgebend)
+		\item Alle anderen sind  Slaves
+		\item Zeit wird regelmäßig synchronisiert
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Programmierung - Aktueller Stand}
+	\begin{itemize}
+		\item Zeiten werden ausgetauscht
+		\item Offene Frage: Passiert es schnell genug?
+		\item Debuggen macht derzeit Probleme \\(Zu viele Ausgaben in zu kurzer Zeit)
+		\item Noch viel Testarbeit nötig
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Hardware - Herausforderungen}
