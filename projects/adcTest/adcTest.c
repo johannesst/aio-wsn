@@ -74,13 +74,13 @@ PROCESS_THREAD(adc_test_process, ev, data)
 	// Main loop
 	while(1) {
 		max = 0;
-		for(i = 0; i < 1000; i++)
+		for(i = 0; i < 10000; i++)
 		{
 			convert();
 			//printf("%i,",result);
 			if(result > max)
 				max = result;
-			if(result > 11)
+			if(result > 40)
 				leds_on(LEDS_GREEN);
 			else
 				leds_off(LEDS_GREEN);
