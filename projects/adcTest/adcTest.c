@@ -22,7 +22,7 @@ void init_adc(void)
 {
 	DDRB    |= 0b00000001;        			// Set PORTB.0  as output
 	PORTB   |= 0b00000001;        			// Initialize PORTB.0 with logic "one"
-	ADCSRA   = 0b10000001;        			// Enable ADC with Clock prescaled by some value (0b10 = 2 => 2^2 = factor 4) 37200 or 74400
+	ADCSRA   = 0b10000010;        			// Enable ADC with Clock prescaled by some value (0b10 = 2 => 2^2 = factor 4) 37200 or 74400
 	DIDR0    = 0b00111111;        			// Disable Digital Input on ADC Channel 0 to reduce power consumption
     ADMUX    = 0b11000000;       			// Disable Left-Adjust and select Internal 1.1V reference and ADC Channel 0 as input
 }
@@ -40,7 +40,7 @@ void convert(void)
 	result   = ADC;                         // Read the ADC Result
 	ADCSRA  |= (1 << ADIF);					// Clear ADC Conversion Interrupt Flag
 }
-/*
+
 // 2k
 float kernelFloat[] =
 {
@@ -66,8 +66,9 @@ float kernelFloat[] =
 -0.0012695753139722737,
 -0.0009198699708216283
 };
-*/
 
+
+/*
 // 8k
 float kernelFloat[] =
 {
@@ -93,7 +94,7 @@ float kernelFloat[] =
 0.0021168710099360973,
 0.0014956468455062967
 };
-
+*/
 int kernelInt[21];
 
 PROCESS(adc_test_process, "adc test process");
@@ -118,9 +119,6 @@ PROCESS_THREAD(adc_test_process, ev, data)
 	printf("##############dzdsfcdcuhlzceggtrlizcuilecu###hthr#### adc_test_process talking now ###############\n");
 	printf("##############dzdsfcdcuhlzceglirztzehcuilettrzcu####### adc_test_process talking now ###############\n");
 	printf("##############dzdsfcdcuhlzceglizcuilehutzjjcu####### adc_test_process talking now ###############\n");
-//	printf(
-//		#include "rand.txt"
-//	);
 
 	int i,n;
 	for(i = 0; i < 21; i++)
@@ -129,17 +127,11 @@ PROCESS_THREAD(adc_test_process, ev, data)
 	leds_init();
 	init_adc();
 
-	// Button
-	SENSORS_ACTIVATE(button_sensor);
-
 	int buf[512];
 	int out[512];	
 	int avg;
 	long int sum;
  	int nsi, cnt, last, tmp;
-
-//	int ab[300];
-//	int abIndex;
 
 	// Main loop
 	while(1) 
@@ -161,16 +153,11 @@ PROCESS_THREAD(adc_test_process, ev, data)
 			for(n = -10; n <= 10; n++)
 				out[i] = (buf[i+n]-avg) * kernelInt[n]; 
 			sum += abs(out[i]);
-		//	printf("%i,%i\n", buf[i], out[i]);
 		}
 
-		// avg = durchschnittlicher Pegel (abs)
 		avg = (int)(sum/492);
-		//printf("Pegel %i\n", avg);
 
 		nsi = -1;
-//		abIndex = 0;
-//		char doOutput = 0;
 
 		int goodCount = 0;
 
@@ -181,7 +168,7 @@ PROCESS_THREAD(adc_test_process, ev, data)
 			{	
 				if(nsi != -1)
 				{
-					if((i - nsi) < 8 || (i - nsi) > 12)
+					if((i - nsi) < 15 || (i - nsi) > 21)
 					{
 						goodCount--;
 						if(goodCount < 0)
@@ -196,24 +183,14 @@ PROCESS_THREAD(adc_test_process, ev, data)
 						if(goodCount > 4)
 							leds_on(LEDS_GREEN);
 					}
-//					ab[abIndex++] = (i - nsi);
-					sum += (i - nsi);
-					cnt++;
-//					printf("Abstand: %i => Frequenz: %i\n", (i - nsi), 3720/(i - nsi)*10);
-					printf("%i, %i\n", 7440/(i - nsi)*10, avg);
+					//printf("%i, %i\n", 3720/(i - nsi)*10, avg);
 				}
 				nsi = i;
 			}
 
 			last = tmp;
-//			if(abIndex >= 3 && ab[abIndex] == 6 && ab[abIndex-1] == 16 && ab[abIndex-2] == 6)
-//				doOutput = 1;
 		}
 		
-//		if(doOutput)
-//			for(i = 10; i < 502; i++)
-//				printf("%i\n", out[i]);
-	
 		
 		PROCESS_PAUSE();
 	}
