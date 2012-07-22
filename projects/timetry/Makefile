@@ -1,4 +1,3 @@
-
 ifeq ($(CONTIKI),)
 CONTIKI = ../../../contiki-inga
 endif
