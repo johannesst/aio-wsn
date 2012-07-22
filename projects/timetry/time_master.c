@@ -22,13 +22,22 @@ AUTOSTART_PROCESSES(&time_unicast_sender);
 
 static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 {
+	/*
   	char *datapntr;
 	datapntr = packetbuf_dataptr();
-	struct datagram data_pak;
-	memcpy(&data_pak,datapntr,sizeof(datapntr));
+	//struct datagram data_pak;
+	long unsigned int data;
+	//memcpy(&data_pak,datapntr,sizeof(datapntr));
+	memcpy(&data,datapntr,sizeof(datapntr));
+	*/
 	//static long bigTime;
 	//antwortpaket basteln
-	printf("unicast message received from %d.%d: Type %u, local %lu, master %lu \n", from->u8[0], from->u8[1], data_pak.type,data_pak.time_local,data_pak.time_master);
+	//
+	///
+	/*
+	printf("unicast message received from %d.%d: slave zeit:  %lu \n", from->u8[0], from->u8[1], data);
+	*/
+	//printf("unicast message received from %d.%d: Type %u, local %lu, master %lu \n", from->u8[0], from->u8[1], data_pak.type,data_pak.time_local,data_pak.time_master);
 	/*switch(data_pak.type){
 		case 0:
 		//	printf("antwort bestätigt");
@@ -50,16 +59,18 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 		//	bla;
 	break
 	}*/
-	if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
+/*	if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
     	{
 		//  printf("lokale (master) zeit: %lu entfernte zeit: %lu \n",time_local,data.time_master);
   //  		printf("Answermessage sent\n"); // debug message
 	        //packetbuf_copyfrom(&data_pak,sizeof(data_pak)); // String + Length to be send
-	        packetbuf_copyfrom(&bigTime,sizeof(bigTime)); // String + Length to be send
+	 //       packetbuf_copyfrom(&bigTime,sizeof(bigTime)); // String + Length to be send
 		//
-        	unicast_send(c, from);
-		printf("Zeit gesendet vom master : %lu \n",data_pak.time_master);
+        //	unicast_send(c, from);
+	//	printf("Zeit gesendet vom master : %lu \n",bigTime);
+		//		printf("Zeit gesendet vom master : %lu \n",data_pak.time_master);
     	}
+	*/
 }
 
 static const struct unicast_callbacks unicast_callbacks = {recv_uc};
@@ -78,21 +89,28 @@ PROCESS_THREAD(time_unicast_sender, ev, data)
   unicast_open(&uc, 290, &unicast_callbacks); // channel = 122
   bigTime = 0;
   timeIterator=0;
- // printf("BigTime: %lu \n", bigTime);
-  struct datagram data_pak;
-  data_pak.end=0;
-  data_pak.type=2;
+//  printf("BigTime: %lu \n", bigTime);
+ // struct datagram data_pak;
+ // data_pak.end=0;
+//  data_pak.type=2;
   int i=0;
   while(1){
 	  bigTime = getTime(&timeIterator); 
+//	  printf("Lokale Zeit: %lu \n",bigTime);
+	  /*
 	  time_local=bigTime;
 	  time_master=bigTime;
 	  data_pak.time_local=time_local;
 	  data_pak.time_master=time_master;
+	  */
 //	  static struct etimer et;
 	  rimeaddr_t addr;
-	  packetbuf_copyfrom(&data_pak,sizeof(data_pak)); // String + Length to be send
-	  PROCESS_WAIT_EVENT_UNTIL(ev == sensors_event && data == &button_sensor);
+	  char* data[20];
+	  sprintf(data,"%ld",bigTime);
+	  printf("data %s\n",data);
+	  packetbuf_copyfrom(data,sizeof(data)); // String + Length to be send
+	  //	  packetbuf_copyfrom(&data_pak,sizeof(data_pak)); // String + Length to be send
+	  //PROCESS_WAIT_EVENT_UNTIL(ev == sensors_event && data == &button_sensor);
 	
 	  //etimer_set(&et,20* CLOCK_SECOND);
 	  //PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
@@ -104,9 +122,16 @@ PROCESS_THREAD(time_unicast_sender, ev, data)
 		  //printf("lokale (master) zeit: %lu entfernte zeit: %lu \n",time_local,data.time_master);
 		  //printf("unicast message sent from master  %u, %lu, %lu \n",  data.type,data.time_local,data.time_master);
 		  //printf("Message sent\n"); // debug message
+  		  printf("BigTime: %lu \n", bigTime);
 		  printf("verbindung ok\n");
-		  //unicast_send(&uc, &addr);
+		  unicast_send(&uc, &addr);
 	  }
+	  if(i<3){
+		  i++;
+	  }else if(i>=3){
+		  break;
+	  }
+  
   }
 
   PROCESS_END();
