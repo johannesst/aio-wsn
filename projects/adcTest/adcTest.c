@@ -41,60 +41,26 @@ void convert(void)
 	ADCSRA  |= (1 << ADIF);					// Clear ADC Conversion Interrupt Flag
 }
 
-// 2k
+// Kernel to filter 2k at 74400 sampling rate
 float kernelFloat[] =
 {
--0.0009198699708216283,
--0.0012695753139722737,
--0.002017413033257837,
--0.002827476505139998,
--0.0031855130624914504,
--0.0026482164558801757,
--0.0010728928512934721,
-0.0012735642454366897,
-0.0037770533905657905,
-0.005688756923090621,
-0.0064031652675276,
-0.005688756923090621,
-0.0037770533905658044,
-0.0012735642454366897,
--0.0010728928512934721,
--0.0026482164558801896,
--0.003185513062491447,
--0.00282747650514,
--0.0020174130332578383,
--0.0012695753139722737,
--0.0009198699708216283
+	-0.0009198699708216283,	-0.0012695753139722737,	-0.002017413033257837,	-0.002827476505139998,	-0.0031855130624914504,	-0.0026482164558801757,	-0.0010728928512934721,
+	0.0012735642454366897,	0.0037770533905657905,	0.005688756923090621,	0.0064031652675276,	0.005688756923090621,	0.0037770533905658044,	0.0012735642454366897,
+	-0.0010728928512934721,	-0.0026482164558801896,	-0.003185513062491447,	-0.00282747650514,	-0.0020174130332578383,	-0.0012695753139722737,	-0.0009198699708216283
 };
 
-
-/*
-// 8k
-float kernelFloat[] =
+void init_output()
 {
-0.0014956468455062967,
-0.0021168710099360973,
-0.002267305904014357,
-0.00009866364900789314,
--0.005175004272311524,
--0.011183968465635154,
--0.013181687390362441,
--0.007640653627245628,
-0.004225396471320253,
-0.016292134120949986,
-0.021370591509639825,
-0.016292134120949986,
-0.004225396471320253,
--0.0076406536272456554,
--0.013181687390362445,
--0.011183968465635156,
--0.005175004272311524,
-0.00009866364900789314,
-0.0022673059040143584,
-0.0021168710099360973,
-0.0014956468455062967
-};
-*/
+	// Prepare registers to output something to the speaker
+	// We need to do this twice in a row to disable the external Memory controller. (according to DooMMasteR)
+	MCUCR &= ~0b10000000;
+	MCUCR &= ~0b10000000;
+	// Set all 4 lines as outputs
+	DDRC |= 0b00111100;
+	// Set all 4 lines high
+	PORTC |= 0b00111100;
+}
+
 int kernelInt[21];
 
 PROCESS(adc_test_process, "adc test process");
@@ -102,15 +68,24 @@ AUTOSTART_PROCESSES(&adc_test_process);
 
 PROCESS_THREAD(adc_test_process, ev, data)
 {
+	int i,n; // generic loop indices
+	int buf[512]; // buffer for original sound samples
+	int out[512]; // buffer for processed sound samples	
+	int avg; // variable to hold some average value (is (re-)used in multiple ways)
+	long int sum; // variable to hold some sum (is (re-)used in multiple ways)
+ 	int nsi;
+	int cnt;
+	int last;
+	int tmp;
+	
+
 	PROCESS_BEGIN();
 
-	MCUCR &= ~0b10000000;
-	MCUCR &= ~0b10000000;
-
-	DDRC |= 0b00111100;
-
-	PORTC |= 0b00111100;
+	init_output();
+	leds_init();
+	init_adc();
 	
+	// Some garbage code. Whenever there are verification errors, just add or remove one of those lines
 	printf("##############dzdsfcdcuhlzceglizcuilecu####### adc_test_trhprocess talking now ###############\n");
 	printf("##############dzdsfcdcuhlzceglizcudsfsdfilecu####### adc_testhrt_process talking now ###############\n");
 	printf("##############dzdsfcdcuhlzceglizcuilecu####### adc_tthrest_process talking now ###############\n");
@@ -120,19 +95,10 @@ PROCESS_THREAD(adc_test_process, ev, data)
 	printf("##############dzdsfcdcuhlzceglirztzehcuilettrzcu####### adc_test_process talking now ###############\n");
 	printf("##############dzdsfcdcuhlzceglizcuilehutzjjcu####### adc_test_process talking now ###############\n");
 
-	int i,n;
+	// Convert the float kernel to integer values for faster computation
 	for(i = 0; i < 21; i++)
 		kernelInt[i] = (int)(kernelFloat[i] * 10000.0f);
-
-	leds_init();
-	init_adc();
-
-	int buf[512];
-	int out[512];	
-	int avg;
-	long int sum;
- 	int nsi, cnt, last, tmp;
-
+	
 	// Main loop
 	while(1) 
 	{
@@ -155,10 +121,12 @@ PROCESS_THREAD(adc_test_process, ev, data)
 			sum += abs(out[i]);
 		}
 
+		// avg = durchschnittliche Amplitude (nach abs)
 		avg = (int)(sum/492);
 
 		nsi = -1;
 
+		// Number of "nulldurchgänge" which had the right distance to the previous one.
 		int goodCount = 0;
 
 		for(i = 10; i < 502; i++)
