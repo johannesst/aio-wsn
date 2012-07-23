@@ -75,7 +75,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 	char string[30];
 	if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
     	{
-	  	snprintf(string,30,"%d@%lu@%lu",data_pak.type,data_pak.time_local,data_pak.time_master);
+	  	snprintf(string,30,"%1i@%10lu@%10lu",data_pak.type,data_pak.time_local,data_pak.time_master);
 	        packetbuf_copyfrom(&string,strlen(string)); // String + Length to be send
     	//	printf("Answermessage sent\n"); // debug message
         	unicast_send(&c, from);
@@ -94,8 +94,11 @@ PROCESS_THREAD(time_unicast_sender, ev, data)
   PROCESS_EXITHANDLER(unicast_close(&uc));
   
   PROCESS_BEGIN();
-  SENSORS_ACTIVATE(button_sensor);//activate button
+  //SENSORS_ACTIVATE(button_sensor);//activate button
   unicast_open(&uc, 290, &unicast_callbacks); // channel = 122
+  static struct etimer et;
+  etimer_set(&et, CLOCK_SECOND);
+  PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
   static long timeIterator=0;
   struct datagram data_pak;
   bigTime = getTime(&timeIterator); 
@@ -103,9 +106,6 @@ PROCESS_THREAD(time_unicast_sender, ev, data)
   data_pak.time_master=time_master=-255;
   data_pak.type=1;
   while(1){
-	  static struct etimer et;
-	  etimer_set(&et, CLOCK_SECOND);
-	  PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
 	  rimeaddr_t addr;
 //	  PROCESS_WAIT_EVENT_UNTIL(ev == sensors_event && data == &button_sensor);
 	  addr.u8[0] = 0x28; // Address of receiving Node
@@ -113,7 +113,7 @@ PROCESS_THREAD(time_unicast_sender, ev, data)
   	  bigTime = getTime(&timeIterator); 
 	  char string[30];
   	  data_pak.type=1;
-	  snprintf(string,30,"%i@%lu@%lu",data_pak.type,time_master,time_local);
+	  snprintf(string,30,"%1i@%10lu@%10lu",data_pak.type,time_master,time_local);
 	  //snprintf(string,30,"1@4294967041@59179502");
 	  packetbuf_copyfrom(string,strlen(string)+1); // String + Length to be send
 	  if(!rimeaddr_cmp(&addr, &rimeaddr_node_addr)){

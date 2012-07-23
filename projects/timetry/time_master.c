@@ -27,25 +27,14 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 	struct datagram data_pak;
 	printf("empfangener string: %s   mit länge %i \n",datapntr,strlen(datapntr));
 	
-	char* token;
-	token=strtok(datapntr,"@");
-	data_pak.type=strtol(token,NULL,10);
-	int i=0;
-	printf("token: %s\n",token);
-	while(token!=NULL){
-			token=strtok(NULL,"@");
-			//printf("token: %s\n",token);
-			if(i==0){
-				data_pak.time_local=strtoul(token,NULL,10);
-				printf("data_pak.time_local %s\n",data_pak.time_local);
-			}else if(i==1){
-				data_pak.time_master=strtoul(token,NULL,10);
-				printf("data_pak.time_master %s\n",data_pak.time_master);
-			}else{
-				break;
-			}
-			i=i+1;
-	}
+	//char* token;
+	//token=strtok(datapntr,"@");
+	//data_pak.type=atoi(token);//strtol(token,NULL,10);
+	int i=sscanf(datapntr,"%1i@%10lu@%10lu\0",&data_pak.type,&data_pak.time_local,&data_pak.time_master);
+	printf("type: %i\n",data_pak.type);
+	printf("time_local: %lu\n",data_pak.time_local);
+	printf("time_maste: %lu\n",data_pak.time_master);
+	
 //	printf("data.type %d\n",data_pak.type);
 	
 	switch(data_pak.type){
@@ -69,7 +58,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 	}
 	if(!rimeaddr_cmp(from, &rimeaddr_node_addr)){	
 	  	char string[30];
-	 	int size=snprintf(string,30,"%i@%lu@%lu",data_pak.type,data_pak.time_master,data_pak.time_local);
+	  	int size=snprintf(string,30,"%1i@%10lu@%10lu",data_pak.type,data_pak.time_local,data_pak.time_master);
 	        packetbuf_copyfrom(&string,sizeof(string)); // String + Length to be send
 		printf("sent message  %s with len %d \n",string,strlen(string));
         	unicast_send(c, from);
