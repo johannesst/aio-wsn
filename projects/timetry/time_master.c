@@ -5,6 +5,7 @@
 
 #include "contiki.h"
 #include "net/rime.h"
+#include "common.h"
 
 #include "dev/button-sensor.h"
 #include <stdio.h>
@@ -15,74 +16,53 @@
 
 /*---------------------------------------------------------------------------*/
 
-PROCESS(time_unicast_sender, "time Unicast Sender");
+PROCESS(time_unicast_sender, "time Unicast Sender MASTER");
 AUTOSTART_PROCESSES(&time_unicast_sender);
 
+static long timeIterator=0;
 
-
+/**
+ * Called by the system when a packet is received.
+ */
 static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 {
-  	char *datapntr;
-	datapntr = packetbuf_dataptr();
-	struct datagram data_pak;
-	printf("empfangener string: %s   mit länge %i \n",datapntr,strlen(datapntr));
-	
-	//char* token;
-	//token=strtok(datapntr,"@");
-	//data_pak.type=atoi(token);//strtol(token,NULL,10);
-	int i=sscanf(datapntr,"%1i@%10lu@%10lu\0",&data_pak.type,&data_pak.time_local,&data_pak.time_master);
-	printf("type: %i\n",data_pak.type);
-	printf("time_local: %lu\n",data_pak.time_local);
-	printf("time_maste: %lu\n",data_pak.time_master);
-	
-//	printf("data.type %d\n",data_pak.type);
+    	struct datagram data_pak;
+	readDatagram(c,from,&data_pak);
 	
 	switch(data_pak.type){
-		case 0:
-			break;
-		case 1:
-	  		bigTime = getTime(&timeIterator); 
-  			time_local=bigTime;
- 			time_master=bigTime;
-			data_pak.time_local=time_local;//gTime;
-			data_pak.time_master=time_master;//igTime;
+		case 1: // client asks for time
+			// data_pak.time_local remains unchanged
+			data_pak.time_master=getTimeSystem();
 			data_pak.type=2;
-			printf("Master. Zeit gesetzt lokale zeit: %lu \n ",time_local);//e_master
 			break;
-		case 2:
-			break;
-		//default:
-		//	bla;
-		//break
+
+		default:
+			return; // Lena: when anything other then 1 is the case, we do not send an answer
 		
 	}
-	if(!rimeaddr_cmp(from, &rimeaddr_node_addr)){	
-	  	char string[30];
-	  	int size=snprintf(string,30,"%1i@%10lu@%10lu",data_pak.type,data_pak.time_local,data_pak.time_master);
-	        packetbuf_copyfrom(&string,sizeof(string)); // String + Length to be send
-		printf("sent message  %s with len %d \n",string,strlen(string));
-        	unicast_send(c, from);
-    	}
-	
-	
+	// send reply only if the receiver is different from self
+
+	if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
+		sendDatagram(c, from, &data_pak);
 }
 
 static const struct unicast_callbacks unicast_callbacks = {recv_uc};
 static struct unicast_conn uc;
-//		printf("unicast message received from wrong node %d.%d: '%s'\n", from->u8[0], from->u8[1], datapntr);
-
 
 /*---------------------------------------------------------------------------*/
 
 PROCESS_THREAD(time_unicast_sender, ev, data)
 {
   PROCESS_EXITHANDLER(unicast_close(&uc));
-  
   PROCESS_BEGIN();
- // SENSORS_ACTIVATE(button_sensor);//activate button
-  unicast_open(&uc, 290, &unicast_callbacks); // channel = 122
+
+  unicast_open(&uc, 290, &unicast_callbacks); 
+  printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
+
   static struct etimer et;
   while(1){
+	// do nothing, except react to incoming messages
+
 	  /*
 	  etimer_set(&et, CLOCK_SECOND);
 	  PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));

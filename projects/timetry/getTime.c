@@ -8,17 +8,24 @@
 #include "clock.h"
 #include "timesync.h"
 
-long getTime(long *timeIterator){
-	
+
+static unsigned long int timeUpper = 0;
+
+/**
+ * Returns time as long int (64 bit) value. One unit equals about 0.13 milliseconds, which might be 1000 or 1024 CPU clocks at 8 MHz.
+ * IMPORTANT: You must call this function at least once every 8500ms - otherwise, the clock stops to work correctly.
+ *
+ * TODO Add another Contiki Process which runs every ~4000ms to update the value.
+ */
+unsigned long getTimeSystem()
+{
   static rtimer_clock_t tmp;
 
   rtimer_clock_t rtime=RTIMER_NOW();
-  if (rtime<tmp){
-	timeIterator++;
+  if ((unsigned long)rtime < (unsigned long)tmp){
+	timeUpper++;
   }
-  long i=(long) timeIterator;
   tmp=rtime;
-  long bigTime = ((unsigned long)rtime) + ((unsigned long)i << 16);
-  return bigTime;
+  return ((unsigned long)rtime) | (timeUpper << 16);
 }
 
