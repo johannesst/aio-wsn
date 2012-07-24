@@ -1,8 +1,13 @@
 #ifndef TIMESNYC_H
 #define TIMESNYC_H
 
-unsigned long getTime(long *);
+unsigned long getTimeCorrected();
 unsigned long getTimeSystem();
+
+long milliToTimer(long milli);
+long milliToSys(long milli);
+long sysToMilli(long sys);
+long sysToTimer(long sys);
 
 struct datagram{
 	int type; //switch (type){

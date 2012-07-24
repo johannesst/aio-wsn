@@ -16,10 +16,11 @@
 
 /*---------------------------------------------------------------------------*/
 
-PROCESS(time_unicast_sender, "time Unicast Sender MASTER");
-AUTOSTART_PROCESSES(&time_unicast_sender);
+PROCESS(master_time_sync, "master_time_sync");
+PROCESS_NAME(common_process);
+AUTOSTART_PROCESSES(&master_time_sync,&common_process);
 
-static long timeIterator=0;
+char iAmTheMaster; // defined, initialized and used in getTime.c
 
 /**
  * Called by the system when a packet is received.
@@ -51,10 +52,12 @@ static struct unicast_conn uc;
 
 /*---------------------------------------------------------------------------*/
 
-PROCESS_THREAD(time_unicast_sender, ev, data)
+PROCESS_THREAD(master_time_sync, ev, data)
 {
   PROCESS_EXITHANDLER(unicast_close(&uc));
   PROCESS_BEGIN();
+
+  iAmTheMaster = 1;
 
   unicast_open(&uc, 290, &unicast_callbacks); 
   printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);

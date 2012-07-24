@@ -22,11 +22,13 @@
 #define MASTER_ADDR_0 0x33
 /*---------------------------------------------------------------------------*/
 
-PROCESS(time_unicast_sender, "time Unicast Sender SLAVE");
-AUTOSTART_PROCESSES(&time_unicast_sender);
+PROCESS(slave_time_sync, "slave_time_sync");
+PROCESS_NAME(common_process);
+AUTOSTART_PROCESSES(&slave_time_sync,&common_process);
 
-static long int offset = 0;
-static unsigned long int lastSysTimeSent = 0;
+long int offset; // defined, initialized and used in getTime.c
+long int rate; // defined, initialized and used in getTime.c
+unsigned long int lastSysTimeSent; // defined, initialized and used in getTime.c
 
 /**
  * Called by the system when a packet is received.
@@ -45,17 +47,18 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			return;
 		case 2:
 			{
-			unsigned long int now = getTimeSystem() - offset;
+			unsigned long int now = getTimeSystem();
 			unsigned long int pingPongTime = now - data_pak.time_local;
-			printf("Message traveled back and forth in %lu time units. ", pingPongTime);
+			//printf("Message traveled back and forth in %lu time units. ", pingPongTime);
 			unsigned long int masterTimeNow = data_pak.time_master + pingPongTime / 2;
-			long int dif = now - masterTimeNow;
+			long int dif = (now - masterTimeNow) - offset;
 			offset += dif;
-			printf("Offset adjusted by %li, new offset is %li\n", dif, offset);
+			//printf("Offset adjusted by %li, new offset is %li\n", dif, offset);
 			long int timeBetweenMessages = now - lastSysTimeSent;
-			int rate = dif * 1000L / timeBetweenMessages;
-			printf("Time between Messages: %li. Change rate per time is %i.\n", timeBetweenMessages, rate);
+			rate = dif * 1000L / timeBetweenMessages;
+			//printf("Time between Messages: %li. Change rate per time is %i promill.\n", timeBetweenMessages, rate);
 			lastSysTimeSent = data_pak.time_local;
+
 			return;
 			}
 		default:
@@ -71,7 +74,7 @@ static struct unicast_conn uc;
 
 /*---------------------------------------------------------------------------*/
 
-PROCESS_THREAD(time_unicast_sender, ev, data)
+PROCESS_THREAD(slave_time_sync, ev, data)
 {
   PROCESS_EXITHANDLER(unicast_close(&uc));
   
@@ -88,23 +91,17 @@ PROCESS_THREAD(time_unicast_sender, ev, data)
 
   // some dummy data, used to change program size in case of verification errors.
   char* dummy = "sdfsdgdfdfffhewkfheskgfhesfhewthherghud";
-  printf("Used dummy data: %i", strlen(dummy));
-  printf("Used dummy data: %i", strlen(dummy));
-
-//  float f = -177.245463453f;
-//  printFloat(f);
-//  printf(" == -177.245463453f ?\n");
+  printf("Used dummy data: %i\n", strlen(dummy));
+  printf("Used dummy data: %i\n\n", strlen(dummy));
 
   masterAddr.u8[0] = MASTER_ADDR_0;
   masterAddr.u8[1] = MASTER_ADDR_1;
-
-
 
   data_pak.time_master=0L;
   data_pak.type=1;
 
   while(1){
-	data_pak.time_local = getTimeSystem() - offset;
+	data_pak.time_local = getTimeSystem();
 	sendDatagram(&uc, &masterAddr, &data_pak);
 
 	etimer_set(&et, CLOCK_SECOND);

@@ -8,6 +8,10 @@
 #include "clock.h"
 #include "timesync.h"
 
+long int offset = 0;
+long int rate = 0;
+char iAmTheMaster = 0;
+unsigned long int lastSysTimeSent = 0;
 
 static unsigned long int timeUpper = 0;
 
@@ -29,3 +33,47 @@ unsigned long getTimeSystem()
   return ((unsigned long)rtime) | (timeUpper << 16);
 }
 
+/**
+ * Returns corrected time as long int (64 bit) value. This is only working after 3 or 4 time sync messages have been exchanged between client and server.
+ *
+ * One unit equals about 0.13 milliseconds, which might be 1000 or 1024 CPU clocks at 8 MHz.
+ */
+unsigned long getTimeCorrected()
+{
+  long int sysTimeNow = getTimeSystem();
+
+  if(iAmTheMaster)
+	return sysTimeNow;
+
+  long int timeBetweenMessages = sysTimeNow - lastSysTimeSent;
+  long int driftSinceThen = rate * timeBetweenMessages / 1000L;
+
+
+  unsigned long ret = sysTimeNow - offset - driftSinceThen;
+  printf("gtc returning %lu.\n", ret);
+  return ret;
+}
+
+// CLOCK_SECOND * 3 ~~ 23892 system time units
+// CLOCK_SECOND ~~ 7964
+// 1 system time unit ~~ 0,125565ms
+
+long milliToTimer(long milli)
+{
+	return milli * ((long)(CLOCK_SECOND)) / 1000L;
+}
+
+long milliToSys(long milli)
+{
+	return milli * 7964L / 1000L;
+}
+
+long sysToMilli(long sys)
+{
+	return sys * 1000 / 7964L;
+}
+
+long sysToTimer(long sys)
+{
+	return sys * ((long)(CLOCK_SECOND)) / 7964L;
+}
