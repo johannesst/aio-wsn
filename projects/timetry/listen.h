@@ -7,5 +7,6 @@
 void initAdc();
 void convert();
 char listenForBeep();
+void debugPrint();
 
 #endif

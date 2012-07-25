@@ -82,6 +82,8 @@ PROCESS_THREAD(slave_time_sync, ev, data)
 	// some dummy data, used to change program size in case of verification errors.
 	char* dummy = "sdfsdgdfdfffhewkfheskgfhesfhewthherghud";
 	printf("Used dummy data: %i\n", strlen(dummy));
+	printf("Used dummy data: %i\n", strlen(dummy));
+	printf("Used dummy data: %i\n", strlen(dummy));
 	printf("Used dummy data: %i\n\n", strlen(dummy));
 
 	// Declare variables. Everything outside the loop should be static, because everything that is not static will loose its content when we enter the loop.

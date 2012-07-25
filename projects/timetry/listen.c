@@ -11,7 +11,6 @@ static int tmp;
 static unsigned int result;
 
 static int ringBuf[64];
-
 static int ringIndex = 0;
 
 static char ringBufDif[64];
@@ -77,21 +76,29 @@ char listenForBeep()
 		// Zeit (in samples, nicht timeticks) seit der letzten Nullstelle
 		int dif = t - lastZero;
 
+		//printf("%i\t", dif);
+
 		ringBufDif[ringIndex] = dif;
 		ringIndexDif = (ringIndexDif + 1) & 63;
+
+		//if(!ringIndexDif)
+		//	debugPrint();
 
 		// Ist der Zeitabstand zur letzten Nullstelle charakteristisch für unsere Frequenz?
 		if(dif >= min && dif <= max)
 		{
-			// Gültige Halbwellen Hochzählen
+			// Gültige Wellen Hochzählen
 			validCount++;
 
 			// Haben wir fünf gültige Halbwellen hintereinander, und haben wir überhaupt noch platz, die zu speichern?
 			if(validCount == 5) // && bufi < 512)  
 			{
 				// ist es schon lange genug her, dass wir so eine Folge hatten?
-				if(t > t + 1000)
+				if(t > lastTime + 5000)
+				{
+					printf("I found a beeep#########################\n");
 					ret = 1;
+				}
 				lastTime = t;
 			}
 
@@ -115,4 +122,16 @@ char listenForBeep()
 	last = tmp;
 
 	return ret;
+}
+
+void debugPrint()
+{
+	int u;	
+	printf("\n\nDEBUG:\nvalue, timeDif\n");
+							for(u = 0; u < 64; u++)
+							{
+								int offs = (backSum >> 6);
+								printf("%i, %i\n", (int)ringBuf[(ringIndex + u) & 63] - offs, (int)ringBufDif[(ringIndexDif + u) & 63]);
+							}
+	printf("\n(DEBUG Ende)\n\n");
 }

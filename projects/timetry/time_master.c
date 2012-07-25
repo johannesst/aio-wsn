@@ -60,6 +60,7 @@ PROCESS_THREAD(master_time_sync, ev, data)
 
   initNetwork(&unicast_callbacks);
 
+  printf("FUFUUUUUUU verification Erroe!");
   printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
 
   static struct etimer et;

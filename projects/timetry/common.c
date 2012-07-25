@@ -4,8 +4,10 @@
 #include <stdio.h>
 #include <string.h>
 #include "net/rime.h"
+#include "dev/leds.h"
 
 #include "common.h"
+#include "dev/button-sensor.h"
 
 
 
@@ -63,6 +65,7 @@ PROCESS_THREAD(common_process, ev, data)
   printf("Common process started. Waiting for time sync to settle.\n");
   initOutput();
   initAdc();
+  SENSORS_ACTIVATE(button_sensor);
 
   static struct etimer et2;
   static long fiveSec;
@@ -86,26 +89,9 @@ PROCESS_THREAD(common_process, ev, data)
 	nextBeepTime = (tc / fiveSec + 1) * fiveSec;
 	unsigned long int timeToWait = nextBeepTime - tc;
 
-	printf("Planning to beep at %lu ms abs.\n", sysToMilli(nextBeepTime));
-
-/*
-	while(timeToWait > twoHundredMilli)
-	{
-		if(timeToWait > fiveSec * 2)
-		{
-			printf("Something went wrong with that plan, planning again...");
-			goto planAgain;
-		}
-		unsigned long partTime = timeToWait * 4 / 5;
-		printf("Now it is %lu ms abs. Still %lu ms to wait. Going to sleep for %lu ms.\n", sysToMilli(tc), sysToMilli(timeToWait), sysToMilli(partTime));
-		etimer_set(&et2, sysToTimer(partTime));
-		PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
-		tc =  getTimeCorrected();
-		timeToWait = nextBeepTime - tc;
-	}
-*/
-	printf("Now it is %lu ms abs. Only %lu ms to wait, actively waiting now.\n", sysToMilli(tc), sysToMilli(timeToWait));
-	while(tc < nextBeepTime)
+	if(tc < nextBeepTime - twoHundredMilli)	
+		printf("Still %lu ms to wait, waiting and listening now.\n", sysToMilli((nextBeepTime - twoHundredMilli) - tc));
+	while(tc < nextBeepTime - twoHundredMilli)
 	{
 		int i;
 		unsigned long int start = getTimeSystem();
@@ -121,11 +107,20 @@ PROCESS_THREAD(common_process, ev, data)
 		unsigned long int end = getTimeSystem();
 		//printf("Took 1000 samples in %lu ms.", sysToMilli(end-start));
 		PROCESS_PAUSE();
+		if(ev == sensors_event && data == &button_sensor)
+			debugPrint();
+	}
+
+	printf("Only %lu ms to wait, busy deaf waiting now.\n", sysToMilli(nextBeepTime - tc));
+	while(tc < nextBeepTime)
+	{
+		tc =  getTimeCorrected();
 	}
 	
+	tc =  getTimeCorrected();
 	printf("BEEEEEEP! (I was %lu ms late)\n", sysToMilli(tc - nextBeepTime));
 	beepOn(0);
-	etimer_set(&et2, milliToTimer(250));
+	etimer_set(&et2, milliToTimer(50));
 	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
 	beepOff(0);
   }
@@ -141,6 +136,7 @@ void beepOn(char beepPort)
 	{
 		case 0:
 			PORTC |= 0b00100000;
+			leds_on(LEDS_GREEN);
 			break;
 	}	
 }
@@ -154,6 +150,7 @@ void beepOff(char beepPort)
 	{
 		case 0:
 			PORTC &= 0b11011111;
+			leds_off(LEDS_GREEN);
 			break;
 	}	
 }
