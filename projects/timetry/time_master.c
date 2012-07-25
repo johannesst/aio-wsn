@@ -13,6 +13,7 @@
 #include "rtimer.h"
 #include "clock.h"
 #include "timesync.h"
+#include "display.h"
 
 /*---------------------------------------------------------------------------*/
 
@@ -37,7 +38,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			data_pak.type=2;
 			break;
 		case 5: // client reports a beep
-			printf("Client %x-%x heard a beep at %lu.\n", from->u8[1], from->u8[0], data_pak.time_local);
+			printf("Client %x-%x heard a beep at %lu (= %lu ms).\n", from->u8[1], from->u8[0], data_pak.time_local, sysToMilli(data_pak.time_local));
 			return;
 		default:
 			return; // Lena: when anything other then 1 is the case, we do not send an answer
@@ -66,10 +67,17 @@ PROCESS_THREAD(master_time_sync, ev, data)
   printf("fffffffffffFUFUUUuuuuuuUUUU verification Erroe!");
   printf("FUFUUUuuuuuuUUUU verification Erroe!");
   printf("FUFUUUuuuuuuUUUU verification Erroe!");
+  drawTable();
+  gotoXY(1,20);
   printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
-
+ 
   static struct etimer et;
   while(1){
+  	gotoXY(1,1);
+	unsigned long int time = getTimeCorrected();
+	
+	printf("Current time: %8lu,%3lu s", time / 1000, time % 1000);
+	gotoXY(1,20);
 	// do nothing, except react to incoming messages
 
 	  /*
@@ -97,7 +105,9 @@ PROCESS_THREAD(master_time_sync, ev, data)
 	//  unicast_send(&uc, &addr);
 	 // printf("unicast message sent   %s with length %d \n",  string,strlen(string)+1);//ta.time_local,data.time_master);
 	 }*/
-	  PROCESS_YIELD(); 
+	etimer_set(&et, milliToTimer(50));
+	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
+	//PROCESS_WAIT();
   }
   
   
