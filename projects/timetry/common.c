@@ -73,7 +73,7 @@ PROCESS_THREAD(common_process, ev, data)
 
   fiveSec = milliToSys(5000);
   twoHundredMilli = milliToSys(200);
-  
+  nextBeepTime = 0 ; 
 
   etimer_set(&et2, milliToTimer(5000));
   PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));

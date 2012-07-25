@@ -6,7 +6,7 @@
 
 // Network stuff
 #define MASTER_ADDR_1 0x01
-#define MASTER_ADDR_0 0x22
+#define MASTER_ADDR_0 0x28
 
 struct unicast_conn uc;
 rimeaddr_t masterAddr;
@@ -18,7 +18,7 @@ void readDatagram(struct unicast_conn *c, const rimeaddr_t *from, struct datagra
 
 
 // Audio out
-unsigned long int nextBeepTime=0;
+unsigned long int nextBeepTime;
 void beepOn(char beepPort);
 void beepOff(char beepPort);
 void beepAllOff();
