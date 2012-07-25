@@ -96,11 +96,11 @@ PROCESS_THREAD(master_time_sync, ev, data)
   masterAddr.u8[1] = MASTER_ADDR_1;
   data_pak.type=4;
   while(1){
-  	gotoXY(1,1);
+//	gotoXY(1,1);
 	unsigned long int time = getTimeCorrected();
 	
-	printf("Current time: %8lu,%3lu s", time / 1000, time % 1000);
-	gotoXY(1,20);
+//	printf("Current time: %8lu,%3lu s", time / 1000, time % 1000);
+//	gotoXY(1,20);
 
 
 	// for any element in slave_list send a beep command
@@ -108,7 +108,9 @@ PROCESS_THREAD(master_time_sync, ev, data)
 	int i;
 	struct slave_list_struct *tmp_slave;
 	tmp_slave=list_head(slave_list);
+	printf("Now iterating over the list of slaves:\n");
 	for(i=0;i<list_length(tmplist);i++){
+		printf("Object %i in slave list: %x-%x\n",i,tmp_slave->slaveAddr.u8[1],tmp_slave->slaveAddr.u8[0]);
 		data_pak.time_local=getTimeCorrected();
 		data_pak.time_master=getTimeCorrected()+milliToSys(1000);
 		sendDatagram(&uc,&masterAddr,&data_pak);	
