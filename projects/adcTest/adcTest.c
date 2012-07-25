@@ -18,18 +18,17 @@ long getTime(long *timeIterator){
   static rtimer_clock_t tmp;
 
   rtimer_clock_t rtime=RTIMER_NOW();
-  if (rtime<tmp){
-	timeIterator++;
+  if ((unsigned long)rtime < (unsigned long)tmp){
+	(*timeIterator)++;
   }
-  long i=(long) timeIterator;
   tmp=rtime;
-  long bigTime = ((unsigned long)rtime) + ((unsigned long)i << 16);
+  long bigTime = ((unsigned long)rtime) | (((unsigned long)*timeIterator) << 16);
   return bigTime;
 }
 
 
 static unsigned int result;
-static long timeIterator;
+static unsigned long int timeIterator = 0;
 
 /*! \brief Initializes ADC Peripheral
      Configuration Registers */
@@ -38,7 +37,7 @@ void init_adc(void)
 {
 	DDRB    |= 0b00000001;        			// Set PORTB.0  as output
 	PORTB   |= 0b00000001;        			// Initialize PORTB.0 with logic "one"
-	ADCSRA   = 0b10000001;        			// Enable ADC with Clock prescaled by some value (0b10 = 2 => 2^2 = factor 4) 37200 or 74400
+	ADCSRA   = 0b10000000;        			// Enable ADC with Clock prescaled by some value (0b10 = 2 => 2^2 = factor 4) 37200 or 74400
 	DIDR0    = 0b00111111;        			// Disable Digital Input on ADC Channel 0 to reduce power consumption
 	ADMUX    = 0b11000000;       			// Disable Left-Adjust and select Internal 1.1V reference and ADC Channel 0 as input
 }
@@ -102,6 +101,16 @@ void textcolor(int attr, int fg, int bg)
 }
 
 
+void waitMS(long int ms)
+{
+	long int cyc = 22L * ms;
+	long int i;
+	for(i = 0; i < cyc; i++)
+	{
+		convert();
+	}
+}
+
 PROCESS(adc_test_process, "adc test process");
 AUTOSTART_PROCESSES(&adc_test_process);
 
@@ -121,139 +130,154 @@ PROCESS_THREAD(adc_test_process, ev, data)
 	printf("##############dzdsffwefewfcdcuhlzceglizcuilecu####trh### adc_test_process talking now ###############\n");
 	printf("##############dzdsfcdcuhlzcgeeglizcuilecu#######thr adc_test_process talking now ###############\n");
 	printf("##############dzdsfcdcuhdsfceggtrlizcuilecu###hthr#### adc_test_process talking now ###############\n");
-	printf("##############dzdsfcdcuhlzceglirztzehcuilettrzcu####### adc_test_process talking now ###############\n");
+//	printf("##############dzdsfcdcuhlzceglirztzehcuilettrzcu####### adc_test_process talking now ###############\n");
 //	printf("##############dzdsfcdcuhlzceglizcuilehutzjjcu####### adc_test_process talking now ###############\n");
 
 
 	#define NPI_MAX 8
 	
-	int i, n; // generic loop index
+	int n, u; // generic loop index
 	static int last;
 	static int tmp;
-	static long int np[NPI_MAX];
-	static int npi = 0;	
 
-	static int ringBuf[100];
-
-	memset(ringBuf, 0, sizeof(int) * 100);
+	static int ringBuf[64];
+	memset(ringBuf, 0, sizeof(int) * 64);
 	static int ringIndex = 0;
 
+	static char ringBufDif[64];
+	memset(ringBufDif, 0, sizeof(char) * 64);
+	static int ringIndexDif = 0;
+
 	static long int backSum = 0; // Summe der letzten 100 samples 
-
 	static long int t = 0;
-
-	static int l = 0;
-
-	int u = NPI_MAX - 1;
-	static int min;
-	min = u * 6.25 * 0.8;
-	static int max;
-	max = u * 6.25 * 1.2;
-	static long int bufTime[512];
-	//int bufRaw[512];
-	//static char buf[512];
+	static long int bufTime[100];
 	static int bufi = 0;
-	int time, lastFit;
+	unsigned long int time, lastZero = 0;
 	static long int lastTime;
+	static unsigned long int lastTimeBeep = 0;
 
-	min = 6;
-	max = 9;
+	#define min 7
+	#define max 9
 
 	static char validCount = 0;
-	// Main loop
+
+	
+	static int i = 0;
+
+	// Ständig wiederholen, aber dabei nur alle 1000 Samples unterbrechen lassen
 	while(1) 
 	{
-		l++;
-//		printf("l:%i\n", l);
+		++i;
+
+//		time = getTime(&timeIterator);
+//		printf("Nothing @ time %u,%u (timeIterator: %u)\n", (unsigned int)(time >> 16), (unsigned int)time, timeIterator);
 		for(n = 0; n < 1000; n++)
 		{
 			t ++;
+
+		
 			convert();
-			time = (int)getTime(&timeIterator);
 
-
+			// Möglichst exakt die Zeit, zu der gesamplet wurde
+			time = getTime(&timeIterator);
+			if(time > lastTimeBeep + 10000L)
+			{
+				printf("Beep @ time %u,%u\n", (unsigned int)(time >> 16), (unsigned int)time);
+				lastTimeBeep = time;
+				PORTC |= 0b00100000;
+				waitMS(100);
+				PORTC &= 0b11011111;
+			}
+		
+			// Laufenden Mittelwert aktualisieren
 			backSum -= (long int)ringBuf[ringIndex];
 			ringBuf[ringIndex] = result;
 			backSum += (long int)result;
 			ringIndex = (ringIndex + 1) & 63;
 
+			// Kurve ein-nullen, indem der laufende Mittelwert abgezogen wird (effiziente Teilung durch 64 per Bitshift).
 			tmp = result - (backSum >> 6);
-/*
-			if(t > 512 && t < 1024)
+
+			// Gab es eine Nullstelle?
+			if((last < 0 && tmp > 0)) // nur noch steigende Flanken || (last > 0 && tmp < 0))
 			{
-				buf[t - 512] = tmp;
-				bufRaw[t - 512] = result;
-			//	bufTime[t - 512] = time;
-			}
+				// Zeit (in samples, nicht timeticks) seit der letzten Nullstelle
+				int dif = t - lastZero;
 
-*/
-//			printf("ri: %i\tv+: %i\tv0: %i\tbs:%i\n", ringIndex, result, tmp, (int)backSum);
-		
-
-			if((last < 0 && tmp > 0) || (last > 0 && tmp < 0))
-			{
-				// np[npi] = t;
-				// Gesamtdauer der letzten u Perioden. Idealerweise wäre das u*3.
-//				int dif = t - np[(npi+7) & 7];
-				int dif = t - lastFit;
-
+				ringBufDif[ringIndex] = dif;
+				ringIndexDif = (ringIndexDif + 1) & 63;
 
 				/*
-buf[bufi++] = dif;
-				if(bufi == 512)
+				bufTime[bufi++] = dif;
+				
+				if(bufi == 100)
 				{	
-					printf("\n\n");
-					for(u = 0; u < 512; u++)
-						printf("%i\n",buf[u]);
+					printf("\n100 dif times will follow now:\n");
+					for(u = 0; u < 99; u++)
+						printf("%u\n",(unsigned int)(bufTime[u]));
 					printf("\n\n");
 					bufi = 0;
-				}
-*/
+				}*/
 
-//				printf("%i\t", dif);
-				//printf("%i, %i, %i\n", time, (int)(t - np[(npi-2+8) & 7]), dif);
-//				if(bufi < 512)
-//					buf[bufi++] = dif;
+				// Ist der Zeitabstand zur letzten Nullstelle charakteristisch für unsere Frequenz?
 				if(dif >= min && dif <= max)
 				{
+					// Gültige Halbwellen Hochzählen
 					validCount++;
-					if(validCount == 5 && bufi < 512)
+
+					// Haben wir fünf gültige Halbwellen hintereinander, und haben wir überhaupt noch platz, die zu speichern?
+					if(validCount == 5) // && bufi < 512)  
 					{
+						// ist es schon lange genug her, dass wir so eine Folge hatten?
 						if(time > lastTime + 1000)
-							bufTime[bufi++] = time;
+						{
+						// Für die Ausgabe merken							
+							// bufTime[bufi++] = time; 
+
+							// Zu Debugzwecken die letzten 64 Samples ausgeben, aber vorher noch 16 Nullen:
+							/*for(u = 0; u < 64; u++)							
+							{
+								printf("0\n");
+							}
+*/
+
+							leds_on(LEDS_GREEN);
+							waitMS(200);
+							leds_off(LEDS_GREEN);
+
+							printf("Time since last beep: %i\n",(int)(time - lastTime));
+/*
+							for(u = 0; u < 64; u++)
+							{
+								int offs = (backSum >> 6);
+								printf("%i, %i\n", (int)ringBuf[(ringIndex + u) & 63] - offs, (int)ringBufDif[(ringIndexDif + u) & 63]);
+							}
+*/
+						}
 						lastTime = time;
-					//	printf("Time: %i\n", time);
 					}
+
+					// Mehr als 20 halbwellen wollen wir nicht zählen, da es sonst ewig dauert, die wieder ab zu bauen
 					if(validCount > 20)
 						validCount = 20;
-//					textcolor(BRIGHT, GREEN, BLACK);
-//					printf("%i\t",dif);
-//						leds_on(LEDS_GREEN);
 				}
 				else
 				{
+					// ungültige Halbwelle abziehen, dabei nicht unter 0 kommen
 					validCount--;
 					if(validCount < 0)
 						validCount = 0;
 					
-//					textcolor(BRIGHT, RED, BLACK);
-//					printf("%i\t",dif);
-//						leds_off(LEDS_GREEN);
 				}
-				//npi = (npi + 1) % NPI_MAX;				
-				lastFit = t;
+				// Dieser Nulldurchgang ist ab jetzt der letzte Nulldurchgang
+				lastZero = t;
 			}
 
+			// Aktuelles Sample als letztes Sample merken
 			last = tmp;
-//		printf("%i\n",bufi);
-			if(bufi == 60)
-			{	
-				printf("\n\n");
-				for(u = 0; u < 59; u++)
-					printf("%u, %u\n",(unsigned int)(bufTime[u]>>16),(unsigned int)(bufTime[u]));
-				printf("\n\n");
-				bufi = 0;
-			}
+
+			// Haben wir 60 Piep-Beginn-Zeiten gesammelt? Dann jetzt gesammelt ausgeben.
+
 
 		}		
 		PROCESS_PAUSE();

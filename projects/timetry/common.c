@@ -3,7 +3,20 @@
 #include "timesync.h"
 #include <stdio.h>
 #include <string.h>
+#include "net/rime.h"
+#include "dev/leds.h"
 
+#include "common.h"
+#include "dev/button-sensor.h"
+
+
+
+void initNetwork(struct unicast_callbacks* cb)
+{
+	unicast_open(&uc, 290, cb);
+	masterAddr.u8[0] = MASTER_ADDR_0;
+  	masterAddr.u8[1] = MASTER_ADDR_1;
+}
 
 /**
  * Sends a datagram. All parametes must point to initalized data structures.
@@ -48,20 +61,27 @@ PROCESS_THREAD(common_process, ev, data)
 {
   PROCESS_BEGIN();
 
+
+  printf("Common process started. Waiting for time sync to settle.\n");
   initOutput();
+  initAdc();
+  SENSORS_ACTIVATE(button_sensor);
 
   static struct etimer et2;
   static long fiveSec;
-  fiveSec = milliToSys(5000);
   static long twoHundredMilli;
-  twoHundredMilli = milliToSys(200);
   static unsigned long int nextBeepTime;
-  unsigned long int tc;
+  static unsigned long int tc;
 
-  printf("Common process started. Waiting for time sync to settle.\n");
+  fiveSec = milliToSys(5000);
+  twoHundredMilli = milliToSys(200);
+  
+
   etimer_set(&et2, milliToTimer(5000));
   PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
   printf("Sync should be ok now. Starting...\n");
+
+  static struct datagram data_pak;
 
 
   while(1){
@@ -71,34 +91,79 @@ PROCESS_THREAD(common_process, ev, data)
 	nextBeepTime = (tc / fiveSec + 1) * fiveSec;
 	unsigned long int timeToWait = nextBeepTime - tc;
 
-	printf("Planning to beep at %lu ms abs.\n", sysToMilli(nextBeepTime));
-	while(timeToWait > twoHundredMilli)
+	//if(tc < nextBeepTime - twoHundredMilli)	
+	//	printf("Still %lu ms to wait, waiting and listening now.\n", sysToMilli((nextBeepTime - twoHundredMilli) - tc));
+	while(tc < nextBeepTime - twoHundredMilli)
 	{
-		if(timeToWait > fiveSec * 2)
+		int i;
+		for(i = 0; i < 1000; i++)
 		{
-			printf("Something went wrong with that plan, planning again...");
-			goto planAgain;
+			char erg = listenForBeep();
+			if(erg)
+			{
+				tc =  getTimeCorrected();
+				printf("Piep %i in Common registriert, um %lu.\n", (int)erg , tc);
+				data_pak.time_master=0L;
+				data_pak.type=5;
+				data_pak.time_local = tc;
+				sendDatagram(&uc, &masterAddr, &data_pak);
+			}
 		}
-		unsigned long partTime = timeToWait * 4 / 5;
-		printf("Now it is %lu ms abs. Still %lu ms to wait. Going to sleep for %lu ms.\n", sysToMilli(tc), sysToMilli(timeToWait), sysToMilli(partTime));
-		etimer_set(&et2, sysToTimer(partTime));
-		PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
 		tc =  getTimeCorrected();
-		timeToWait = nextBeepTime - tc;
+		PROCESS_PAUSE();
+		if(ev == sensors_event && data == &button_sensor)
+			debugPrint();
 	}
 
-	printf("Now it is %lu ms abs. Only %lu ms to wait, actively waiting now.\n", sysToMilli(tc), sysToMilli(timeToWait));
+	//printf("Only %lu ms to wait, busy deaf waiting now.\n", sysToMilli(nextBeepTime - tc));
 	while(tc < nextBeepTime)
 	{
 		tc =  getTimeCorrected();
 	}
 	
+	tc =  getTimeCorrected();
 	printf("BEEEEEEP! (I was %lu ms late)\n", sysToMilli(tc - nextBeepTime));
-	PORTC |= 0b00100000;
-	etimer_set(&et2, milliToTimer(250));
+	beepOn(0);
+	etimer_set(&et2, milliToTimer(50));
 	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
-	PORTC &= 0b11011111;
+	beepOff(0);
   }
   
   PROCESS_END();
 }
+
+// Schaltet einen der Pieper an. 0 ist der default-onboard-pieper
+void beepOn(char beepPort)
+{
+	// Das könnte man auch als shift-Operation machen, aber da die Port-Reihenfolge nicht zwingend der Bit-Reihenfolge entspricht, ist das einfacher so. Außerdem gibt es derzeit nur den Port 0.
+	switch(beepPort)
+	{
+		case 0:
+			PORTC |= 0b00100000;
+			leds_on(LEDS_GREEN);
+			break;
+	}	
+}
+
+
+// Schaltet einen der Pieper aus. 0 ist der default-onboard-pieper
+void beepOff(char beepPort)
+{
+	// Das könnte man auch als shift-Operation machen, aber da die Port-Reihenfolge nicht zwingend der Bit-Reihenfolge entspricht, ist das einfacher so. Außerdem gibt es derzeit nur den Port 0.
+	switch(beepPort)
+	{
+		case 0:
+			PORTC &= 0b11011111;
+			leds_off(LEDS_GREEN);
+			break;
+	}	
+}
+
+
+// Schaltet alle Pieper aus.
+void beepAllOff()
+{
+	PORTC &= 0b11000011;
+}
+
+

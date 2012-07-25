@@ -50,7 +50,6 @@ unsigned long getTimeCorrected()
 
 
   unsigned long ret = sysTimeNow - offset - driftSinceThen;
-  printf("gtc returning %lu.\n", ret);
   return ret;
 }
 

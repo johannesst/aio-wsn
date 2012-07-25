@@ -10,7 +10,7 @@ all: time_master time_slave
 
 CONTIKI_SOURCEFILES += getTime.c
 CONTIKI_SOURCEFILES += common.c
-#CONTIKI_SOURCEFILES += datagramstr.c
+CONTIKI_SOURCEFILES += listen.c
 
 
 
