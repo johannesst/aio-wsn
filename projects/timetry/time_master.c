@@ -13,6 +13,7 @@
 #include "rtimer.h"
 #include "clock.h"
 #include "timesync.h"
+#include "list.h"
 
 /*---------------------------------------------------------------------------*/
 
@@ -28,7 +29,20 @@ char iAmTheMaster; // defined, initialized and used in getTime.c
 static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 {
     	struct datagram data_pak;
+	struct  slave_list_struct slave_item;
+	slave_item.slaveAddr=from;
+	slave_item.connection=c;
 	readDatagram(c,from,&data_pak);
+	int i;//
+	struct slave_list_struct tmp_slave;
+	tmp_slave=list_head(slave_list);
+	for(i=0;i<list_length(slave_list);i++){
+		if(tmp_slave.slaveAddr=from){
+			list_remove(slave_list,tmp_slave);
+		}
+		tmp_slave=list_item_next(tmp_slave);
+	}
+	list_add(slave_list,slave_item);
 	
 	switch(data_pak.type){
 		case 1: // client asks for time
@@ -36,6 +50,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			data_pak.time_master=getTimeSystem();
 			data_pak.type=2;
 			break;
+		case 3:
 
 		default:
 			return; // Lena: when anything other then 1 is the case, we do not send an answer
@@ -59,38 +74,17 @@ PROCESS_THREAD(master_time_sync, ev, data)
 
   iAmTheMaster = 1;
 
+  list_init(slave_list);
   unicast_open(&uc, 290, &unicast_callbacks); 
   printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
 
   static struct etimer et;
   while(1){
 	// do nothing, except react to incoming messages
-
-	  /*
-	  etimer_set(&et, CLOCK_SECOND);
-	  PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
-	  bigTime = getTime(&timeIterator); 
-	  printf("Lokale Zeit: %lu \n",bigTime);
-	  */
-	//datapntr[3]='\0';
-	/*
-	struct datagram data_pak;
-	data_pak.time_local=0;
-	data_pak.time_master=0;
-	data_pak.type=0;
-	etimer_set(&et, CLOCK_SECOND);
-	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
-	char string[30];
-	snprintf(string,30,"%i@%lu@%lu",data_pak.type,time_master,time_local);
-	packetbuf_copyfrom(&string,strlen(string)+1); // String + Length to be send
-	rimeaddr_t addr;
-//	  PROCESS_WAIT_EVENT_UNTIL(ev == sensors_event && data == &button_sensor);
-	addr.u8[0] = 0x22; // Address of receiving Node
-	addr.u8[1] = 0x1;
-	if(!rimeaddr_cmp(&addr, &rimeaddr_node_addr)){
-	//  unicast_send(&uc, &addr);
-	 // printf("unicast message sent   %s with length %d \n",  string,strlen(string)+1);//ta.time_local,data.time_master);
-	 }*/
+	// for any element in slave_list send a beep command
+	list_t tmplist=slave_list;	
+	int i;
+	for(i=0;i<list_length(tmplist)
 	  PROCESS_YIELD(); 
   }
   

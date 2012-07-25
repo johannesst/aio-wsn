@@ -19,7 +19,7 @@
 /*---------------------------------------------------------------------------*/
 // Config area:
 #define MASTER_ADDR_1 0x01
-#define MASTER_ADDR_0 0x33
+#define MASTER_ADDR_0 0x28
 /*---------------------------------------------------------------------------*/
 
 PROCESS(slave_time_sync, "slave_time_sync");
@@ -90,7 +90,7 @@ PROCESS_THREAD(slave_time_sync, ev, data)
   printf("I am a SLAVE, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
 
   // some dummy data, used to change program size in case of verification errors.
-  char* dummy = "sdfsdgdfdfffhewkfheskgfhesfhewthherghud";
+ char* dummy = "sdfsdgdfdfffhewkfheskgfhesfhewthherghudhdfdlhd";
   printf("Used dummy data: %i\n", strlen(dummy));
   printf("Used dummy data: %i\n\n", strlen(dummy));
 
