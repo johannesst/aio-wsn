@@ -1,10 +1,11 @@
+
 #ifndef TIMESNYC_H
 #define TIMESNYC_H
 
-struct(slave_list_struct){
-	struct *next;
+struct slave_list_struct{
+	struct slave_list_struct  *next;
 	rimeaddr_t *slaveAddr;
-}
+};
 
 LIST(slave_list);
 			
