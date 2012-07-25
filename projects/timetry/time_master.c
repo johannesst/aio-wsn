@@ -27,7 +27,7 @@ char iAmTheMaster; // defined, initialized and used in getTime.c
  */
 static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 {
-    	struct datagram data_pak;
+   	struct datagram data_pak;
 	readDatagram(c,from,&data_pak);
 	
 	switch(data_pak.type){
@@ -48,7 +48,6 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 }
 
 static const struct unicast_callbacks unicast_callbacks = {recv_uc};
-static struct unicast_conn uc;
 
 /*---------------------------------------------------------------------------*/
 
@@ -59,7 +58,8 @@ PROCESS_THREAD(master_time_sync, ev, data)
 
   iAmTheMaster = 1;
 
-  unicast_open(&uc, 290, &unicast_callbacks); 
+  initNetwork(&unicast_callbacks);
+
   printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
 
   static struct etimer et;

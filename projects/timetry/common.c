@@ -3,8 +3,18 @@
 #include "timesync.h"
 #include <stdio.h>
 #include <string.h>
+#include "net/rime.h"
 
 #include "common.h"
+
+
+
+void initNetwork(struct unicast_callbacks* cb)
+{
+	unicast_open(&uc, 290, cb);
+	masterAddr.u8[0] = MASTER_ADDR_0;
+  	masterAddr.u8[1] = MASTER_ADDR_1;
+}
 
 /**
  * Sends a datagram. All parametes must point to initalized data structures.
@@ -49,6 +59,8 @@ PROCESS_THREAD(common_process, ev, data)
 {
   PROCESS_BEGIN();
 
+
+  printf("Common process started. Waiting for time sync to settle.\n");
   initOutput();
   initAdc();
 
@@ -62,7 +74,6 @@ PROCESS_THREAD(common_process, ev, data)
   twoHundredMilli = milliToSys(200);
   
 
-  printf("Common process started. Waiting for time sync to settle.\n");
   etimer_set(&et2, milliToTimer(5000));
   PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
   printf("Sync should be ok now. Starting...\n");
@@ -96,9 +107,19 @@ PROCESS_THREAD(common_process, ev, data)
 	printf("Now it is %lu ms abs. Only %lu ms to wait, actively waiting now.\n", sysToMilli(tc), sysToMilli(timeToWait));
 	while(tc < nextBeepTime)
 	{
-		listenForBeep();
+		int i;
+		unsigned long int start = getTimeSystem();
+		for(i = 0; i < 1000; i++)
+		{
+			char erg = listenForBeep();
+			if(erg)
+			{
+				printf("Piep %i in Common registriert, um %lu.\n", (int)erg , tc);
+			}
+		}
 		tc =  getTimeCorrected();
-		//printf("Waiting for %lu, Now: %lu\n", nextBeepTime, tc);
+		unsigned long int end = getTimeSystem();
+		//printf("Took 1000 samples in %lu ms.", sysToMilli(end-start));
 		PROCESS_PAUSE();
 	}
 	

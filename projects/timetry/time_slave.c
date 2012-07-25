@@ -16,11 +16,9 @@
 #include "timesync.h"
 #include "common.h"
 
-/*---------------------------------------------------------------------------*/
-// Config area:
-#define MASTER_ADDR_1 0x01
-#define MASTER_ADDR_0 0x33
-/*---------------------------------------------------------------------------*/
+// All processes share a connection, but have their own datagrams.
+static struct datagram data_pak;
+
 
 PROCESS(slave_time_sync, "slave_time_sync");
 PROCESS_NAME(common_process);
@@ -70,43 +68,37 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 }
 
 static const struct unicast_callbacks unicast_callbacks = {recv_uc};
-static struct unicast_conn uc;
 
 /*---------------------------------------------------------------------------*/
 
 PROCESS_THREAD(slave_time_sync, ev, data)
 {
-  PROCESS_EXITHANDLER(unicast_close(&uc));
-  
-  PROCESS_BEGIN();
+	PROCESS_EXITHANDLER(unicast_close(&uc));
+	PROCESS_BEGIN();
 
-  // Declare variables. Everything outside the loop should be static, because everything that is not static will loose its content when we enter the loop.
-  static rimeaddr_t masterAddr;
-  static struct etimer et;
-  static struct datagram data_pak;
+	initNetwork(&unicast_callbacks);
+	beepAllOff();
 
-  unicast_open(&uc, 290, &unicast_callbacks);
+	// some dummy data, used to change program size in case of verification errors.
+	char* dummy = "sdfsdgdfdfffhewkfheskgfhesfhewthherghud";
+	printf("Used dummy data: %i\n", strlen(dummy));
+	printf("Used dummy data: %i\n\n", strlen(dummy));
 
-  printf("I am a SLAVE, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
+	// Declare variables. Everything outside the loop should be static, because everything that is not static will loose its content when we enter the loop.
+	static struct etimer et;
 
-  // some dummy data, used to change program size in case of verification errors.
-  char* dummy = "sdfsdgdfdfffhewkfheskgfhesfhewthherghud";
-  printf("Used dummy data: %i\n", strlen(dummy));
-  printf("Used dummy data: %i\n\n", strlen(dummy));
 
-  masterAddr.u8[0] = MASTER_ADDR_0;
-  masterAddr.u8[1] = MASTER_ADDR_1;
+	printf("I am a SLAVE, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
 
-  data_pak.time_master=0L;
-  data_pak.type=1;
+	data_pak.time_master=0L;
+	data_pak.type=1;
 
-  while(1){
-	data_pak.time_local = getTimeSystem();
-	sendDatagram(&uc, &masterAddr, &data_pak);
+	while(1){
+		data_pak.time_local = getTimeSystem();
+		sendDatagram(&uc, &masterAddr, &data_pak);
+		etimer_set(&et, CLOCK_SECOND);
+		PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
+	}
 
-	etimer_set(&et, CLOCK_SECOND);
-	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
-  }
-
-  PROCESS_END();
+	PROCESS_END();
 }
