@@ -79,7 +79,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 		sendDatagram(c, from, &data_pak);
 }
 
-static const struct unicast_callbacks unicast_callbacks = {recv_uc};
+static struct unicast_callbacks unicast_callbacks = {recv_uc};
 
 /*---------------------------------------------------------------------------*/
 

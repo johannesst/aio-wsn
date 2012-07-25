@@ -31,15 +31,15 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 {
     	struct datagram data_pak;
 	struct  slave_list_struct slave_item;
-	slave_item.slaveAddr=from;
+	slave_item.slaveAddr=*from;
 	readDatagram(c,from,&data_pak);
 	int i;
 	struct slave_list_struct *tmp_slave;
 	tmp_slave=list_head(slave_list);
 	// is slave already in slave_list? If not, add him :)
 	for(i=0;i<list_length(slave_list);i++){
-		if(tmp_slave->slaveAddr->u8[0]==from->u8[0])
-			if(tmp_slave->slaveAddr->u8[1]==from->u8[1]){
+		if(tmp_slave->slaveAddr.u8[0]==from->u8[0])
+			if(tmp_slave->slaveAddr.u8[1]==from->u8[1]){
 				list_remove(slave_list,&tmp_slave);
 		}
 		tmp_slave=list_item_next(&tmp_slave);
@@ -65,7 +65,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 		sendDatagram(c, from, &data_pak);
 }
 
-static const struct unicast_callbacks unicast_callbacks = {recv_uc};
+static struct unicast_callbacks unicast_callbacks = {recv_uc};
 
 /*---------------------------------------------------------------------------*/
 

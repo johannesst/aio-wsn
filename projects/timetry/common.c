@@ -7,6 +7,7 @@
 #include "dev/leds.h"
 
 #include "common.h"
+#include "listen.h"
 #include "dev/button-sensor.h"
 
 
@@ -39,7 +40,7 @@ void readDatagram(struct unicast_conn *c, const rimeaddr_t *from, struct datagra
 //	printf("Received message %s from %x-%x\n", datapntr, from->u8[1], from->u8[0]);
 	
 	// convert received string to a datagram struct:
-	int i=sscanf(datapntr,"%1i@%10lu@%10lu\0",&data_pak->type,&data_pak->time_local,&data_pak->time_master);
+	sscanf(datapntr,"%1i@%10lu@%10lu\0",&data_pak->type,&data_pak->time_local,&data_pak->time_master);
 }
 
 void initOutput()
@@ -83,8 +84,6 @@ PROCESS_THREAD(common_process, ev, data)
 
 
   while(1){
-	planAgain:
-
 	tc =  getTimeCorrected();
 	//nextBeepTime = (tc / fiveSec + 1) * fiveSec;
 

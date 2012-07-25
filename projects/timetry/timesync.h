@@ -4,7 +4,7 @@
 
 struct slave_list_struct{
 	struct slave_list_struct  *next;
-	rimeaddr_t *slaveAddr;
+	rimeaddr_t slaveAddr;
 };
 
 LIST(slave_list);
