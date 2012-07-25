@@ -10,6 +10,9 @@ void readDatagram(struct unicast_conn *c, const rimeaddr_t *from, struct datagra
 void beepOn(char beepPort);
 void beepOff(char beepPort);
 void beepAllOff();
+void listenForBeep();
+void convert();
+void initAdc();
 
 
 #endif

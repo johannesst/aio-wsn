@@ -50,14 +50,17 @@ PROCESS_THREAD(common_process, ev, data)
   PROCESS_BEGIN();
 
   initOutput();
+  initAdc();
 
   static struct etimer et2;
   static long fiveSec;
-  fiveSec = milliToSys(5000);
   static long twoHundredMilli;
-  twoHundredMilli = milliToSys(200);
   static unsigned long int nextBeepTime;
-  unsigned long int tc;
+  static unsigned long int tc;
+
+  fiveSec = milliToSys(5000);
+  twoHundredMilli = milliToSys(200);
+  
 
   printf("Common process started. Waiting for time sync to settle.\n");
   etimer_set(&et2, milliToTimer(5000));
@@ -73,6 +76,8 @@ PROCESS_THREAD(common_process, ev, data)
 	unsigned long int timeToWait = nextBeepTime - tc;
 
 	printf("Planning to beep at %lu ms abs.\n", sysToMilli(nextBeepTime));
+
+/*
 	while(timeToWait > twoHundredMilli)
 	{
 		if(timeToWait > fiveSec * 2)
@@ -87,11 +92,14 @@ PROCESS_THREAD(common_process, ev, data)
 		tc =  getTimeCorrected();
 		timeToWait = nextBeepTime - tc;
 	}
-
+*/
 	printf("Now it is %lu ms abs. Only %lu ms to wait, actively waiting now.\n", sysToMilli(tc), sysToMilli(timeToWait));
 	while(tc < nextBeepTime)
 	{
+		listenForBeep();
 		tc =  getTimeCorrected();
+		//printf("Waiting for %lu, Now: %lu\n", nextBeepTime, tc);
+		PROCESS_PAUSE();
 	}
 	
 	printf("BEEEEEEP! (I was %lu ms late)\n", sysToMilli(tc - nextBeepTime));
@@ -135,3 +143,5 @@ void beepAllOff()
 {
 	PORTC &= 0b11000011;
 }
+
+
