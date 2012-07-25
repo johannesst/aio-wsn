@@ -3,6 +3,8 @@
  * 
  */
 
+#include "time_master.h"
+
 #include "contiki.h"
 #include "net/rime.h"
 #include "common.h"
@@ -24,27 +26,39 @@ AUTOSTART_PROCESSES(&master_time_sync,&common_process);
 
 char iAmTheMaster; // defined, initialized and used in getTime.c
 
+LIST(slave_list);
+MEMB(slave_mem, struct slave_list_struct, MAX_SLAVES);
+
 /**
  * Called by the system when a packet is received.
  */
 static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 {
     	struct datagram data_pak;
-	struct  slave_list_struct slave_item;
-	slave_item.slaveAddr=*from;
+	
 	readDatagram(c,from,&data_pak);
 	int i;
 	struct slave_list_struct *tmp_slave;
-	tmp_slave=list_head(slave_list);
+
 	// is slave already in slave_list? If not, add him :)
-	for(i=0;i<list_length(slave_list);i++){
-		if(tmp_slave->slaveAddr.u8[0]==from->u8[0])
-			if(tmp_slave->slaveAddr.u8[1]==from->u8[1]){
-				list_remove(slave_list,&tmp_slave);
-		}
+	char found = 0;
+	for(tmp_slave = list_head(slave_list); tmp_slave != NULL; tmp_slave = list_item_next(tmp_slave)) {
+			if(tmp_slave->slaveAddr.u8[0]==from->u8[0] && tmp_slave->slaveAddr.u8[1]==from->u8[1])
+			{
+				found = 1;
+				// list_remove(slave_list,&tmp_slave);
+			}
 		tmp_slave=list_item_next(&tmp_slave);
 	}
-	list_add(slave_list,&slave_item);
+	if(!found)
+	{
+		printf("Packet from unknown slave %x-%x.\n", from->u8[1], from->u8[0]);
+
+		struct  slave_list_struct* slave_item = memb_alloc(&slave_mem);
+		slave_item->slaveAddr=*from;
+		slave_item->next = NULL;
+		list_add(slave_list,slave_item);
+	}
 	
 	switch(data_pak.type){
 		case 1: // client asks for time
@@ -104,18 +118,15 @@ PROCESS_THREAD(master_time_sync, ev, data)
 
 
 	// for any element in slave_list send a beep command
-	list_t tmplist=slave_list;	
-	int i;
 	struct slave_list_struct *tmp_slave;
-	tmp_slave=list_head(slave_list);
+	
 	printf("Now iterating over the list of slaves:\n");
-	for(i=0;i<list_length(tmplist);i++){
-		printf("Object %i in slave list: %x-%x\n",i,tmp_slave->slaveAddr.u8[1],tmp_slave->slaveAddr.u8[0]);
+
+	for(tmp_slave = list_head(slave_list); tmp_slave != NULL; tmp_slave = list_item_next(tmp_slave)) {
+		printf("Object in slave list: %x-%x\n",tmp_slave->slaveAddr.u8[1],tmp_slave->slaveAddr.u8[0]);
 		data_pak.time_local=getTimeCorrected();
 		data_pak.time_master=getTimeCorrected()+milliToSys(1000);
 		sendDatagram(&uc,&masterAddr,&data_pak);	
-		tmp_slave=list_item_next(tmp_slave);
-
 	}
 	// except react to incoming messages
 	etimer_set(&et, CLOCK_SECOND);
