@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "common.h"
 
 /**
  * Sends a datagram. All parametes must point to initalized data structures.
@@ -94,11 +95,43 @@ PROCESS_THREAD(common_process, ev, data)
 	}
 	
 	printf("BEEEEEEP! (I was %lu ms late)\n", sysToMilli(tc - nextBeepTime));
-	PORTC |= 0b00100000;
+	beepOn(0);
 	etimer_set(&et2, milliToTimer(250));
 	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
-	PORTC &= 0b11011111;
+	beepOff(0);
   }
   
   PROCESS_END();
+}
+
+// Schaltet einen der Pieper an. 0 ist der default-onboard-pieper
+void beepOn(char beepPort)
+{
+	// Das könnte man auch als shift-Operation machen, aber da die Port-Reihenfolge nicht zwingend der Bit-Reihenfolge entspricht, ist das einfacher so. Außerdem gibt es derzeit nur den Port 0.
+	switch(beepPort)
+	{
+		case 0:
+			PORTC |= 0b00100000;
+			break;
+	}	
+}
+
+
+// Schaltet einen der Pieper aus. 0 ist der default-onboard-pieper
+void beepOff(char beepPort)
+{
+	// Das könnte man auch als shift-Operation machen, aber da die Port-Reihenfolge nicht zwingend der Bit-Reihenfolge entspricht, ist das einfacher so. Außerdem gibt es derzeit nur den Port 0.
+	switch(beepPort)
+	{
+		case 0:
+			PORTC &= 0b11011111;
+			break;
+	}	
+}
+
+
+// Schaltet alle Pieper aus.
+void beepAllOff()
+{
+	PORTC &= 0b11000011;
 }

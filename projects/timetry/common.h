@@ -7,6 +7,9 @@
 
 void sendDatagram(struct unicast_conn *c, const rimeaddr_t *to, struct datagram* data_pak);
 void readDatagram(struct unicast_conn *c, const rimeaddr_t *from, struct datagram* data_pak);
-void printFloat(float f);
+void beepOn(char beepPort);
+void beepOff(char beepPort);
+void beepAllOff();
+
 
 #endif
