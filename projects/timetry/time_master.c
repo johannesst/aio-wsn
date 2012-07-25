@@ -111,7 +111,7 @@ PROCESS_THREAD(master_time_sync, ev, data)
 	for(i=0;i<list_length(tmplist);i++){
 		data_pak.time_local=getTimeCorrected();
 		data_pak.time_master=getTimeCorrected()+milliToSys(1000);
-		sendDatagram(&uc,&masterAddr,&data_pak);	
+		sendDatagram(&uc,tmp_slave.slaveAddr,&data_pak);	
 		tmp_slave=list_item_next(tmp_slave);
 
 	}
