@@ -126,7 +126,9 @@ PROCESS_THREAD(master_time_sync, ev, data)
 		printf("Object in slave list: %x-%x\n",tmp_slave->slaveAddr.u8[1],tmp_slave->slaveAddr.u8[0]);
 		data_pak.time_local=getTimeCorrected();
 		data_pak.time_master=getTimeCorrected()+milliToSys(1000);
-		sendDatagram(&uc,&masterAddr,&data_pak);	
+
+		sendDatagram(&uc,&tmp_slave->slaveAddr,&data_pak);	
+
 	}
 	// except react to incoming messages
 	etimer_set(&et, CLOCK_SECOND);
