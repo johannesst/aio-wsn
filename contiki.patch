@@ -1,0 +1,41 @@
+diff --git a/cpu/msp430/msp430.c b/cpu/msp430/msp430.c
+index 7ea736b..365a446 100644
+--- a/cpu/msp430/msp430.c
++++ b/cpu/msp430/msp430.c
+@@ -36,7 +36,7 @@
+ #else
+ #include <io.h>
+ #include <signal.h>
+-#include <sys/unistd.h>
++//#include <sys/unistd.h>
+ #define asmv(arg) __asm__ __volatile__(arg)
+ #endif
+ #include "dev/watchdog.h"
+diff --git a/platform/inga/Makefile.inga b/platform/inga/Makefile.inga
+index 11d5546..a6dc946 100644
+--- a/platform/inga/Makefile.inga
++++ b/platform/inga/Makefile.inga
+@@ -31,6 +31,7 @@ AVRDUDE_PROGRAMMER=avr109
+ # Verify off
+ #AVRDUDE_OPTIONS=-V
+ AVRDUDE_OPTIONS=-b 230400
++#AVRDUDE_OPTIONS=-b 115200
+ ifdef CONF_DTN
+ CFLAGS += -DWITH_DTN=1
+ endif
+diff --git a/platform/sky/contiki-conf.h b/platform/sky/contiki-conf.h
+index 9794f39..4617409 100644
+--- a/platform/sky/contiki-conf.h
++++ b/platform/sky/contiki-conf.h
+@@ -4,6 +4,11 @@
+ #ifndef CONTIKI_CONF_H
+ #define CONTIKI_CONF_H
+ 
++// Added because of http://sourceforge.net/mailarchive/forum.php?thread_name=CAMYe%3DyWrvOgXABY5piTqOUZCpgFd8T-hnxcx2%2BAi8JEk_Ho9Xg%40mail.gmail.com&forum_name=contiki-developers
++
++#define _BV(bitno)   1<<bitno
++#define BV(bitno) _BV(bitno)
++
+ #ifdef PLATFORM_CONF_H
+ #include PLATFORM_CONF_H
+ #else
