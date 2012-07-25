@@ -70,7 +70,6 @@ PROCESS_THREAD(common_process, ev, data)
   static struct etimer et2;
   static long fiveSec;
   static long twoHundredMilli;
-  static unsigned long int nextBeepTime;
   static unsigned long int tc;
 
   fiveSec = milliToSys(5000);
@@ -88,8 +87,7 @@ PROCESS_THREAD(common_process, ev, data)
 	planAgain:
 
 	tc =  getTimeCorrected();
-	nextBeepTime = (tc / fiveSec + 1) * fiveSec;
-	unsigned long int timeToWait = nextBeepTime - tc;
+	//nextBeepTime = (tc / fiveSec + 1) * fiveSec;
 
 	//if(tc < nextBeepTime - twoHundredMilli)	
 	//	printf("Still %lu ms to wait, waiting and listening now.\n", sysToMilli((nextBeepTime - twoHundredMilli) - tc));

@@ -32,6 +32,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 	struct  slave_list_struct slave_item;
 	slave_item.slaveAddr=from;
 	slave_item.connection=c;
+   	struct datagram data_pak;
 	readDatagram(c,from,&data_pak);
 	int i;//
 	struct slave_list_struct tmp_slave;
@@ -50,8 +51,10 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			data_pak.time_master=getTimeSystem();
 			data_pak.type=2;
 			break;
-		case 3:
 
+		case 5: // client reports a beep
+			printf("Client %x-%x heard a beep at %lu.\n", from->u8[1], from->u8[0], data_pak.time_local);
+			return;
 		default:
 			return; // Lena: when anything other then 1 is the case, we do not send an answer
 		
@@ -63,7 +66,6 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 }
 
 static const struct unicast_callbacks unicast_callbacks = {recv_uc};
-static struct unicast_conn uc;
 
 /*---------------------------------------------------------------------------*/
 
@@ -76,16 +78,36 @@ PROCESS_THREAD(master_time_sync, ev, data)
 
   list_init(slave_list);
   unicast_open(&uc, 290, &unicast_callbacks); 
+  initNetwork(&unicast_callbacks);
+
+/*  printf("FUFUUUuuuuuuUUUU verification Erroe!");
+  printf("fffffffffffFUFUUUuuuuuuUUUU verification Erroe!");
+  printf("FUFUUUuuuuuuUUUU verification Erroe!");
+  printf("FUFUUUuuuuuuUUUU verification Erroe!");
+  */
   printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
 
   static struct etimer et;
+  struct datagram data_pak;
+  static rimeaddr_t masterAddr;
+  data_pak.type=4;
   while(1){
-	// do nothing, except react to incoming messages
 	// for any element in slave_list send a beep command
 	list_t tmplist=slave_list;	
 	int i;
-	for(i=0;i<list_length(tmplist)
-	  PROCESS_YIELD(); 
+	struct slave_list_struct tmp_slave;
+	tmp_slave=list_head(slave_list);
+	for(i=0;i<list_length(tmplist);i++){
+		data_pak.time_local=getTimeCorrected();
+		data_pak.time_master=getTimeCorrected()+milliToSys(1000);
+		sendDatagram(&uc,&masterAddr,&data_pak);	
+		tmp_slave=list_item_next(tmp_slave);
+
+	}
+	// except react to incoming messages
+	etimer_set(&et, CLOCK_SECOND);
+	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
+	//	PROCESS_YIELD(); 
   }
   
   

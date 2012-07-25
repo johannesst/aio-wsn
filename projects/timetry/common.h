@@ -18,6 +18,7 @@ void readDatagram(struct unicast_conn *c, const rimeaddr_t *from, struct datagra
 
 
 // Audio out
+unsigned long int nextBeepTime=0;
 void beepOn(char beepPort);
 void beepOff(char beepPort);
 void beepAllOff();
