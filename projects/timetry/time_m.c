@@ -64,13 +64,6 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 
 			return;
 			}
-		case 4:
-			{
-			// update nextBeepTime for beepTask in the
-			// ,,common  process''
-			nextBeepTime=data_pak.time_master;
-			return ;
-			}
 		default:
 			return; // Lena: when anything other then 2 is the case, we do not send an answer
 	}
@@ -89,15 +82,7 @@ PROCESS_THREAD(slave_time_sync, ev, data)
 	PROCESS_BEGIN();
 
 	initNetwork(&unicast_callbacks);
-
 	beepAllOff();
-
-	// Declare variables. Everything outside the loop should be static, because everything that is not static will loose its content when we enter the loop.
-  	static rimeaddr_t masterAddr;
-  	static struct etimer et;
-  	static struct datagram data_pak;
-  	masterAddr.u8[0] = MASTER_ADDR_0;
- 	masterAddr.u8[1] = MASTER_ADDR_1;
 
 	// some dummy data, used to change program size in case of verification errors.
 	char* dummy = "sdfsdgdfdfffhewkfheskgfhesfhewthherghud";
@@ -105,12 +90,14 @@ PROCESS_THREAD(slave_time_sync, ev, data)
 	printf("Used dummy data: %i\n", strlen(dummy));
 	printf("Used dummy data: %i\n\n", strlen(dummy));
 
+	// Declare variables. Everything outside the loop should be static, because everything that is not static will loose its content when we enter the loop.
+	static struct etimer et;
+
 
 	printf("I am a SLAVE, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
 
 	data_pak.time_master=0L;
 	data_pak.type=1;
-
 
 	while(1){
 		data_pak.time_local = getTimeSystem();

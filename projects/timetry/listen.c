@@ -1,5 +1,5 @@
 #include "contiki.h"
-
+#include "net/rime.h"
 #include "listen.h"
 #include "timesync.h"
 #include <avr/io.h>

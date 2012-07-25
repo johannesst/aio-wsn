@@ -1,6 +1,14 @@
 #ifndef TIMESNYC_H
 #define TIMESNYC_H
 
+struct(slave_list_struct){
+	struct *next;
+	rimeaddr_t *slaveAddr;
+}
+
+LIST(slave_list);
+			
+
 unsigned long getTimeCorrected();
 unsigned long getTimeSystem();
 
@@ -11,7 +19,6 @@ long sysToTimer(long sys);
 
 struct datagram{
 	int type; //switch (type){
-		  //case 0 bestätigung
 		  //case 1 ping paket vom slave
 		  //case 2 pong paket vom master
 		  //case 3 sende akkustisches signal 
