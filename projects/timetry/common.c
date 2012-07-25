@@ -10,7 +10,6 @@
 #include "dev/button-sensor.h"
 
 
-
 void initNetwork(struct unicast_callbacks* cb)
 {
 	unicast_open(&uc, 290, cb);
