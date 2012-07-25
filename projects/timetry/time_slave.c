@@ -83,7 +83,6 @@ PROCESS_THREAD(slave_time_sync, ev, data)
 	char* dummy = "sdfsdgdfdfffhewkfheskgfhesfhewthherghud";
 	printf("Used dummy data: %i\n", strlen(dummy));
 	printf("Used dummy data: %i\n", strlen(dummy));
-	printf("Used dummy data: %i\n", strlen(dummy));
 	printf("Used dummy data: %i\n\n", strlen(dummy));
 
 	// Declare variables. Everything outside the loop should be static, because everything that is not static will loose its content when we enter the loop.

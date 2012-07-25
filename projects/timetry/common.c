@@ -81,6 +81,8 @@ PROCESS_THREAD(common_process, ev, data)
   PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
   printf("Sync should be ok now. Starting...\n");
 
+  static struct datagram data_pak;
+
 
   while(1){
 	planAgain:
@@ -89,29 +91,31 @@ PROCESS_THREAD(common_process, ev, data)
 	nextBeepTime = (tc / fiveSec + 1) * fiveSec;
 	unsigned long int timeToWait = nextBeepTime - tc;
 
-	if(tc < nextBeepTime - twoHundredMilli)	
-		printf("Still %lu ms to wait, waiting and listening now.\n", sysToMilli((nextBeepTime - twoHundredMilli) - tc));
+	//if(tc < nextBeepTime - twoHundredMilli)	
+	//	printf("Still %lu ms to wait, waiting and listening now.\n", sysToMilli((nextBeepTime - twoHundredMilli) - tc));
 	while(tc < nextBeepTime - twoHundredMilli)
 	{
 		int i;
-		unsigned long int start = getTimeSystem();
 		for(i = 0; i < 1000; i++)
 		{
 			char erg = listenForBeep();
 			if(erg)
 			{
+				tc =  getTimeCorrected();
 				printf("Piep %i in Common registriert, um %lu.\n", (int)erg , tc);
+				data_pak.time_master=0L;
+				data_pak.type=5;
+				data_pak.time_local = tc;
+				sendDatagram(&uc, &masterAddr, &data_pak);
 			}
 		}
 		tc =  getTimeCorrected();
-		unsigned long int end = getTimeSystem();
-		//printf("Took 1000 samples in %lu ms.", sysToMilli(end-start));
 		PROCESS_PAUSE();
 		if(ev == sensors_event && data == &button_sensor)
 			debugPrint();
 	}
 
-	printf("Only %lu ms to wait, busy deaf waiting now.\n", sysToMilli(nextBeepTime - tc));
+	//printf("Only %lu ms to wait, busy deaf waiting now.\n", sysToMilli(nextBeepTime - tc));
 	while(tc < nextBeepTime)
 	{
 		tc =  getTimeCorrected();

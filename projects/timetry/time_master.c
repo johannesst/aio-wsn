@@ -36,7 +36,9 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			data_pak.time_master=getTimeSystem();
 			data_pak.type=2;
 			break;
-
+		case 5: // client reports a beep
+			printf("Client %x-%x heard a beep at %lu.\n", from->u8[1], from->u8[0], data_pak.time_local);
+			return;
 		default:
 			return; // Lena: when anything other then 1 is the case, we do not send an answer
 		
@@ -60,7 +62,10 @@ PROCESS_THREAD(master_time_sync, ev, data)
 
   initNetwork(&unicast_callbacks);
 
-  printf("FUFUUUUUUU verification Erroe!");
+  printf("FUFUUUuuuuuuUUUU verification Erroe!");
+  printf("fffffffffffFUFUUUuuuuuuUUUU verification Erroe!");
+  printf("FUFUUUuuuuuuUUUU verification Erroe!");
+  printf("FUFUUUuuuuuuUUUU verification Erroe!");
   printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
 
   static struct etimer et;

@@ -90,7 +90,7 @@ char listenForBeep()
 			// Gültige Wellen Hochzählen
 			validCount++;
 
-			// Haben wir fünf gültige Halbwellen hintereinander, und haben wir überhaupt noch platz, die zu speichern?
+			// Haben wir fünf gültige Wellen hintereinander, und haben wir überhaupt noch platz, die zu speichern?
 			if(validCount == 5) // && bufi < 512)  
 			{
 				// ist es schon lange genug her, dass wir so eine Folge hatten?
@@ -102,7 +102,7 @@ char listenForBeep()
 				lastTime = t;
 			}
 
-			// Mehr als 20 halbwellen wollen wir nicht zählen, da es sonst ewig dauert, die wieder ab zu bauen
+			// Mehr als 20 Wellen wollen wir nicht zählen, da es sonst ewig dauert, die wieder ab zu bauen
 			if(validCount > 20)
 				validCount = 20;
 		}
