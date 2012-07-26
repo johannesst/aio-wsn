@@ -10,5 +10,7 @@ struct slave_list_struct{
 	rimeaddr_t slaveAddr;
 };
 
+void addSlave(const rimeaddr_t *addr);
 
-#endif
+
+#endif 

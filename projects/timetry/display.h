@@ -2,6 +2,7 @@
 #define DISPLAY_H
 
 #include <stdio.h>
+#include <list.h>
 
 #define RESET		0
 #define NORMAL		0
@@ -25,7 +26,7 @@ void gotoXY(char x, char y);
 void setForegroundColor(char col);
 void clearScreen();
 void setBackgroundColor(char col);
-void drawTable();
+void drawTable(list_t slave_list); 
 void writeTableCell(char x, char y, char* text);
 void writeTableCellInt(char x, char y, int text);
 
