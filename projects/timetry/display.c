@@ -25,6 +25,10 @@ void setColor(int fg, int bg, int attr)
 void clearScreen()
 {
 	printf("%c[%dJ", 0x1B, 2);
+//	printf("%c[%dn", 0x1B, 6);
+//	int n,m;
+//	scanf("[%d;%dR", 0x1B, n, m);
+//	printf("Got position %i, %i\n",n,m);
 	gotoXY(1,1);
 }
 
@@ -48,7 +52,7 @@ void drawTable(list_t slave_list)
 
 	clearScreen();
 
-	char x,y,xi,yi;
+	char x,y,xi;
 
 	setColor(WHITE, BLACK, NORMAL);
 	
@@ -80,7 +84,18 @@ void drawTable(list_t slave_list)
 
 	writeTableCell(0,0,"Role");
 	writeTableCell(0,1,"Address");
-	
+
+	gotoXY(1,22);
+	printf("Habe %i Knoten." , nodeCount);
+}
+
+void fillTable(list_t slave_list) 
+{	
+	char x,y,xi;
+
+
+	char nodeCount =  list_length(slave_list);
+
 	for(y = 0; y < 7; y++)
 	{
 		writeTableCellInt(0,y+3,y + 123);
