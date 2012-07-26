@@ -1,4 +1,7 @@
 #include "display.h"
+#include "time_master.h"
+#include <string.h>
+#include <list.h>
 
 static int l_attr, l_fg, l_bg;
 
@@ -35,8 +38,11 @@ char rows = 15;
 char xo = 1;
 char yo = 3;
 
-void drawTable()
+void drawTable(list_t slave_list) 
 {
+	char nodeCount =  list_length(slave_list);
+	columns = nodeCount  + 1;
+
 	rowIsLine[2] = 1;
 	rowIsLine[10] = 1;
 
@@ -81,7 +87,10 @@ void drawTable()
 		
 	}
 
-	for(x = 0; x < 4; x++)
+	struct slave_list_struct *tmp_slave = list_head(slave_list);
+	char string[20];
+	
+	for(x = 0; x < nodeCount; x++)
 	{
 		setColor(WHITE, BLACK, BRIGHT);
 		if(x == 0)
@@ -89,7 +98,8 @@ void drawTable()
 		else
 			writeTableCell(x+1,0,"Slave");
 		
-		writeTableCell(x+1,1,"0x1234");
+		snprintf(string, 9, "%x-%x", tmp_slave->slaveAddr.u8[1],tmp_slave->slaveAddr.u8[0]);
+		writeTableCell(x+1,1,string);
 		for(y = 0; y < 7; y++)
 		{
 			if((x * 3 + y * 7) % 5 == 2 )
@@ -103,7 +113,10 @@ void drawTable()
 				writeTableCellInt(x+1,y+3,(x * 117 + y * 73) % 2124);
 			}
 		}
+		tmp_slave = list_item_next(tmp_slave);
 	}
+	gotoXY(1,22);
+	printf("Habe %i Knoten." , nodeCount);
 }
 
 void writeTableCell(char x, char y, char* text)

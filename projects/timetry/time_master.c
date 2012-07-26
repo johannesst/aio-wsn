@@ -51,14 +51,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 		tmp_slave=list_item_next(&tmp_slave);
 	}
 	if(!found)
-	{
-		printf("Packet from unknown slave %x-%x.\n", from->u8[1], from->u8[0]);
-
-		struct  slave_list_struct* slave_item = memb_alloc(&slave_mem);
-		slave_item->slaveAddr=*from;
-		slave_item->next = NULL;
-		list_add(slave_list,slave_item);
-	}
+		addSlave(from);
 	
 	switch(data_pak.type){
 		case 1: // client asks for time
@@ -79,6 +72,16 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 		sendDatagram(c, from, &data_pak);
 }
 
+void addSlave(const rimeaddr_t *addr)
+{
+	printf("Packet from unknown slave %x-%x.\n", addr->u8[1], addr->u8[0]);
+
+	struct  slave_list_struct* slave_item = memb_alloc(&slave_mem);
+	slave_item->slaveAddr=*addr;
+	slave_item->next = NULL;
+	list_add(slave_list,slave_item);
+}
+
 static struct unicast_callbacks unicast_callbacks = {recv_uc};
 
 /*---------------------------------------------------------------------------*/
@@ -88,18 +91,21 @@ PROCESS_THREAD(master_time_sync, ev, data)
   PROCESS_EXITHANDLER(unicast_close(&uc));
   PROCESS_BEGIN();
 
-  iAmTheMaster = 1;
+  iAmTheMaster = 1 ;
 
   list_init(slave_list);
   unicast_open(&uc, 290, &unicast_callbacks); 
   initNetwork(&unicast_callbacks);
 
-/*  printf("FUFUUUuuuuuuUUUU verification Erroe!");
-  printf("fffffffffffFUFUUUuuuuuuUUUU verification Erroe!");
+  // Add the master as first "slave"
+  addSlave(&rimeaddr_node_addr);
+
+  printf("FUFUUUuuuuuuUUUU verification Erroe!");
+/*  printf("fffffffffffFUFUUUuuuuuuUUUU verification Erroe!");
   printf("FUFUUUuuuuuuUUUU verification Erroe!");
   printf("FUFUUUuuuuuuUUUU verification Erroe!");
 */
-  drawTable();
+  drawTable(slave_list);
   gotoXY(1,20);
   printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
  
@@ -123,10 +129,9 @@ PROCESS_THREAD(master_time_sync, ev, data)
 	// for any element in slave_list send a beep command
 	struct slave_list_struct *tmp_slave;
 	
-	printf("Now iterating over the list of slaves:\n");
+	// drawTable(slave_list);
 
 	for(tmp_slave = list_head(slave_list); tmp_slave != NULL; tmp_slave = list_item_next(tmp_slave)) {
-		printf("Object in slave list: %x-%x\n",tmp_slave->slaveAddr.u8[1],tmp_slave->slaveAddr.u8[0]);
 		data_pak.time_local=getTimeCorrected();
 		data_pak.time_master=getTimeCorrected()+milliToSys(1000);
 
