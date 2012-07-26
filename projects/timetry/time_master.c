@@ -101,7 +101,7 @@ PROCESS_THREAD(master_time_sync, ev, data)
   // Add the master as first "slave"
   addSlave(&rimeaddr_node_addr);
 
- // printf("FUFUUUuuuuuuUUUU verification Erroe!");
+  printf("FUFUUUuuuuuuUUUU verification Erroe!");
 /*  printf("fffffffffffFUFUUUuuuuuuUUUU verification Erroe!");
   printf("FUFUUUuuuuuuUUUU verification Erroe!");
   printf("FUFUUUuuuuuuUUUU verification Erroe!");
@@ -117,9 +117,6 @@ PROCESS_THREAD(master_time_sync, ev, data)
   masterAddr.u8[0] = MASTER_ADDR_0;
   masterAddr.u8[1] = MASTER_ADDR_1;
   data_pak.type=4;
-  struct slave_list_struct master_entry;
-  master_entry.slaveAddr=masterAddr;
-  list_add(slave_list,&master_entry);
   while(1){
 //	gotoXY(1,1);
 	unsigned long int time = getTimeCorrected();
