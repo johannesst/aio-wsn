@@ -25,7 +25,7 @@
   ]{tubs}
 
 % Titelseite
-\title{FAIL - Failed Accustic Indoor  Localication
+\title{FAIL - Failed Audio Indoor  Localisation\\
 (Abschlusspräsentation)}
 \subtitle{Praktikum Wireless Sensor Networks - Team 4}
 \author{Johannes Starosta, Lena Schimmel}
@@ -129,24 +129,32 @@
 
 \begin{frame}{Aufgetretende Probleme: Audio-Erweiterung}
 	\begin{itemize}
-	  \item  Schaltung funktionierte nicht wie vorgesehen
-	  \item   Analoger Filter produzierte Datenmüll (cool für
-	       Zufallsgenatoren!)
-	     \item   Digitaler Bandpassfilter (in Software): Relativ
-		  geringe Wirkung im
-		     Verhältnis zum Aufwand, ihn weglassen hat nichts
-		     verschlechtert!
-		   \item	        Audioverarbeitung erfolgt jetzt rein in Software
-		   \item   Pezzo-Lautsprecher hatten nicht genug Power
+		\item  Ausgabe-Hardware
+		\begin{itemize}
+			\item   Pezzo-Lautsprecher hatten nicht genug Power
 			   mit unserer Schaltung
 			 \item 	      Lösung: Lautsprecher
 			   (,,Signalgeber'' von Conrad) mit interner Fertiglösung
 			 \item  Funktioniert, kann aber nur mit
 				 6,5 kHz ausgeben (*pieeeeeps*)
-			       \item	    Höhere Frequenzen kann  Microcontroller nicht samplen
+		\end{itemize}
+		\item  Eingabe-Hardware / -Software
+		\begin{itemize}
+			\item   Analoger Filter produzierte Datenmüll (cool für
+	       	Zufallsgenatoren!)
+		   \item	        Audioverarbeitung erfolgt jetzt rein in Software
+		   
+			       \item	   Erfordert echtes Sampling - viel höhere Frequenzen schafft  Microcontroller nicht
+	     \item   Digitaler Bandpassfilter (in Software): Relativ
+		  geringe Wirkung im
+		     Verhältnis zum Aufwand, ihn weglassen hat nichts
+		     verschlechtert!
+		     \item LED- / Pieper- / Serial-Ausgabe stört Sampling
 
+		\end{itemize}
 	\end{itemize}
 \end{frame}
+
 
 \begin{frame}{Provisorische Audio-Erweiterung}
 	\includegraphics[width=0.5\textwidth]{opvmikro}
