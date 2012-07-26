@@ -31,12 +31,9 @@ unsigned long int lastSysTimeSent; // defined, initialized and used in getTime.c
 /**
  * Called by the system when a packet is received.
  */
-static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
-{
-  	struct datagram data_pak;
-	readDatagram(c,from,&data_pak);
-	
-	switch(data_pak.type){
+void handleDatagram(struct datagram  * data_pak, struct unicast_conn *c, const rimeaddr_t *from)
+{	
+	switch(data_pak->type){
 		case 1:
 //			data_pak.time_local;//me_local;
 //			data_pak.time_master;//=time_master;
@@ -46,16 +43,16 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 		case 2:
 			{
 			unsigned long int now = getTimeSystem();
-			unsigned long int pingPongTime = now - data_pak.time_local;
+			unsigned long int pingPongTime = now - data_pak->time_local;
 			//printf("Message traveled back and forth in %lu time units. ", pingPongTime);
-			unsigned long int masterTimeNow = data_pak.time_master + pingPongTime / 2;
+			unsigned long int masterTimeNow = data_pak->time_master + pingPongTime / 2;
 			long int dif = (now - masterTimeNow) - offset;
 			offset += dif;
 			//printf("Offset adjusted by %li, new offset is %li\n", dif, offset);
 			long int timeBetweenMessages = now - lastSysTimeSent;
 			rate = dif * 1000L / timeBetweenMessages;
 			//printf("Time between Messages: %li. Change rate per time is %i promill.\n", timeBetweenMessages, rate);
-			lastSysTimeSent = data_pak.time_local;
+			lastSysTimeSent = data_pak->time_local;
 
 			return;
 			}
@@ -63,7 +60,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			{
 			// update nextBeepTime for beepTask in the
 			// ,,common  process''
-			nextBeepTime=data_pak.time_master;
+			nextBeepTime=data_pak->time_master;
 			printf("Befehl vom Master: Beep um %lu. Jetzt ist %lu und es bleiben noch %lu ms.\n", sysToMilli(nextBeepTime), sysToMilli(getTimeCorrected()), sysToMilli(nextBeepTime-getTimeCorrected()));
 			return ;
 			}
@@ -71,11 +68,9 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			return; // Lena: when anything other then 2 is the case, we do not send an answer
 	}
 
-	if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
-		sendDatagram(c, from, &data_pak);
+	//if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
+		sendDatagram(c, from, data_pak);
 }
-
-static struct unicast_callbacks unicast_callbacks = {recv_uc};
 
 /*---------------------------------------------------------------------------*/
 
@@ -84,7 +79,7 @@ PROCESS_THREAD(slave_time_sync, ev, data)
 	PROCESS_EXITHANDLER(unicast_close(&uc));
 	PROCESS_BEGIN();
 
-	initNetwork(&unicast_callbacks);
+	initNetwork(&handleDatagram);
 
 	beepAllOff();
 

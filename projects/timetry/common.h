@@ -11,7 +11,7 @@
 struct unicast_conn uc;
 rimeaddr_t masterAddr;
 
-void initNetwork(struct unicast_callbacks* cb);
+void initNetwork( void (*dh) (struct datagram *, struct unicast_conn *c, const rimeaddr_t *from));
 void sendDatagram(struct unicast_conn *c, const rimeaddr_t *to, struct datagram* data_pak);
 void readDatagram(struct unicast_conn *c, const rimeaddr_t *from, struct datagram* data_pak);
 

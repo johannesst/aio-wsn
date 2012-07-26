@@ -25,21 +25,18 @@ PROCESS_NAME(common_process);
 AUTOSTART_PROCESSES(&master_time_sync,&common_process);
 
 char iAmTheMaster; // defined, initialized and used in getTime.c
+char tableChanged = 1;
 
 LIST(slave_list);
 MEMB(slave_mem, struct slave_list_struct, MAX_SLAVES);
 
-/**
- * Called by the system when a packet is received.
- */
-static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
+
+
+void handleDatagram(struct datagram  * data_pak, struct unicast_conn *c, const rimeaddr_t *from)
 {
-    	struct datagram data_pak;
-	
-	readDatagram(c,from,&data_pak);
 	struct slave_list_struct *tmp_slave;
 
-	p//rintf("I got a packet.\n");
+	//printf("I got a packet.\n");
 
 	// is slave already in slave_list? If not, add him :)
 	char found = 0;
@@ -47,6 +44,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			if(tmp_slave->slaveAddr.u8[0]==from->u8[0] && tmp_slave->slaveAddr.u8[1]==from->u8[1])
 			{
 				found = 1;
+				break;
 				// list_remove(slave_list,&tmp_slave);
 			}
 		tmp_slave=list_item_next(&tmp_slave);
@@ -54,15 +52,17 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 	if(!found)
 		addSlave(from);
 	
-	switch(data_pak.type){
+	switch(data_pak->type){
 		case 1: // client asks for time
 			// data_pak.time_local remains unchanged
-			data_pak.time_master=getTimeSystem();
-			data_pak.type=2;
+			data_pak->time_master=getTimeSystem();
+			data_pak->type=2;
 			//printf("Client asked for time.\n");
 			break;
 		case 5: // client reports a beep
-			printf("Client %x-%x heard a beep at %lu (= %lu ms).\n", from->u8[1], from->u8[0], data_pak.time_local, sysToMilli(data_pak.time_local));
+			tmp_slave->lastBeepHeard = data_pak->time_local;
+			tableChanged=1;
+			//printf("Client %x-%x heard a beep at %lu (= %lu ms).\n", from->u8[1], from->u8[0], data_pak->time_local, sysToMilli(data_pak->time_local));
 			return;
 		default:
 			return; // Lena: when anything other then 1 is the case, we do not send an answer
@@ -70,8 +70,8 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 	}
 	// send reply only if the receiver is different from self
 
-	if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
-		sendDatagram(c, from, &data_pak);
+	//if(!rimeaddr_cmp(from, &rimeaddr_node_addr))
+	sendDatagram(c, from, data_pak);
 }
 
 void addSlave(const rimeaddr_t *addr)
@@ -95,8 +95,7 @@ void showTime()
 	restoreLocation();
 }
 
-static struct unicast_callbacks unicast_callbacks = {recv_uc};
-char tableChanged = 1;
+
 /*---------------------------------------------------------------------------*/
 
 PROCESS_THREAD(master_time_sync, ev, data)
@@ -108,7 +107,7 @@ PROCESS_THREAD(master_time_sync, ev, data)
 
   list_init(slave_list);
   //unicast_open(&uc, 290, &unicast_callbacks); 
-  initNetwork(&unicast_callbacks);
+  initNetwork(&handleDatagram);
 
   // Add the master as first "slave"
   addSlave(&rimeaddr_node_addr);
@@ -148,10 +147,14 @@ PROCESS_THREAD(master_time_sync, ev, data)
 		for(tmp_slave = list_head(slave_list); tmp_slave != NULL; tmp_slave = list_item_next(tmp_slave)) {
 			i++;
 			tmp_slave->nextBeepTime = now +  (unsigned long)(milliToSys(1000) * i);
-			data_pak.time_local = now;
-			data_pak.time_master = tmp_slave->nextBeepTime;
-			
-			sendDatagram(&uc,&tmp_slave->slaveAddr,&data_pak);	
+			if(tmp_slave->slaveAddr.u8[0] == rimeaddr_node_addr.u8[0] && tmp_slave->slaveAddr.u8[1] == rimeaddr_node_addr.u8[1])
+				nextBeepTime = tmp_slave->nextBeepTime;
+			else
+			{
+				data_pak.time_local = now;
+				data_pak.time_master = tmp_slave->nextBeepTime;
+				sendDatagram(&uc,&tmp_slave->slaveAddr,&data_pak);	
+			}
 		}
 		nextPlanTime = now + milliToSys(1000) * (unsigned long)(i + 3);
 		tableChanged = 1;

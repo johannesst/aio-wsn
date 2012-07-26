@@ -60,6 +60,7 @@ void drawTable(list_t slave_list)
 
 	rowIsLine[2] = 1;
 	rowIsLine[4] = 1;
+	rowIsLine[6] = 1;
 	rowIsLine[10] = 1;
 
 	//clearScreen();
@@ -123,6 +124,7 @@ void fillTable(list_t slave_list)
 		
 	}*/
 	writeTableCell(0,3,"Next beep");
+	writeTableCell(0,3,"Last heard");
 
 	struct slave_list_struct *tmp_slave = list_head(slave_list);
 	char string[20];
@@ -139,6 +141,7 @@ void fillTable(list_t slave_list)
 		writeTableCell(x+1,1,string);
 		
 		writeTableCellLong(x+1,3,sysToMilli(tmp_slave->nextBeepTime));
+		writeTableCellLong(x+1,5,sysToMilli(tmp_slave->lastBeepHeard));
 		/*		
 		for(y = 0; y < 7; y++)
 		{

@@ -10,10 +10,24 @@
 #include "listen.h"
 #include "dev/button-sensor.h"
 
+void (*datagramHandler) (struct datagram *, struct unicast_conn *c, const rimeaddr_t *from);
 
-void initNetwork(struct unicast_callbacks* cb)
+/**
+ * Called by the system when a packet is received.
+ */
+static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 {
-	unicast_open(&uc, 290, cb);
+    	struct datagram data_pak;
+	
+	readDatagram(c,from,&data_pak);
+	datagramHandler(&data_pak, c, from);
+}
+static struct unicast_callbacks unicast_callbacks = {recv_uc};
+
+void initNetwork( void (*dh) (struct datagram *, struct unicast_conn *, const rimeaddr_t *))
+{
+	datagramHandler = dh;
+	unicast_open(&uc, 290, &unicast_callbacks);
 	masterAddr.u8[0] = MASTER_ADDR_0;
   	masterAddr.u8[1] = MASTER_ADDR_1;
 }
@@ -23,11 +37,19 @@ void initNetwork(struct unicast_callbacks* cb)
  */
 void sendDatagram(struct unicast_conn *c, const rimeaddr_t *to, struct datagram* data_pak)
 {
-	char string[30];
-	snprintf(string,30,"%1i@%10lu@%10lu", data_pak->type, data_pak->time_local, data_pak->time_master);
-	packetbuf_copyfrom(&string,sizeof(string)); // String + Length to be send
-	unicast_send(c, to);
-	//printf("Sent message %s to %x-%x\n", string, to->u8[1], to->u8[0]);
+	if(to->u8[0] == rimeaddr_node_addr.u8[0] && to->u8[1] == rimeaddr_node_addr.u8[1])
+	{
+	//	printf("Message for myself!\n");
+		datagramHandler(data_pak, c, to);
+	}
+	else
+	{
+		char string[30];
+		snprintf(string,30,"%1i@%10lu@%10lu", data_pak->type, data_pak->time_local, data_pak->time_master);
+		packetbuf_copyfrom(&string,sizeof(string)); // String + Length to be send
+		unicast_send(c, to);
+	//	printf("Sent message %s to %x-%x\n", string, to->u8[1], to->u8[0]);
+	}
 }
 
 /**
@@ -87,10 +109,10 @@ PROCESS_THREAD(common_process, ev, data)
 	tc =  getTimeCorrected();
 	//nextBeepTime = (tc / fiveSec + 1) * fiveSec;
 
-	if(nextBeepTime == 0)
-		printf("No beep time scheduled. Justs listening. \n");
-	else if(tc < nextBeepTime - twoHundredMilli)	
-		printf("Still %lu ms to wait, waiting and listening now.\n", sysToMilli((nextBeepTime - twoHundredMilli) - tc));
+//	if(nextBeepTime == 0)
+//		printf("No beep time scheduled. Justs listening. \n");
+//	else if(tc < nextBeepTime - twoHundredMilli)	
+//		printf("Still %lu ms to wait, waiting and listening now.\n", sysToMilli((nextBeepTime - twoHundredMilli) - tc));
 	while(nextBeepTime == 0 || tc < nextBeepTime - twoHundredMilli)
 	{
 		int i;
@@ -100,7 +122,7 @@ PROCESS_THREAD(common_process, ev, data)
 			if(erg)
 			{
 				tc =  getTimeCorrected();
-				//printf("Piep %i in Common registriert, um %lu.\n", (int)erg , tc);
+//				printf("Piep %i in Common registriert, um %lu.\n", (int)erg , tc);
 				data_pak.time_master=0L;
 				data_pak.type=5;
 				data_pak.time_local = tc;
@@ -113,7 +135,7 @@ PROCESS_THREAD(common_process, ev, data)
 			debugPrint();
 	}
 
-	printf("Only %lu ms to wait, busy deaf waiting now.\n", sysToMilli(nextBeepTime - tc));
+//	printf("Only %lu ms to wait, busy deaf waiting now.\n", sysToMilli(nextBeepTime - tc));
 	while(tc < nextBeepTime)
 	{
 		tc =  getTimeCorrected();
@@ -125,7 +147,7 @@ PROCESS_THREAD(common_process, ev, data)
 		printf("FUCK, I missed the time by more than 500ms!\n");
 	else
 	{
-		printf("BEEEEEEP! (I was %lu ms late)\n", sysToMilli(tc - nextBeepTime));
+//		printf("BEEEEEEP! (I was %lu ms late)\n", sysToMilli(tc - nextBeepTime));
 		beepOn(0);
 		etimer_set(&et2, milliToTimer(50));
 		PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
