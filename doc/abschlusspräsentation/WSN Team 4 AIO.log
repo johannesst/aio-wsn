@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.7.19)  26 JUL 2012 09:22
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2012.7.19)  26 JUL 2012 11:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -702,36 +702,36 @@ File: uni-global.def 2012/04/20 UCS: Unicode global data
 \uc@combtoksb=\toks43
 \uc@temptokena=\toks44
 )
-(/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box53
-\UL@hyphenbox=\box54
-\UL@skip=\skip57
-\UL@hook=\toks45
-\UL@height=\dimen184
-\UL@pe=\count155
-\UL@pixel=\dimen185
-\ULC@box=\box55
-Package: ulem 2012/05/18
-\ULdepth=\dimen186
-)
 (/usr/share/texlive/texmf-dist/tex/latex/eurosym/eurosym.sty
 Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
-\@eurobox=\box56
+\@eurobox=\box53
 )
 (/usr/share/texlive/texmf-dist/tex/latex/textpos/textpos.sty
 Package: textpos 2012/06/01 v1.7h
 
 Package: textpos 2012/06/01 1.7h, absolute positioning of text on the page
-\TP@textbox=\box57
-\TPHorizModule=\dimen187
-\TPVertModule=\dimen188
-\TP@margin=\dimen189
-\TP@absmargin=\dimen190
+\TP@textbox=\box54
+\TPHorizModule=\dimen184
+\TPVertModule=\dimen185
+\TP@margin=\dimen186
+\TP@absmargin=\dimen187
 Grid set 16 x 16 = 22.7622pt x 17.07166pt
-\TPboxrulesize=\dimen191
-\TP@tbargs=\toks46
-\TP@prevdepth=\dimen192
-) (/home/johannes/texmf/tex/latex/tubs/tex/latex/tubs/beamerthemetubs.sty
+\TPboxrulesize=\dimen188
+\TP@tbargs=\toks45
+\TP@prevdepth=\dimen189
+) (/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box55
+\UL@hyphenbox=\box56
+\UL@skip=\skip57
+\UL@hook=\toks46
+\UL@height=\dimen190
+\UL@pe=\count155
+\UL@pixel=\dimen191
+\ULC@box=\box57
+Package: ulem 2012/05/18
+\ULdepth=\dimen192
+)
+(/home/johannes/texmf/tex/latex/tubs/tex/latex/tubs/beamerthemetubs.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
@@ -875,20 +875,20 @@ File: uni-0.def 2012/04/20 UCS: Unicode data U+0000..U+00FF
 (./WSN Team 4 AIO.aux)
 \openout1 = `"WSN Team 4 AIO.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -954,7 +954,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box60
-Package hyperref Info: Link coloring OFF on input line 45.
+Package hyperref Info: Link coloring OFF on input line 44.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
@@ -964,56 +964,56 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count169
 )
-LaTeX Info: Redefining \ref on input line 45.
-LaTeX Info: Redefining \pageref on input line 45.
-LaTeX Info: Redefining \nameref on input line 45.
+LaTeX Info: Redefining \ref on input line 44.
+LaTeX Info: Redefining \pageref on input line 44.
+LaTeX Info: Redefining \nameref on input line 44.
 
 (./WSN Team 4 AIO.out) (./WSN Team 4 AIO.out)
 \@outlinefile=\write5
 \openout5 = `"WSN Team 4 AIO.out"'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/ua1/m/n --> OT1/cmss/m/n on input line 45.
+(Font)                  OT1/ua1/m/n --> OT1/cmss/m/n on input line 44.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/ua1/b/n --> OT1/cmss/bx/n on input line 45.
+(Font)                  OT1/ua1/b/n --> OT1/cmss/bx/n on input line 44.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 45.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 45.
+(Font)                  OT1/cmss/m/n --> T1/cmr/m/n on input line 44.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/b/n --> T1/ua1/bx/n on input line 45.
+(Font)                  OT1/cmr/b/n --> T1/ua1/bx/n on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/b/n --> T1/ua1/bx/n on input line 45.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 45.
+(Font)                  OT1/cmr/b/n --> T1/ua1/bx/n on input line 44.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/ua1/m/n --> T1/ua1/m/n on input line 45.
+(Font)                  OT1/ua1/m/n --> T1/ua1/m/n on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/ua1/b/n --> T1/ua1/m/n on input line 45.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 45.
+(Font)                  OT1/ua1/b/n --> T1/ua1/m/n on input line 44.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T1/ua1/m/it on input line 45.
+(Font)                  OT1/cmr/m/it --> T1/ua1/m/it on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/b/it --> T1/ua1/m/it on input line 45.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 45.
+(Font)                  OT1/cmr/b/it --> T1/ua1/m/it on input line 44.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 45.
+(Font)                  OT1/cmtt/m/n --> T1/cmtt/m/n on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/b/n --> T1/cmtt/m/n on input line 45.
+(Font)                  OT1/cmtt/b/n --> T1/cmtt/m/n on input line 44.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/ua1/m/n --> T1/ua1/bx/n on input line 45.
+(Font)                  T1/ua1/m/n --> T1/ua1/bx/n on input line 44.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/ua1/m/it --> T1/ua1/bx/it on input line 45.
+(Font)                  T1/ua1/m/it --> T1/ua1/bx/it on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T1/cmr/bx/n on input line 45.
+(Font)                  OT1/cmss/bx/n --> T1/cmr/bx/n on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/ua1/bx/n --> T1/ua1/bx/n on input line 45.
+(Font)                  T1/ua1/bx/n --> T1/ua1/bx/n on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/ua1/m/n --> T1/ua1/bx/n on input line 45.
+(Font)                  T1/ua1/m/n --> T1/ua1/bx/n on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/ua1/m/it --> T1/ua1/bx/it on input line 45.
+(Font)                  T1/ua1/m/it --> T1/ua1/bx/it on input line 44.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/cmtt/m/n --> T1/cmtt/bx/n on input line 45.
+(Font)                  T1/cmtt/m/n --> T1/cmtt/bx/n on input line 44.
 
 (/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
 onary/translator-basic-dictionary-English.dict
@@ -1043,9 +1043,9 @@ Dictionary: translator-theorem-dictionary, Language: English
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 ) (./WSN Team 4 AIO.nav)
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 5.69998pt on input line 45.
+(Font)              scaled to size 5.69998pt on input line 44.
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 4.74995pt on input line 45.
+(Font)              scaled to size 4.74995pt on input line 44.
 \beamer@CDlogowidth=\dimen208
 \beamer@CDlogoheight=\dimen209
 \@footline@textwidth=\dimen210
@@ -1053,48 +1053,48 @@ LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
 File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
 
 <use TUBraunschweig_RGB_beamer.pdf>
-Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 45.
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 44.
 (pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 45.
+(Font)              scaled to size 7.59998pt on input line 44.
  <ibr.jpg, id=14, 351.3125pt x 62.2325pt>
 File: ibr.jpg Graphic file (type jpg)
 
 <use ibr.jpg>
-Package pdftex.def Info: ibr.jpg used on input line 45.
+Package pdftex.def Info: ibr.jpg used on input line 44.
 (pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
-LaTeX Font Info:    Calculating math sizes for size <4.99997> on input line 45.
+LaTeX Font Info:    Calculating math sizes for size <4.99997> on input line 44.
 
-LaTeX Font Info:    Try loading font information for U+zeur on input line 45.
+LaTeX Font Info:    Try loading font information for U+zeur on input line 44.
  (/usr/share/texlive/texmf-dist/tex/latex/eulervm/uzeur.fd
 File: uzeur.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Try loading font information for U+zeus on input line 45.
+LaTeX Font Info:    Try loading font information for U+zeus on input line 44.
 
 (/usr/share/texlive/texmf-dist/tex/latex/eulervm/uzeus.fd
 File: uzeus.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Try loading font information for U+zeuex on input line 45.
+LaTeX Font Info:    Try loading font information for U+zeuex on input line 44.
 
 (/usr/share/texlive/texmf-dist/tex/latex/eulervm/uzeuex.fd
 File: uzeuex.fd 2005/01/11 v4.0 (WaS)
 )
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 3.32494pt on input line 45.
+(Font)              scaled to size 3.32494pt on input line 44.
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 2.37497pt on input line 45.
+(Font)              scaled to size 2.37497pt on input line 44.
 LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 4.74995pt on input line 45.
+(Font)              scaled to size 4.74995pt on input line 44.
 LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 3.32494pt on input line 45.
+(Font)              scaled to size 3.32494pt on input line 44.
 LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 2.37497pt on input line 45.
+(Font)              scaled to size 2.37497pt on input line 44.
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 13.67995pt on input line 49.
+(Font)              scaled to size 13.67995pt on input line 48.
 LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ua1/b/n' tried instead on input line 49.
+(Font)              Font shape `T1/ua1/b/n' tried instead on input line 48.
 LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
-(Font)              scaled to size 13.67995pt on input line 49.
+(Font)              scaled to size 13.67995pt on input line 48.
 \@image@xorig=\dimen211
 \@image@xcalc=\dimen212
 \@image@yorig=\dimen213
@@ -1103,29 +1103,33 @@ LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
 <titlepicture3.jpg, id=15, 890.83836pt x 287.08635pt>
 File: titlepicture3.jpg Graphic file (type jpg)
  <use titlepicture3.jpg>
-Package pdftex.def Info: titlepicture3.jpg used on input line 49.
+Package pdftex.def Info: titlepicture3.jpg used on input line 48.
 (pdftex.def)             Requested size: 342.34175pt x 108.71283pt.
-LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ua1/b/n' tried instead on input line 49.
-LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
-(Font)              scaled to size 10.40245pt on input line 49.
-LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 49.
-File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
 
+Overfull \hbox (24.32014pt too wide) in paragraph at lines 48--48
+ []|   [] 
+ []
+
+LaTeX Font Info:    Font shape `T1/ua1/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/ua1/b/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `T1/ua1/b/n' will be
+(Font)              scaled to size 10.40245pt on input line 48.
+LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
+(Font)              scaled to size 8.54997pt on input line 48.
+File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
 <use TUBraunschweig_RGB_beamer.pdf>
-Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 49.
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 48.
 (pdftex.def)             Requested size: 105.27519pt x 39.10283pt.
 File: ibr.jpg Graphic file (type jpg)
  <use ibr.jpg>
-Package pdftex.def Info: ibr.jpg used on input line 49.
+Package pdftex.def Info: ibr.jpg used on input line 48.
 (pdftex.def)             Requested size: 138.36218pt x 24.50987pt.
 LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 10.40245pt on input line 49.
+(Font)              scaled to size 10.40245pt on input line 48.
 LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 7.59998pt on input line 49.
+(Font)              scaled to size 7.59998pt on input line 48.
 LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 5.69998pt on input line 49.
+(Font)              scaled to size 5.69998pt on input line 48.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./titlepicture3.jpg> </hom
@@ -1138,27 +1142,27 @@ bs/logos/TUBraunschweig_RGB_beamer.pdf): PDF inclusion: multiple pdfs with page
 > <./ibr.jpg>] <room-2.pdf, id=32, 554.07pt x 289.08pt>
 File: room-2.pdf Graphic file (type pdf)
  <use room-2.pdf>
-Package pdftex.def Info: room-2.pdf used on input line 59.
+Package pdftex.def Info: room-2.pdf used on input line 58.
 (pdftex.def)             Requested size: 155.69221pt x 81.22856pt.
 
 <room-3.pdf, id=33, 554.07pt x 289.08pt>
 File: room-3.pdf Graphic file (type pdf)
  <use room-3.pdf>
-Package pdftex.def Info: room-3.pdf used on input line 59.
+Package pdftex.def Info: room-3.pdf used on input line 58.
 (pdftex.def)             Requested size: 155.69221pt x 81.22856pt.
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 3.79999pt on input line 59.
+(Font)              scaled to size 3.79999pt on input line 58.
 \beamer@CDlogowidth=\dimen215
 \beamer@CDlogoheight=\dimen216
 \@footline@textwidth=\dimen217
 File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
 
 <use TUBraunschweig_RGB_beamer.pdf>
-Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 59.
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 58.
 (pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
 File: ibr.jpg Graphic file (type jpg)
  <use ibr.jpg>
-Package pdftex.def Info: ibr.jpg used on input line 59.
+Package pdftex.def Info: ibr.jpg used on input line 58.
 (pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
  [2
 
@@ -1172,11 +1176,11 @@ pdfTeX warning: pdflatex (file ./room-3.pdf): PDF inclusion: multiple pdfs with
 \@footline@textwidth=\dimen220
 File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
  <use TUBraunschweig_RGB_beamer.pdf>
-Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 83.
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 80.
 (pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
 File: ibr.jpg Graphic file (type jpg)
  <use ibr.jpg>
-Package pdftex.def Info: ibr.jpg used on input line 83.
+Package pdftex.def Info: ibr.jpg used on input line 80.
 (pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
  [3
 
@@ -1187,11 +1191,11 @@ Package pdftex.def Info: ibr.jpg used on input line 83.
 File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
 
 <use TUBraunschweig_RGB_beamer.pdf>
-Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 96.
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 98.
 (pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
 File: ibr.jpg Graphic file (type jpg)
  <use ibr.jpg>
-Package pdftex.def Info: ibr.jpg used on input line 96.
+Package pdftex.def Info: ibr.jpg used on input line 98.
 (pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
  [4
 
@@ -1202,11 +1206,11 @@ Package pdftex.def Info: ibr.jpg used on input line 96.
 File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
 
 <use TUBraunschweig_RGB_beamer.pdf>
-Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 110.
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 113.
 (pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
 File: ibr.jpg Graphic file (type jpg)
  <use ibr.jpg>
-Package pdftex.def Info: ibr.jpg used on input line 110.
+Package pdftex.def Info: ibr.jpg used on input line 113.
 (pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
  [5
 
@@ -1215,12 +1219,12 @@ Package pdftex.def Info: ibr.jpg used on input line 110.
 File: AudioBoardSchema.pdf Graphic file (type pdf)
 
 <use AudioBoardSchema.pdf>
-Package pdftex.def Info: AudioBoardSchema.pdf used on input line 124.
+Package pdftex.def Info: AudioBoardSchema.pdf used on input line 128.
 (pdftex.def)             Requested size: 291.92352pt x 126.41637pt.
 LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 124.
+(Font)              scaled to size 9.49997pt on input line 128.
 
-Overfull \vbox (3.45355pt too high) detected at line 124
+Overfull \vbox (3.45355pt too high) detected at line 128
  []
 
 \beamer@CDlogowidth=\dimen227
@@ -1228,11 +1232,11 @@ Overfull \vbox (3.45355pt too high) detected at line 124
 \@footline@textwidth=\dimen229
 File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
 <use TUBraunschweig_RGB_beamer.pdf>
-Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 124.
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 128.
 (pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
 File: ibr.jpg Graphic file (type jpg)
  <use ibr.jpg>
-Package pdftex.def Info: ibr.jpg used on input line 124.
+Package pdftex.def Info: ibr.jpg used on input line 128.
 (pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
  [6
 
@@ -1243,15 +1247,26 @@ Package pdftex.def Info: ibr.jpg used on input line 124.
 File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
 
 <use TUBraunschweig_RGB_beamer.pdf>
-Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 146.
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 149.
 (pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
 File: ibr.jpg Graphic file (type jpg)
  <use ibr.jpg>
-Package pdftex.def Info: ibr.jpg used on input line 146.
+Package pdftex.def Info: ibr.jpg used on input line 149.
 (pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
  [7
 
 ]
+<opvmikro.png, id=109, 378.41376pt x 228.855pt>
+File: opvmikro.png Graphic file (type png)
+ <use opvmikro.png>
+Package pdftex.def Info: opvmikro.png used on input line 154.
+(pdftex.def)             Requested size: 162.18083pt x 98.08446pt.
+
+<two_boards_op.jpg, id=110, 2601.72pt x 1959.32pt>
+File: two_boards_op.jpg Graphic file (type jpg)
+ <use two_boards_op.jpg>
+Package pdftex.def Info: two_boards_op.jpg used on input line 154.
+(pdftex.def)             Requested size: 162.18083pt x 122.12833pt.
 \beamer@CDlogowidth=\dimen233
 Normal \dimen register pool exhausted, switching to extended pool.
 \beamer@CDlogoheight=\dimen256
@@ -1259,49 +1274,52 @@ Normal \dimen register pool exhausted, switching to extended pool.
 File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
 
 <use TUBraunschweig_RGB_beamer.pdf>
-Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 163.
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 154.
 (pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
 File: ibr.jpg Graphic file (type jpg)
  <use ibr.jpg>
-Package pdftex.def Info: ibr.jpg used on input line 163.
+Package pdftex.def Info: ibr.jpg used on input line 154.
 (pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
  [8
 
-]
+ <./opvmikro.png> <./two_boards_op.jpg>]
 \beamer@CDlogowidth=\dimen258
 \beamer@CDlogoheight=\dimen259
 \@footline@textwidth=\dimen260
 File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
-
-<use TUBraunschweig_RGB_beamer.pdf>
-Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 174.
+ <use TUBraunschweig_RGB_beamer.pdf>
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 170.
 (pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
 File: ibr.jpg Graphic file (type jpg)
  <use ibr.jpg>
-Package pdftex.def Info: ibr.jpg used on input line 174.
+Package pdftex.def Info: ibr.jpg used on input line 170.
 (pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
  [9
 
 ]
-LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 16.41594pt on input line 184.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 184.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
-(Font)              scaled to size 11.39996pt on input line 184.
-LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 16.41594pt on input line 184.
-LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 11.39996pt on input line 184.
-LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
-(Font)              scaled to size 9.49997pt on input line 184.
+<wave.png, id=126, 1177.39874pt x 611.28375pt>
+File: wave.png Graphic file (type png)
+ <use wave.png>
+Package pdftex.def Info: wave.png used on input line 173.
+(pdftex.def)             Requested size: 324.36168pt x 168.39735pt.
 \beamer@CDlogowidth=\dimen261
 \beamer@CDlogoheight=\dimen262
 \@footline@textwidth=\dimen263
+File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
+
+<use TUBraunschweig_RGB_beamer.pdf>
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 173.
+(pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
+File: ibr.jpg Graphic file (type jpg)
+ <use ibr.jpg>
+Package pdftex.def Info: ibr.jpg used on input line 173.
+(pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
+ [10
+
+ <./wave.png>]
+\beamer@CDlogowidth=\dimen264
+\beamer@CDlogoheight=\dimen265
+\@footline@textwidth=\dimen266
 File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
 
 <use TUBraunschweig_RGB_beamer.pdf>
@@ -1311,9 +1329,61 @@ File: ibr.jpg Graphic file (type jpg)
  <use ibr.jpg>
 Package pdftex.def Info: ibr.jpg used on input line 184.
 (pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
- [10
+ [11
 
 ]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 191.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `T1/ua1/m/n' will be
+(Font)              scaled to size 6.64998pt on input line 191.
+LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
+(Font)              scaled to size 13.67995pt on input line 191.
+LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
+(Font)              scaled to size 9.49997pt on input line 191.
+LaTeX Font Info:    Font shape `T1/ua1/m/it' will be
+(Font)              scaled to size 6.64998pt on input line 191.
+\beamer@CDlogowidth=\dimen267
+\beamer@CDlogoheight=\dimen268
+\@footline@textwidth=\dimen269
+File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
+
+<use TUBraunschweig_RGB_beamer.pdf>
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 191.
+(pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
+File: ibr.jpg Graphic file (type jpg)
+ <use ibr.jpg>
+Package pdftex.def Info: ibr.jpg used on input line 191.
+(pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
+ [12
+
+]
+<screenshot.png, id=150, 630.85687pt x 618.81187pt>
+File: screenshot.png Graphic file (type png)
+ <use screenshot.png>
+Package pdftex.def Info: screenshot.png used on input line 196.
+(pdftex.def)             Requested size: 227.05219pt x 222.71545pt.
+
+Overfull \vbox (26.30663pt too high) detected at line 196
+ []
+
+\beamer@CDlogowidth=\dimen270
+\beamer@CDlogoheight=\dimen271
+\@footline@textwidth=\dimen272
+File: TUBraunschweig_RGB_beamer.pdf Graphic file (type pdf)
+<use TUBraunschweig_RGB_beamer.pdf>
+Package pdftex.def Info: TUBraunschweig_RGB_beamer.pdf used on input line 196.
+(pdftex.def)             Requested size: 70.27829pt x 26.10355pt.
+File: ibr.jpg Graphic file (type jpg)
+ <use ibr.jpg>
+Package pdftex.def Info: ibr.jpg used on input line 196.
+(pdftex.def)             Requested size: 72.44836pt x 12.83371pt.
+ [13
+
+ <./screenshot.png>]
 \tf@nav=\write6
 \openout6 = `"WSN Team 4 AIO.nav"'.
 
@@ -1323,31 +1393,32 @@ Package pdftex.def Info: ibr.jpg used on input line 184.
 \tf@snm=\write8
 \openout8 = `"WSN Team 4 AIO.snm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 186.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 186.
- (./WSN Team 4 AIO.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 186.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 186.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
+
+(./WSN Team 4 AIO.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 197.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 197.
 Package rerunfilecheck Info: File `"WSN Team 4 AIO".out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 186.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 197.
  ) 
 Here is how much of TeX's memory you used:
- 18731 strings out of 493485
- 340354 string characters out of 3143526
- 428640 words of memory out of 3000000
- 21502 multiletter control sequences out of 15000+200000
- 129042 words of font info for 102 fonts, out of 3000000 for 9000
+ 18764 strings out of 493485
+ 340788 string characters out of 3143526
+ 427675 words of memory out of 3000000
+ 21526 multiletter control sequences out of 15000+200000
+ 124945 words of font info for 101 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  54i,20n,68p,918b,730s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texliv
 e/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/public/c
-m-super/sftt1728.pfb></usr/local/share/texmf/fonts/type1/urw/arial/ua1b8a.pfb><
+m-super/sftt1440.pfb></usr/local/share/texmf/fonts/type1/urw/arial/ua1b8a.pfb><
 /usr/local/share/texmf/fonts/type1/urw/arial/ua1r8a.pfb>
-Output written on "WSN Team 4 AIO.pdf" (10 pages, 391080 bytes).
+Output written on "WSN Team 4 AIO.pdf" (13 pages, 1406694 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
- 20 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 181 PDF objects out of 1000 (max. 8388607)
+ 120 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
