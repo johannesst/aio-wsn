@@ -27,6 +27,7 @@ void setForegroundColor(char col);
 void clearScreen();
 void setBackgroundColor(char col);
 void drawTable(list_t slave_list); 
+void fillTable(list_t slave_list); 
 void writeTableCell(char x, char y, char* text);
 void writeTableCellInt(char x, char y, int text);
 

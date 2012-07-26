@@ -80,6 +80,7 @@ void addSlave(const rimeaddr_t *addr)
 	slave_item->slaveAddr=*addr;
 	slave_item->next = NULL;
 	list_add(slave_list,slave_item);
+	drawTable(slave_list);
 }
 
 static struct unicast_callbacks unicast_callbacks = {recv_uc};
@@ -100,11 +101,12 @@ PROCESS_THREAD(master_time_sync, ev, data)
   // Add the master as first "slave"
   addSlave(&rimeaddr_node_addr);
 
-  printf("FUFUUUuuuuuuUUUU verification Erroe!");
+ // printf("FUFUUUuuuuuuUUUU verification Erroe!");
 /*  printf("fffffffffffFUFUUUuuuuuuUUUU verification Erroe!");
   printf("FUFUUUuuuuuuUUUU verification Erroe!");
   printf("FUFUUUuuuuuuUUUU verification Erroe!");
 */
+  
   drawTable(slave_list);
   gotoXY(1,20);
   printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
@@ -129,7 +131,7 @@ PROCESS_THREAD(master_time_sync, ev, data)
 	// for any element in slave_list send a beep command
 	struct slave_list_struct *tmp_slave;
 	
-	// drawTable(slave_list);
+	fillTable(slave_list);
 
 	for(tmp_slave = list_head(slave_list); tmp_slave != NULL; tmp_slave = list_item_next(tmp_slave)) {
 		data_pak.time_local=getTimeCorrected();
