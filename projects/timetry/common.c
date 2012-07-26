@@ -87,8 +87,8 @@ PROCESS_THREAD(common_process, ev, data)
 	tc =  getTimeCorrected();
 	//nextBeepTime = (tc / fiveSec + 1) * fiveSec;
 
-	//if(tc < nextBeepTime - twoHundredMilli)	
-	//	printf("Still %lu ms to wait, waiting and listening now.\n", sysToMilli((nextBeepTime - twoHundredMilli) - tc));
+	if(tc < nextBeepTime - twoHundredMilli)	
+		printf("Still %lu ms to wait, waiting and listening now.\n", sysToMilli((nextBeepTime - twoHundredMilli) - tc));
 	while(tc < nextBeepTime - twoHundredMilli)
 	{
 		int i;
@@ -98,7 +98,7 @@ PROCESS_THREAD(common_process, ev, data)
 			if(erg)
 			{
 				tc =  getTimeCorrected();
-				printf("Piep %i in Common registriert, um %lu.\n", (int)erg , tc);
+				//printf("Piep %i in Common registriert, um %lu.\n", (int)erg , tc);
 				data_pak.time_master=0L;
 				data_pak.type=5;
 				data_pak.time_local = tc;
@@ -111,7 +111,7 @@ PROCESS_THREAD(common_process, ev, data)
 			debugPrint();
 	}
 
-	//printf("Only %lu ms to wait, busy deaf waiting now.\n", sysToMilli(nextBeepTime - tc));
+	printf("Only %lu ms to wait, busy deaf waiting now.\n", sysToMilli(nextBeepTime - tc));
 	while(tc < nextBeepTime)
 	{
 		tc =  getTimeCorrected();

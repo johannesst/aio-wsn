@@ -6,7 +6,7 @@
 
 // Network stuff
 #define MASTER_ADDR_1 0x01
-#define MASTER_ADDR_0 0x28
+#define MASTER_ADDR_0 0x33
 
 struct unicast_conn uc;
 rimeaddr_t masterAddr;

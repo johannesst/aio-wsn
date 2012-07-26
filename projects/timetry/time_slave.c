@@ -52,7 +52,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			{
 			unsigned long int now = getTimeSystem();
 			unsigned long int pingPongTime = now - data_pak.time_local;
-			//printf("Message traveled back and forth in %lu time units. ", pingPongTime);
+			printf("Message traveled back and forth in %lu time units. ", pingPongTime);
 			unsigned long int masterTimeNow = data_pak.time_master + pingPongTime / 2;
 			long int dif = (now - masterTimeNow) - offset;
 			offset += dif;
@@ -69,6 +69,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			// update nextBeepTime for beepTask in the
 			// ,,common  process''
 			nextBeepTime=data_pak.time_master;
+			printf("Befehl vom Master: Beep um %lu.\n", sysToMilli(nextBeepTime));
 			return ;
 			}
 		default:
@@ -115,6 +116,7 @@ PROCESS_THREAD(slave_time_sync, ev, data)
 	while(1){
 		data_pak.time_local = getTimeSystem();
 		sendDatagram(&uc, &masterAddr, &data_pak);
+		printf("Asking server for time.\n");
 		etimer_set(&et, CLOCK_SECOND);
 		PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
 	}

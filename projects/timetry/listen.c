@@ -96,7 +96,7 @@ char listenForBeep()
 				// ist es schon lange genug her, dass wir so eine Folge hatten?
 				if(t > lastTime + 5000)
 				{
-					printf("I found a beeep#########################\n");
+					//printf("I found a beeep#########################\n");
 					ret = 1;
 				}
 				lastTime = t;

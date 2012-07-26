@@ -1,9 +1,12 @@
 #include "display.h"
 #include "time_master.h"
+#include "timesync.h"
 #include <string.h>
 #include <list.h>
+#include <stdio.h>
 
 static int l_attr, l_fg, l_bg;
+char tableChanged;
 
 void gotoXY(char x, char y)
 {
@@ -25,13 +28,8 @@ void setColor(int fg, int bg, int attr)
 void clearScreen()
 {
 	printf("%c[%dJ", 0x1B, 2);
-//	printf("%c[%dn", 0x1B, 6);
-//	int n,m;
-//	scanf("[%d;%dR", 0x1B, n, m);
-//	printf("Got position %i, %i\n",n,m);
 	gotoXY(1,1);
 }
-
 
 void saveLocation()
 {
@@ -47,7 +45,7 @@ void restoreLocation()
 char rowIsLine[50];
 
 
-char columnWidth = 12;
+char columnWidth = 16;
 char rowHeight = 1;
 char columns = 5;
 char rows = 15;
@@ -61,6 +59,7 @@ void drawTable(list_t slave_list)
 	columns = nodeCount  + 1;
 
 	rowIsLine[2] = 1;
+	rowIsLine[4] = 1;
 	rowIsLine[10] = 1;
 
 	//clearScreen();
@@ -108,17 +107,22 @@ void drawTable(list_t slave_list)
 
 void fillTable(list_t slave_list) 
 {	
+	if(!tableChanged)
+		return;
+	// printf("\x9B\x3F\x32\x35\x6C"); // hide cursor
+
 	saveLocation();
 	char x,y,xi;
 
 
 	char nodeCount =  list_length(slave_list);
 
-	for(y = 0; y < 7; y++)
+	/*for(y = 0; y < 7; y++)
 	{
 		writeTableCellInt(0,y+3,y + 123);
 		
-	}
+	}*/
+	writeTableCell(0,3,"Next beep");
 
 	struct slave_list_struct *tmp_slave = list_head(slave_list);
 	char string[20];
@@ -133,6 +137,9 @@ void fillTable(list_t slave_list)
 		
 		snprintf(string, 9, "%x-%x", tmp_slave->slaveAddr.u8[1],tmp_slave->slaveAddr.u8[0]);
 		writeTableCell(x+1,1,string);
+		
+		writeTableCellLong(x+1,3,sysToMilli(tmp_slave->nextBeepTime));
+		/*		
 		for(y = 0; y < 7; y++)
 		{
 			if((x * 3 + y * 7) % 5 == 2 )
@@ -146,11 +153,14 @@ void fillTable(list_t slave_list)
 				writeTableCellInt(x+1,y+3,(x * 117 + y * 73) % 2124);
 			}
 		}
+		*/
 		tmp_slave = list_item_next(tmp_slave);
 	}
 	gotoXY(1,22);
 	printf("Habe %i Knoten." , nodeCount);
 	restoreLocation();
+	tableChanged = 0;
+	setColor(WHITE, BLACK, NORMAL);
 }
 
 void writeTableCell(char x, char y, char* text)
@@ -166,8 +176,14 @@ void writeTableCell(char x, char y, char* text)
 	}
 }
 
-void writeTableCellInt(char x, char y, int text)
+void writeTableCellInt(char x, char y,  int text)
 {
 	gotoXY(x * columnWidth + xo + 2, y + yo);
-	printf("%9i",text);
+	printf("%13i",text);
+}
+
+void writeTableCellLong(char x, char y, long text)
+{
+	gotoXY(x * columnWidth + xo + 2, y + yo);
+	printf("%13li",text);
 }
