@@ -27,7 +27,7 @@ void sendDatagram(struct unicast_conn *c, const rimeaddr_t *to, struct datagram*
 	snprintf(string,30,"%1i@%10lu@%10lu", data_pak->type, data_pak->time_local, data_pak->time_master);
 	packetbuf_copyfrom(&string,sizeof(string)); // String + Length to be send
 	unicast_send(c, to);
-//	printf("Sent message %s to %x-%x\n", string, to->u8[1], to->u8[0]);
+	//printf("Sent message %s to %x-%x\n", string, to->u8[1], to->u8[0]);
 }
 
 /**
@@ -87,9 +87,11 @@ PROCESS_THREAD(common_process, ev, data)
 	tc =  getTimeCorrected();
 	//nextBeepTime = (tc / fiveSec + 1) * fiveSec;
 
-	if(tc < nextBeepTime - twoHundredMilli)	
+	if(nextBeepTime == 0)
+		printf("No beep time scheduled. Justs listening. \n");
+	else if(tc < nextBeepTime - twoHundredMilli)	
 		printf("Still %lu ms to wait, waiting and listening now.\n", sysToMilli((nextBeepTime - twoHundredMilli) - tc));
-	while(tc < nextBeepTime - twoHundredMilli)
+	while(nextBeepTime == 0 || tc < nextBeepTime - twoHundredMilli)
 	{
 		int i;
 		for(i = 0; i < 1000; i++)
@@ -118,11 +120,19 @@ PROCESS_THREAD(common_process, ev, data)
 	}
 	
 	tc =  getTimeCorrected();
-	printf("BEEEEEEP! (I was %lu ms late)\n", sysToMilli(tc - nextBeepTime));
-	beepOn(0);
-	etimer_set(&et2, milliToTimer(50));
-	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
-	beepOff(0);
+
+	if(sysToMilli(tc - nextBeepTime) > 500)
+		printf("FUCK, I missed the time by more than 500ms!\n");
+	else
+	{
+		printf("BEEEEEEP! (I was %lu ms late)\n", sysToMilli(tc - nextBeepTime));
+		beepOn(0);
+		etimer_set(&et2, milliToTimer(50));
+		PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et2));
+		beepOff(0);
+	}
+
+	nextBeepTime = 0;
   }
   
   PROCESS_END();

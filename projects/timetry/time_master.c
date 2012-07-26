@@ -39,7 +39,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 	readDatagram(c,from,&data_pak);
 	struct slave_list_struct *tmp_slave;
 
-	printf("I got a packet.\n");
+	p//rintf("I got a packet.\n");
 
 	// is slave already in slave_list? If not, add him :)
 	char found = 0;
@@ -59,7 +59,7 @@ static void recv_uc(struct unicast_conn *c, const rimeaddr_t *from)
 			// data_pak.time_local remains unchanged
 			data_pak.time_master=getTimeSystem();
 			data_pak.type=2;
-			printf("Client asked for time.\n");
+			//printf("Client asked for time.\n");
 			break;
 		case 5: // client reports a beep
 			printf("Client %x-%x heard a beep at %lu (= %lu ms).\n", from->u8[1], from->u8[0], data_pak.time_local, sysToMilli(data_pak.time_local));
@@ -131,6 +131,7 @@ PROCESS_THREAD(master_time_sync, ev, data)
   data_pak.type=4;
   static unsigned long int nextPlanTime = 0;
   while(1){
+
 	showTime();
 
 	// for any element in slave_list send a beep command
@@ -154,11 +155,12 @@ PROCESS_THREAD(master_time_sync, ev, data)
 		}
 		nextPlanTime = now + milliToSys(1000) * (unsigned long)(i + 3);
 		tableChanged = 1;
-		printf("I made a new plan. Next plan will be made at %lu ms. (i is %i)\n", sysToMilli(nextPlanTime), i);
+		// printf("I made a new plan. Next plan will be made at %lu ms. (i is %i)\n", sysToMilli(nextPlanTime), i);
 	}
 	etimer_set(&et, milliToTimer(500));
 	PROCESS_WAIT_EVENT_UNTIL(etimer_expired(&et));
 	//PROCESS_PAUSE(); 
+//PROCESS_YIELD();
   }
   
   
