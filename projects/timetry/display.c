@@ -32,6 +32,18 @@ void clearScreen()
 	gotoXY(1,1);
 }
 
+
+void saveLocation()
+{
+	printf("%c[s", 0x1B);
+}
+
+void restoreLocation()
+{
+	printf("%c[u", 0x1B);
+}
+
+
 char rowIsLine[50];
 
 
@@ -44,13 +56,17 @@ char yo = 3;
 
 void drawTable(list_t slave_list) 
 {
+	saveLocation();
 	char nodeCount =  list_length(slave_list);
 	columns = nodeCount  + 1;
 
 	rowIsLine[2] = 1;
 	rowIsLine[10] = 1;
 
-	clearScreen();
+	//clearScreen();
+	gotoXY(80, rows);
+	printf("%c[%dJ", 0x1B, 1);
+
 
 	char x,y,xi;
 
@@ -87,10 +103,12 @@ void drawTable(list_t slave_list)
 
 	gotoXY(1,22);
 	printf("Habe %i Knoten." , nodeCount);
+	restoreLocation();
 }
 
 void fillTable(list_t slave_list) 
 {	
+	saveLocation();
 	char x,y,xi;
 
 
@@ -132,6 +150,7 @@ void fillTable(list_t slave_list)
 	}
 	gotoXY(1,22);
 	printf("Habe %i Knoten." , nodeCount);
+	restoreLocation();
 }
 
 void writeTableCell(char x, char y, char* text)
