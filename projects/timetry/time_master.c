@@ -106,7 +106,7 @@ PROCESS_THREAD(master_time_sync, ev, data)
   printf("FUFUUUuuuuuuUUUU verification Erroe!");
   printf("FUFUUUuuuuuuUUUU verification Erroe!");
 */
-  
+  clearScreen();
   drawTable(slave_list);
   gotoXY(1,20);
   printf("I am the MASTER, I have the RIME address %x-%x\n", rimeaddr_node_addr.u8[1], rimeaddr_node_addr.u8[0]);
