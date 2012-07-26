@@ -83,6 +83,15 @@ void addSlave(const rimeaddr_t *addr)
 	drawTable(slave_list);
 }
 
+void showTime()
+{
+	saveLocation();
+	gotoXY(1,1);
+	unsigned long int time = getTimeCorrected();
+	printf("Current time: %8lu,%3lu s", time / 1000, time % 1000);
+	restoreLocation();
+}
+
 static struct unicast_callbacks unicast_callbacks = {recv_uc};
 
 /*---------------------------------------------------------------------------*/
@@ -121,11 +130,7 @@ PROCESS_THREAD(master_time_sync, ev, data)
   master_entry.slaveAddr=masterAddr;
   list_add(slave_list,&master_entry);
   while(1){
-//	gotoXY(1,1);
-	unsigned long int time = getTimeCorrected();
-	
-//	printf("Current time: %8lu,%3lu s", time / 1000, time % 1000);
-//	gotoXY(1,20);
+	showTime();
 
 
 	// for any element in slave_list send a beep command
@@ -150,3 +155,5 @@ PROCESS_THREAD(master_time_sync, ev, data)
 
   PROCESS_END();
 }
+
+
