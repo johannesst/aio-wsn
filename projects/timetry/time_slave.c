@@ -91,9 +91,9 @@ PROCESS_THREAD(slave_time_sync, ev, data)
  	masterAddr.u8[1] = MASTER_ADDR_1;
 
 	// some dummy data, used to change program size in case of verification errors.
-	char* dummy = "sdfsdgdfdfffhewkfheskgfhesfhewthherghud";
-	printf("Used dummy data: %i\n", strlen(dummy));
-	printf("Used dummy data: %i\n", strlen(dummy));
+	char* dummy = "sdfsdgdfdfffhewkfhesdewfkgfhesfhewthherghud";
+	//printf("Used dummy data: %i\n", strlen(dummy));
+	//printf("Used dummy data: %i\n", strlen(dummy));
 	printf("Used dummy data: %i\n\n", strlen(dummy));
 
 

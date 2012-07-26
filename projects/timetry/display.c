@@ -124,7 +124,7 @@ void fillTable(list_t slave_list)
 		
 	}*/
 	writeTableCell(0,3,"Next beep");
-	writeTableCell(0,3,"Last heard");
+	writeTableCell(0,5,"Last heard");
 
 	struct slave_list_struct *tmp_slave = list_head(slave_list);
 	char string[20];
