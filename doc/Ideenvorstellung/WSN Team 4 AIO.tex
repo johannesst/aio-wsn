@@ -4,6 +4,7 @@
 \usepackage[ngerman]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{graphicx}
+\usepackage{eurosym}
 \usetheme[%
   %cmyk,%<rgbprint>,          Auswahl des Farbmodells
   blue,%<orange/green/violet> Auswahl des Sekundärfarbklangs
@@ -52,15 +53,55 @@
 \end{frame}
 
 \begin{frame}{Aktueller Status}
-Was geht:
+	\textbf{Was geht:}
 	\begin{itemize}
-		\item Test
+		\item Die Arbeitsgrundlagen (Compiler, make, git)
+		\item Zeitsynchronisation
+		\item Analogsignale sampeln
 	\end{itemize}
+	
+	\textbf{Was (noch) nicht geht:}
+	\begin{itemize}
+		\item Audio-Hardware
+		\item Zuverlässiges Flashen der INGAs
+		\item Thread-Scheduling
+	\end{itemize}
+\end{frame}
 
-Was noch nicht geht:
+\begin{frame}{Programmierung (Joke)}
+	\textit{(Joke...)}
+\end{frame}
+
+\begin{frame}{Hardware - Herausforderungen}
 	\begin{itemize}
-		\item Test
+		\item Simple Beschaltung selbst zum Testen ungeeignet\\(Niedriger Gesamtpegel, hohes Rauschen)
+		\item Standardhardware teilweise nur bis 10 kHz brauchbar und mit enormem Strom-/ Spannungsbedarf
+		\item Menschen, die bis zu 19 kHz noch als störend wahrnehmen
 	\end{itemize}
+	
+	Deshalb: Komplexerer Hardwareentwurf
+\end{frame}
+
+\begin{frame}{Hardware - Der Plan \textsuperscript{TM}}
+	Hardware-Erweiterung
+	\begin{itemize}
+		\item Zwei Audio-Kanäle
+		\item Jeweils Ein- und Ausgabe
+		\item Signalpipeline  bei der Eingabe:
+		\begin{itemize}
+			\item Elekret-Mikrofon mit Spannungseinspeisung
+			\item Aktiver Bandpassfilter mit Verstärker in Multiple-Feedback-Topology \\(Frequenz über Potentiometer einstellbar) 
+			\item Spitzenwertgleichrichter
+			\item DA-Converter im ATmega1284P
+		\end{itemize}
+	\end{itemize}
+	Bauteilkosten: ca. \EUR{3} pro Board zzgl. \EUR{8} pro tatsächlich genutztem Kanal
+\end{frame}
+
+
+\begin{frame}{Hardware - Erster Entwurf}
+	\includegraphics[width=0.8\textwidth]{AudioBoardSchema.pdf}
+	\includegraphics[width=0.48\textwidth]{AudioBoard.pdf}
 \end{frame}
 
 \end{document}

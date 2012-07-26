@@ -1,1 +1,4 @@
-make MOTES=/dev/ttyUSB0 UIP_CONF_IPV6=1 adcTest.upload login
+dd if=/dev/urandom of=newfile bs=1 count=100
+md5sum newfile > sum
+cat quote sum quote > random.txt
+make MOTES=/dev/ttyUSB0 adcTest.upload login
