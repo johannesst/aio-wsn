@@ -57,16 +57,20 @@ void drawTable(list_t slave_list)
 	saveLocation();
 	char nodeCount =  list_length(slave_list);
 	columns = nodeCount  + 1;
+	rows = nodeCount * 2 + 8;
 
 	rowIsLine[2] = 1;
 	rowIsLine[4] = 1;
 	rowIsLine[6] = 1;
-	rowIsLine[10] = 1;
-
+	int o;
+	for(o = 7; o < 7 + nodeCount; o++)
+		rowIsLine[o] = 0;
+	rowIsLine[7 + nodeCount] = 1;
+	
 	//clearScreen();
-	gotoXY(80, rows);
-	printf("%c[%dJ", 0x1B, 1);
+	gotoXY(80, rows); printf("%c[%dJ", 0x1B, 1); // clear above
 
+	
 
 	char x,y,xi;
 
@@ -139,24 +143,37 @@ void fillTable(list_t slave_list)
 		
 		snprintf(string, 9, "%x-%x", tmp_slave->slaveAddr.u8[1],tmp_slave->slaveAddr.u8[0]);
 		writeTableCell(x+1,1,string);
+		writeTableCell(0,7+x,string);
+		writeTableCell(0,8+nodeCount+x,string);
 		
 		writeTableCellLong(x+1,3,sysToMilli(tmp_slave->nextBeepTime));
 		writeTableCellLong(x+1,5,sysToMilli(tmp_slave->lastBeepHeard));
-		/*		
-		for(y = 0; y < 7; y++)
+			
+		for(y = 0; y < nodeCount; y++)
 		{
-			if((x * 3 + y * 7) % 5 == 2 )
+			int val = tmp_slave->difFrom[y];
+			if(val == 0 || val == 1000)
 			{
-				setColor(GREEN, BLACK, BRIGHT);
-				writeTableCell(x+1,y+3,"BEEP");
+				writeTableCell(x+1,y+7,"          ---");
 			}
 			else
 			{
 				setColor(WHITE, BLACK, NORMAL);
-				writeTableCellInt(x+1,y+3,(x * 117 + y * 73) % 2124);
+				writeTableCellInt(x+1,y+7,sysToMilli(val));
+			}
+
+			int cnt = tmp_slave->difFromCount[y];
+			if(cnt == 0)
+			{
+				writeTableCell(x+1,y+8+nodeCount,"          ---");
+			}
+			else
+			{
+				setColor(WHITE, BLACK, NORMAL);
+				writeTableCellInt(x+1,y+8+nodeCount,sysToMilli(tmp_slave->difFromSum[y] / cnt));
 			}
 		}
-		*/
+		
 		tmp_slave = list_item_next(tmp_slave);
 	}
 	gotoXY(1,22);

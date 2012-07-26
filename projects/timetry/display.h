@@ -23,9 +23,8 @@
 #define	WHITE		7
 
 void gotoXY(char x, char y);
-void setForegroundColor(char col);
 void clearScreen();
-void setBackgroundColor(char col);
+void setColor(int fg, int bg, int attr);
 void drawTable(list_t slave_list); 
 void fillTable(list_t slave_list); 
 void writeTableCell(char x, char y, char* text);
